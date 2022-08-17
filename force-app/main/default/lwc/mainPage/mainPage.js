@@ -1,6 +1,6 @@
 import { LightningElement, track } from 'lwc';
 
-export default class Main_Page extends LightningElement
+export default class MainPage extends LightningElement
 {
 	@track opportunityId = "0067h00000DXuZVAA1";
 }

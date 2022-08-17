@@ -1,0 +1,20 @@
+.row
+{
+	display: flex;
+}
+  
+.column
+{
+	flex: var(--lwc-squareIconXSmallContent, 0.5rem);
+}
+
+hr
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+lightning-button
+{
+	padding: var(--lwc-squareIconUtilityMedium, 1.25rem);
+}
