@@ -1,6 +1,13 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
+import getOffers from '@salesforce/apex/customerOpportunity.getOffers';
 
 export default class MainPage extends LightningElement
 {
-	@track opportunityId = "0067h00000DXuZVAA1";
+	@track allOffers = []
+
+	@wire (getOffers)
+	offersList(result){
+		this.allOffers = result.data
+		console.log(result.data)
+	}
 }

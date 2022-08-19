@@ -38,3 +38,9 @@ $RECYCLE.BIN/
 
 # Local environment variables
 .env
+
+#Anonymous Apex
+scripts/apex
+
+#VSCode Configuration Files
+.vscode

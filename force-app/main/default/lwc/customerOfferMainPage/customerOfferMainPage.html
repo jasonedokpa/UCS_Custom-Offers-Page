@@ -1,4 +1,7 @@
 <template>
-	hello
-    <c-customer-offer-card></c-customer-offer-card>
+	<template for:each={allOffers} for:item="offer">	
+		<div key={offer.Id} style="padding: 20px">
+			<c-customer-offer-card></c-customer-offer-card>
+		</div>
+	</template>
 </template>
