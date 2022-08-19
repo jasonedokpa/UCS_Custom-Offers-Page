@@ -1,7 +1,8 @@
 <template>
-	<template for:each={allOffers} for:item="offer">	
-		<div key={offer.Id} style="padding: 20px">
-			<c-customer-offer-card></c-customer-offer-card>
+	<template for:each={allOffersGrouped} for:item="offerGroup">	
+		<div key={offerGroup.key} style="padding: 20px">
+			<c-offer-type-section>
+			</c-offer-type-section>
 		</div>
 	</template>
 </template>

@@ -5,17 +5,17 @@ export default class MainPage extends LightningElement
 {
 	
 	@track allOffers = []
+	allOffersGrouped = []
 
 	@wire (getOffers)
 	offersList(result){
-		this.allOffers = result.data
-		console.log('HELLO RESULTS:', result.data)
-	}
-
-	renderedCallback()
-	{
-		console.log('RENDERED CALLBACK: ')
-		console.log(this.groupByOffer(this.allOffers))	
+		if (result.data)
+			{
+				this.allOffers = result.data
+				console.log(result.data)
+				this.allOffersGrouped = Object.entries(this.groupByOffer(result.data)).map(([key, value]) => ({ key, value }))
+				console.log(this.allOffersGrouped)
+			}
 	}
 
 	groupByOffer(offersArray)
