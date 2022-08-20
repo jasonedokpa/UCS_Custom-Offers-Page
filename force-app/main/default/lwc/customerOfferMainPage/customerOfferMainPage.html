@@ -1,7 +1,7 @@
 <template>
 	<template for:each={allOffersGrouped} for:item="offerGroup">	
 		<div key={offerGroup.key} style="padding: 20px">
-			<c-offer-type-section>
+			<c-offer-type-section group-name={offerGroup.key} offer-list={offerGroup.value}>
 			</c-offer-type-section>
 		</div>
 	</template>

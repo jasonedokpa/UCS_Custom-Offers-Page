@@ -1,6 +1,10 @@
 .row
 {
 	display: flex;
+	padding-left:20px;
+	padding-bottom:10px; 
+	padding-top:10px
+
 }
   
 .column
@@ -10,8 +14,8 @@
 
 hr
 {
-	margin: 0px;
-	padding: 0px;
+	margin: 1px;
+	padding: 1px;
 }
 
 lightning-button
