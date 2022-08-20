@@ -2,6 +2,6 @@ import { LightningElement, api } from 'lwc';
 
 export default class OfferTypeSection extends LightningElement 
 {
-	@api offerList = [];
-	@api groupName;
+	@api offerList = [{Id: "0"}];
+	@api groupName = "[DEAL TYPE]";
 }
