@@ -11,10 +11,9 @@
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.colorCustomizations": 
 	{
-		"editor.selectionBackground": "#6d6969",
+		"editor.selectionBackground": "#ffffff",
 		"editor.selectionHighlightBackground": "#c167a6"
 	},
-	"window.zoomLevel": 1,
 	"salesforcedx-vscode-core.show-cli-success-msg": false,
 	"[Log]": {
 		"editor.wordWrap": "off"

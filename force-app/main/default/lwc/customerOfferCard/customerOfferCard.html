@@ -1,11 +1,13 @@
 <template>
 	<div class="slds-card slds-card_boundary" style="width:300px;">
-		<h1 class="slds-align_absolute-center" style="background-color:rgb(35, 121, 201); color: white; padding-bottom:10px; padding-top:10px">
+		<h1 class="slds-align_absolute-center" style="background-color:rgb(35, 121, 201); color:white; padding-bottom:10px; padding-top:10px">
 			Prospected {termInMonths} Month Terms
 		</h1>
-		<div style="padding: 20px;">
-			<lightning-slider label="Funding Amount">
-			</lightning-slider>
+		<hr>
+		<div style="padding:20px; display:flex; justify-content: center;">
+			<!-- <lightning-slider label="Funding Amount"></lightning-slider> -->
+			<label for="fname"></label>
+			<input type="range" id="fname">
 		</div>
 		<hr>
 		<div class="row">
@@ -19,13 +21,13 @@
 		</div>
 		<hr>
 		<div class="row">
-			<p class="column">Payment Amt</p>
+			<p class="column">Payment Amount</p>
 			<p class="column">${paymentAmt}</p>
 		</div>
 		<hr>
 		<div class="row">
 			<p class="column">Prepay Discounts/Options</p>
-			<p class="column" style="color:green;">[blank]</p>
+			<p class="column">[placeholder]</p>
 		</div>
 		<lightning-button id={offerObject.Id} onclick={handleClick} variant="success" class="slds-align_absolute-center" label="Select Offer" title="custom"></lightning-button>
 	</div>
