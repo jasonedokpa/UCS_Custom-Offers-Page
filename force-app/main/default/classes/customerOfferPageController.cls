@@ -26,6 +26,4 @@ public with sharing class customerOfferPageController
 		opportunityToUpdate.Id = [SELECT McaApp__Offer__c.McaApp__Opportunity__c FROM McaApp__Offer__c WHERE Id = 'a0D7h000007CdwCEAS'][0].Id;
 		opportunityToUpdate.McaApp__Chosen_Offer__c = 'a0D7h000007CdwCEAS';
 	}
-
-	
 }

@@ -1,5 +1,5 @@
 import { LightningElement, track, wire } from 'lwc';
-import getOffers from '@salesforce/apex/customerOpportunity.getOffers';
+import getOffers from '@salesforce/apex/customerOfferPageController.getOffers';
 
 export default class MainPage extends LightningElement
 {
