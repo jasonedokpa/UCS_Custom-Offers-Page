@@ -1,6 +1,6 @@
-public with sharing class customerOpportunity
+public with sharing class customerOfferPageController
 {
-	public customerOpportunity()
+	public customerOfferPageController()
 	{
 		System.debug('New customerOpportunity object created.');
 	}
@@ -20,15 +20,12 @@ public with sharing class customerOpportunity
 	}
 
 	@AuraEnabled(cacheable=true)
-	public static void getOffer(Id OfferID)
+	public static void setChosenOffer(Id OfferID)
 	{
-		System.debug('filler');
+		Opportunity opportunityToUpdate = new Opportunity();
+		opportunityToUpdate.Id = [SELECT McaApp__Offer__c.McaApp__Opportunity__c FROM McaApp__Offer__c WHERE Id = 'a0D7h000007CdwCEAS'][0].Id;
+		opportunityToUpdate.McaApp__Chosen_Offer__c = 'a0D7h000007CdwCEAS';
 	}
 
-	@AuraEnabled(cacheable=true)
-	public static String testJavaScriptImport()
-	{
-		return 'Hello ';
-	}
 	
 }

@@ -2,7 +2,7 @@ import { LightningElement, api } from 'lwc';
 
 export default class CustomerOfferCard extends LightningElement 
 {
-	@api offerObject = {"Id": 'null'}
+	@api offerObject = {"Id": "null", "McaApp__Term_Months__c": "[Term_In_Months]"}
 
 	minFundingAmt;
 	maxFundingAmt;

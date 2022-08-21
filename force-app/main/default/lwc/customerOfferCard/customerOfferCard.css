@@ -35,7 +35,7 @@ input[type="range"]
 	width: 12rem;
 }
 
-/***** Track Styling *****/
+/***** Before-Track Styling *****/
 input[type="range"]::-webkit-slider-runnable-track 
 {
 	background: #053a5f;
@@ -43,51 +43,63 @@ input[type="range"]::-webkit-slider-runnable-track
 	border-radius: 0.25rem;
 }
 
-  input[type="range"]::-moz-range-track 
+input[type="range"]::-moz-range-track 
 {
-	background: #053a5f;
-	height: 0.5rem;
+	background: lightgray;
+	height: 0.75rem;
+	border-radius: 0.25rem;
+}
+
+/***** After-Track Styling *****/
+input[type="range"]::-moz-range-progress
+{
+	background-color: #10e14f;
+	height: 0.75rem;
 	border-radius: 0.25rem;
 }
 
 /***** Thumb Styling *****/
 input[type="range"]::-webkit-slider-thumb 
 {
-	-webkit-appearance: none; 			/* Override default look */
+	-webkit-appearance: none;			/* Override default look */
 	appearance: none;
-	margin-top: -8px; 					/* Centers thumb on the track */
 	background-color: gray;
+	border: 5px solid #ffffff;
+	border-radius: 50%;
 	box-shadow: 0 0 5px black;
+	cursor: pointer;
+	margin-top: -8px;					/* Centers thumb on the track */
 	height: 1.5rem;
 	width: 1.5rem;
-	border-radius: 50%;
 }
 
-input[type="range"]::-moz-range-thumb 
+input[type="range"]::-moz-range-thumb
 {
-    border: none; 						/*Removes extra border that FF applies*/
-    border-radius: 0; 					/*Removes default border-radius that FF applies*/
-    background-color: gray;
-    height: 1.5rem;
-    width: 1.5rem;
-	border-radius: 50%;
+	background-color: gray;
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+	box-shadow: 0 0 5px black;
+	cursor: pointer;
+    height: 1rem;
+    width: 1rem;
 }
 
 /***** Focus Styling *****/
-input[type="range"]:focus {
+input[type="range"]:focus 
+{
 	outline: none;
 }
   
-input[type="range"]:focus::-webkit-slider-thumb {
-	border: 1px solid #053a5f;
-	outline: 2px solid #053a5f;
+input[type="range"]:focus::-webkit-slider-thumb
+{
+	border: 5px solid #ffffff;
+	outline: 2px solid #ff5b56;
 	outline-offset: 0rem;
 }
-  
-/******** Firefox ********/
+
 input[type="range"]:focus::-moz-range-thumb
 {
-	border: 1px solid #053a5f;
-	outline: 3px solid #053a5f;
+	border: 5px solid #ffffff;
+	outline: 3px solid #ff5b56;
 	outline-offset: 0rem;     
 }
