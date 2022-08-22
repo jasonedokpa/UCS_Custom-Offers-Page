@@ -1,5 +1,5 @@
 import { LightningElement, track, wire } from 'lwc';
-import getOffers from '@salesforce/apex/customerOfferPageController.getOffers';
+import offers from '@salesforce/apex/customerOfferPageController.getOffers';
 
 export default class MainPage extends LightningElement
 {
@@ -7,7 +7,7 @@ export default class MainPage extends LightningElement
 	@track allOffers = []
 	allOffersGrouped = []
 
-	@wire (getOffers)
+	@wire (offers)
 	offersList(result){
 		if (result.data)
 			{

@@ -1,4 +1,5 @@
 import { LightningElement, api } from 'lwc';
+import setChosenOffer from '@salesforce/apex/customerOfferPageController.setChosenOffer';
 
 export default class CustomerOfferCard extends LightningElement 
 {
@@ -24,8 +25,14 @@ export default class CustomerOfferCard extends LightningElement
 		}
 	}
 
-	handleClick(event)
+	handleClick()
 	{
-		console.log("CLICKED ON:", JSON.stringify(event.target.id).slice(1,-4) + " offer")
+		console.log("CLICKED ON:", this.offerObject.Name + " offer");
+		setChosenOffer({OfferID: this.offerObject.Id
+		}).then(response => {
+			console.log(response)
+			}).catch(error => {
+				console.log(error)
+				})
 	}
 }
