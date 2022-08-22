@@ -1,5 +1,5 @@
 <template>
-	<template for:each={allOffersGrouped} for:item="offerGroup">	
+	<template for:each={allOfferGroups} for:item="offerGroup">	
 		<c-offer-type-section key={offerGroup.key} style="margin: 20px" group-name={offerGroup.key} offer-list={offerGroup.value}>
 		</c-offer-type-section>
 	</template>

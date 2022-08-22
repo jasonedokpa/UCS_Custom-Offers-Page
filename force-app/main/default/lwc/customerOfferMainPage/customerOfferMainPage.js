@@ -1,11 +1,11 @@
-import { LightningElement, track, wire } from 'lwc';
+import { LightningElement, wire } from 'lwc';
 import offers from '@salesforce/apex/customerOfferPageController.getOffers';
 
 export default class MainPage extends LightningElement
 {
 	
-	@track allOffers = []
-	allOffersGrouped = []
+	allOffers = []
+	allOfferGroups = []
 
 	@wire (offers)
 	offersList(result){
@@ -13,8 +13,8 @@ export default class MainPage extends LightningElement
 			{
 				this.allOffers = result.data
 				console.log(result.data)
-				this.allOffersGrouped = Object.entries(this.groupByOffer(result.data)).map(([key, value]) => ({ key, value }))
-				console.log(this.allOffersGrouped)
+				this.allOfferGroups = Object.entries(this.groupByOffer(result.data)).map(([key, value]) => ({ key, value }))
+				console.log(this.allOfferGroups)
 			}
 	}
 
