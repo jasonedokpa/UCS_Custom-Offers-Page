@@ -4,8 +4,8 @@
 			Prospected {termInMonths} Month Terms
 		</h1>
 		<hr>
-		<div style="padding:20px; display:flex; justify-content: center;">
-			<lightning-slider label="Funding Amount"></lightning-slider>
+		<div style="padding:20px;" class="row">
+			<lightning-slider value={fundingAmt} min={minFundingAmt} max={maxFundingAmt} onchange={changeFundingAmt} label="Funding Amount"></lightning-slider>
 			<label for="fname"></label>
 			<!-- <input type="range" id="fname"> -->
 		</div>
@@ -29,6 +29,6 @@
 			<p class="column">Prepay Discounts/Options</p>
 			<p class="column">[placeholder]</p>
 		</div>
-		<lightning-button onclick={handleClick} variant="success" class="slds-align_absolute-center" label="Select Offer" title="custom"></lightning-button>
+		<lightning-button onclick={selectThisOffer} variant="success" class="slds-align_absolute-center" label="Select Offer" title="custom"></lightning-button>
 	</div>
 </template>

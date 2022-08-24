@@ -17,6 +17,5 @@
 	"salesforcedx-vscode-core.show-cli-success-msg": false,
 	"[Log]": {
 		"editor.wordWrap": "off"
-	  },
-	  "window.zoomLevel": 1
+	  }
 }
