@@ -3,7 +3,7 @@ import setChosenOffer from '@salesforce/apex/customerOfferPageController.setChos
 
 export default class CustomerOfferCard extends LightningElement 
 {
-	@api offerObject = {"Id": "null", "McaApp__Term_Months__c": "[Term_In_Months]"}
+	@api offerObject = {"Id": "null", "McaApp__Term_Months__c": "[Term_In_Months]"};
 
 	minFundingAmt;
 	maxFundingAmt;
@@ -31,8 +31,8 @@ export default class CustomerOfferCard extends LightningElement
 		setChosenOffer({OfferID: this.offerObject.Id
 		}).then(response => {
 			console.log(response)
-			}).catch(error => {
-				console.log(error)
+			}).catch(err => {
+				console.error(err)
 				})
 	}
 }

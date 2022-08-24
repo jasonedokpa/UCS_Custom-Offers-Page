@@ -4,8 +4,8 @@ import offers from '@salesforce/apex/customerOfferPageController.getOffers';
 export default class MainPage extends LightningElement
 {
 	
-	allOffers = []
-	allOfferGroups = []
+	allOffers = [];
+	allOfferGroups = [];
 
 	@wire (offers)
 	offersList(result){
@@ -20,7 +20,7 @@ export default class MainPage extends LightningElement
 
 	groupByOffer(offersArray)
 	{
-		let  returnObject = {}
+		let  returnObject = {};
 
 		for (const offer of offersArray)
 		{

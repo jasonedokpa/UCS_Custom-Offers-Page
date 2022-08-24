@@ -30,4 +30,20 @@ public with sharing class customerOfferPageController
 		update opportunityToUpdate;
 		return 'Offer selected!';
 	}
+
+	@AuraEnabled(cacheable=true)
+	public static String encryptID(Id cleanID)
+	{
+		Blob key = EncodingUtil.base64Decode('1izeWt7Vol6MnUR2mws+xw==');
+		Blob data = Blob.valueOf(cleanID);
+		return EncodingUtil.base64Encode(Crypto.encryptWithManagedIV('AES128', key, data));
+	}
+
+	@AuraEnabled(cacheable=true)
+	public static String decryptID(Id dirtyID)
+	{
+		Blob key = EncodingUtil.base64Decode('1izeWt7Vol6MnUR2mws+xw==');
+		Blob encrypted = EncodingUtil.base64Decode(dirtyID);
+		return Crypto.decryptWithManagedIV('AES128', key, encrypted).toString();
+	}
 }
