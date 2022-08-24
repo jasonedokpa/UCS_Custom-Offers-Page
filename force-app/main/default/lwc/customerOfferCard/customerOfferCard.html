@@ -6,8 +6,7 @@
 		<hr>
 		<div style="padding:20px;" class="row">
 			<lightning-slider value={fundingAmt} min={minFundingAmt} max={maxFundingAmt} onchange={changeFundingAmt} label="Funding Amount"></lightning-slider>
-			<label for="fname"></label>
-			<!-- <input type="range" id="fname"> -->
+			<label></label>
 		</div>
 		<hr>
 		<div class="row">
@@ -29,6 +28,48 @@
 			<p class="column">Prepay Discounts/Options</p>
 			<p class="column">[placeholder]</p>
 		</div>
-		<lightning-button onclick={selectThisOffer} variant="success" class="slds-align_absolute-center" label="Select Offer" title="custom"></lightning-button>
+		<lightning-button class="slds-align_absolute-center" variant="brand" style="padding:25px;" label="Select Offer" onclick={showModalBox}></lightning-button>
 	</div>
+
+	 <!-- modal start -->      
+	<template if:true={isShowModal}>
+	<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+		<div class="slds-modal__container">
+			<!-- modal header start -->
+			<header class="slds-modal__header">
+				<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+					<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small" ></lightning-icon> <span class="slds-assistive-text">Close</span>
+				</button>
+				<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Offer Select Window</h2>
+			</header>
+		
+			<!-- modal body start -->
+			<div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+				<h2>Please upload these required documents:</h2>
+				<template for:each={closingDocumentsRequired} for:item="document" for:index="index">
+					<h1 key={document}>• {document}</h1>
+				</template>
+				<br><br>
+				<lightning-file-upload
+					label="Attach receipt"
+					name="fileUploader"
+					accept={acceptedFormats}
+					record-id={myRecordId}
+					onuploadfinished={handleUploadFinished}
+					multiple>
+				</lightning-file-upload>
+			</div>
+
+			<!-- modal footer start-->
+			<footer class="slds-modal__footer">
+				<lightning-button class="slds-button" variant="neutral" label="Cancel" onclick={hideModalBox}></lightning-button>
+				<lightning-button class="slds-button" variant="success" label="Confirm Offer" onclick={selectThisOffer}></lightning-button>
+			</footer>
+		
+		</div>
+	</section>
+	<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+	 <!-- modal end -->
+
 </template>

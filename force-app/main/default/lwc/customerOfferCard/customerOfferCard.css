@@ -19,13 +19,6 @@ hr
 	padding: 1px;
 }
 
-lightning-button
-{
-	padding: var(--lwc-squareIconUtilityMedium, 1.25rem);
-}
-
-
-
 /***** Slider Styling*****/
 input[type="range"]
 {

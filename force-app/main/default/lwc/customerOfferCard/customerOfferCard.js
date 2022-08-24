@@ -1,11 +1,11 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 import setChosenOffer from '@salesforce/apex/customerOfferPageController.setChosenOffer';
 
 export default class CustomerOfferCard extends LightningElement 
 {
-	@api offerObject = {"Id": "null", "McaApp__Term_Months__c": "[Term_In_Months]"};
+	@api offerObject = {"Id": "null", "McaApp__Term_Months__c": "[Term_In_Months]", "Closing_Documents__c": ""};
 
-	showModal = false;
+	@track isShowModal = false;
 
 	minFundingAmt;
 	maxFundingAmt;
@@ -28,6 +28,7 @@ export default class CustomerOfferCard extends LightningElement
 			this.termInMonths = this.offerObject.McaApp__Term_Months__c;
 			this.pmtSchedule = this.offerObject.McaApp__PMT_Schedule__c;
 			this.paymentAmt = this.offerObject.McaApp__Payment_Amt__c;
+			this.closingDocumentsRequired = this.picklistToArray(this.offerObject.Closing_Documents__c);
 		}
 	}
 
@@ -36,10 +37,25 @@ export default class CustomerOfferCard extends LightningElement
 		this.fundingAmt = event.target.value;
 	}
 
+	showModalBox()
+	{
+		this.isShowModal = true;
+	}
+
+	hideModalBox()
+	{
+		this.isShowModal = false;
+	}
+
+	picklistToArray(picklistString)
+	{
+		return picklistString.split(";");
+	}
+
 	selectThisOffer()
 	{
-		console.log("CLICKED ON: " + this.offerObject.Name + " offer");
-		console.log("Funding Amount: " + this.fundingAmt);
+		console.log("CLICKED ON:", this.offerObject.Name + " offer");
+		console.log("Funding Amount:", this.fundingAmt);
 		setChosenOffer({OfferID: this.offerObject.Id, newFundingAmount: this.fundingAmt
 		}).then(response => {
 			console.log(response)

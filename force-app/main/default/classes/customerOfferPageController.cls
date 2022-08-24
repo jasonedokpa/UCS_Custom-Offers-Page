@@ -9,7 +9,7 @@ public with sharing class customerOfferPageController
 	public static List<McaApp__Offer__c> getOffers(Id OpportunityID)
 	{
 		List<McaApp__Offer__c> allOffersOnOpportunity = new List<McaApp__Offer__c>();
-		for (Opportunity opportunity : [SELECT Id, Name, (SELECT Name, 
+		for (Opportunity opportunity : [SELECT Id, Name, (SELECT Name, Closing_Documents__c,
 										McaApp__Deal_Type__c, McaApp__Term_Months__c, 
 										McaApp__PMT_Schedule__c, McaApp__Amount__c, 
 										Min_Funding_Amount__c, Max_Funding_Amount__c, 
