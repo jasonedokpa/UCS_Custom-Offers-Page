@@ -7,6 +7,7 @@ export default class CustomerOfferCard extends LightningElement
 
 	@track isShowModal = false;
 
+	opportunityID;
 	minFundingAmt;
 	maxFundingAmt;
 	fundingAmt;
@@ -21,6 +22,7 @@ export default class CustomerOfferCard extends LightningElement
 	{
 		if (this.offerObject)
 		{
+			this.opportunityID = this.offerObject.McaApp__Opportunity__c;
 			this.minFundingAmt = this.offerObject.Min_Funding_Amount__c;
 			this.maxFundingAmt = this.offerObject.Max_Funding_Amount__c;
 			this.fundingAmt = this.offerObject.McaApp__Amount__c;
@@ -40,6 +42,7 @@ export default class CustomerOfferCard extends LightningElement
 	showModalBox()
 	{
 		this.isShowModal = true;
+		console.log(this.opportunityID);
 	}
 
 	hideModalBox()
@@ -51,6 +54,18 @@ export default class CustomerOfferCard extends LightningElement
 	{
 		return picklistString.split(";");
 	}
+
+	get acceptedFormats() 
+	{
+		return ['.pdf', '.docx', '.png'];
+	}
+
+	handleUploadFinished(event)
+	{
+        // Get the list of uploaded files
+        const uploadedFiles = event.detail.files;
+        alert('No. of files uploaded : ' + uploadedFiles.length);
+    }
 
 	selectThisOffer()
 	{

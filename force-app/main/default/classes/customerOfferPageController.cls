@@ -13,7 +13,7 @@ public with sharing class customerOfferPageController
 										McaApp__Deal_Type__c, McaApp__Term_Months__c, 
 										McaApp__PMT_Schedule__c, McaApp__Amount__c, 
 										Min_Funding_Amount__c, Max_Funding_Amount__c, 
-										McaApp__Payment_Amt__c, McaApp__Commi__c, 
+										McaApp__Payment_Amt__c, McaApp__Commi__c, McaApp__Opportunity__c,
 										McaApp__Commi_per__c, McaApp__Rate__c FROM McaApp__Offers__r)
 										FROM Opportunity WHERE Id = '0067h00000DXuZVAA1'])					//TODO: replace this Id with OpportunityID
 			allOffersOnOpportunity = opportunity.McaApp__Offers__r;
