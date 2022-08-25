@@ -80,7 +80,8 @@ export default class CustomerOfferCard extends LightningElement
 		console.log("Funding Amount:", this.fundingAmt);
 		setChosenOffer({OfferID: this.offerObject.Id, newFundingAmount: this.fundingAmt
 		}).then(response => {
-			console.log(response)
+			this.hideModalBox();
+			console.log(response);
 			}).catch(err => {
 				console.error(err)
 				})
