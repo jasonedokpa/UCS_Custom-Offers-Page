@@ -1,4 +1,5 @@
 import { LightningElement, api, track } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import setChosenOffer from '@salesforce/apex/customerOfferPageController.setChosenOffer';
 
 export default class CustomerOfferCard extends LightningElement 
@@ -62,9 +63,15 @@ export default class CustomerOfferCard extends LightningElement
 
 	handleUploadFinished(event)
 	{
-        // Get the list of uploaded files
-        const uploadedFiles = event.detail.files;
-        alert('No. of files uploaded : ' + uploadedFiles.length);
+		// Get the number of uploaded files
+		const uploadedFiles = event.detail.files.length;
+		// Create and dispatch a ShowToastEvent event with title, message and variant
+		const evt = new ShowToastEvent({
+		title: 'SUCCESS',
+		message: uploadedFiles + ' File(s) uploaded successfully',
+		variant: 'success',
+		});
+		this.dispatchEvent(evt);  
     }
 
 	selectThisOffer()

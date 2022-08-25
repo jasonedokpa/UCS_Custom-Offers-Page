@@ -51,13 +51,19 @@
 				</template>
 				<br><br>
 				<lightning-file-upload
-					label="Attach receipt"
-					name="fileUploader"
-					accept={acceptedFormats}
 					record-id={opportunityID}
+					accept={acceptedFormats}
+					name="fileUploader"
+					class="file-selector-large"
+					label="Attach receipt"
+					title="The tooltip for the file uploader"
 					onuploadfinished={handleUploadFinished}
 					multiple>
 				</lightning-file-upload>
+				<!-- <lightning-input label="File" name="file uploader"
+									onchange={handleUploadFinished} type="file"
+									accept=".jpg, .csv, .png, .doc, .pdf">
+				</lightning-input> -->
 			</div>
 
 			<!-- modal footer start-->
