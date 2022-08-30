@@ -1,7 +1,7 @@
 import { LightningElement, wire } from 'lwc';
 import offers from '@salesforce/apex/customerOfferPageController.getOffers';
 
-export default class MainPage extends LightningElement
+export default class CustomerOfferMainPage extends LightningElement
 {
 	
 	allOffers = [];
