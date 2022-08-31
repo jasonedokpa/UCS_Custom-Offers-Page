@@ -15,7 +15,7 @@ public with sharing class customerOfferPageController
 										Min_Funding_Amount__c, Max_Funding_Amount__c, 
 										McaApp__Payment_Amt__c, McaApp__Commi__c, McaApp__Opportunity__c,
 										McaApp__Commi_per__c, McaApp__Rate__c FROM McaApp__Offers__r)
-										FROM Opportunity WHERE Id = '0067h00000DXuZVAA1'])					//TODO: replace this Id with OpportunityID
+										FROM Opportunity WHERE Id = :OpportunityID])					//TODO: replace this Id with OpportunityID
 			allOffersOnOpportunity = opportunity.McaApp__Offers__r;
 	
 		return allOffersOnOpportunity;
@@ -43,19 +43,37 @@ public with sharing class customerOfferPageController
 		return 'Offer selected!';
 	}
 
+	//Generate a URL with an expiration date
+	@AuraEnabled
+	public static String generateURL(String opportunityID)
+	{
+		return encryptID(opportunityID + ';' + System.now().addDays(7));
+	}
+
+	//return OpportunityID to Main Page if link is not expired
 	@AuraEnabled(cacheable=true)
-	public static String encryptID(Id cleanOpportunityID)
+	public static String getIDFromURL(String urlParam)
+	{
+		List<String> oppIDwithExpDate = decryptID(urlParam).split(';');
+		if (System.now() < Datetime.valueOf(oppIDwithExpDate[1]))
+			return oppIDwithExpDate[0];
+		else
+			return 'expired';
+	}
+
+	//obfuscate ID so that customer may not access other records
+	public static String encryptID(String cleanID)
 	{
 		Blob key = EncodingUtil.base64Decode('1izeWt7Vol6MnUR2mws+xw==');
-		Blob data = Blob.valueOf(cleanOpportunityID);
+		Blob data = Blob.valueOf(cleanID);
 		return EncodingUtil.base64Encode(Crypto.encryptWithManagedIV('AES128', key, data));
 	}
 
-	@AuraEnabled(cacheable=true)
-	public static String decryptID(Id dirtyOpportunityID)
+	//de-obfuscate ID so that Main Page can get Offer records
+	public static String decryptID(String dirtyID)
 	{
 		Blob key = EncodingUtil.base64Decode('1izeWt7Vol6MnUR2mws+xw==');
-		Blob encrypted = EncodingUtil.base64Decode(dirtyOpportunityID);
+		Blob encrypted = EncodingUtil.base64Decode(dirtyID);
 		return Crypto.decryptWithManagedIV('AES128', key, encrypted).toString();
 	}
 }

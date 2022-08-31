@@ -1,14 +1,36 @@
 import { LightningElement, wire } from 'lwc';
+import { CurrentPageReference } from 'lightning/navigation';
 import offers from '@salesforce/apex/customerOfferPageController.getOffers';
+import getIDFromURL from '@salesforce/apex/customerOfferPageController.getIDFromURL';
 
 export default class CustomerOfferMainPage extends LightningElement
 {
-	
+	encryptedID;
+	decryptedID;
 	allOffers = [];
 	allOfferGroups = [];
 
-	@wire (offers)
-	offersList(result){
+	@wire(CurrentPageReference)
+	getStateParameters(currentPageReference)
+	{
+		if (currentPageReference.state.c__OpportunityIdentifier)
+			this.encryptedID = currentPageReference.state.c__OpportunityIdentifier;
+		else
+			console.log('No url parameter found.')
+	}
+
+	@wire (getIDFromURL, { urlParam: '$encryptedID' })
+	setOpportunityID(result)
+	{
+		if (result.data)
+			this.decryptedID = result.data;
+		if (result.error)
+			console.error(result.error);
+	}
+
+	@wire (offers, { OpportunityID: '$decryptedID' })
+	offersList(result)
+	{
 		if (result.data)
 			{
 				this.allOffers = result.data
@@ -16,6 +38,8 @@ export default class CustomerOfferMainPage extends LightningElement
 				this.allOfferGroups = Object.entries(this.groupByOffer(result.data)).map(([key, value]) => ({ key, value }))
 				console.log(this.allOfferGroups)
 			}
+		if (result.error)
+			console.error(result.error);
 	}
 
 	groupByOffer(offersArray)

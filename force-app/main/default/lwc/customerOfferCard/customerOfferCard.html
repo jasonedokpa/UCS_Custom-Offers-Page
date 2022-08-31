@@ -5,7 +5,7 @@
 		</h1>
 		<hr>
 		<div style="padding:20px;" class="row">
-			<lightning-slider value={fundingAmt} min={minFundingAmt} max={maxFundingAmt} onchange={changeFundingAmt} label="Funding Amount"></lightning-slider>
+			<lightning-slider value={fundingAmt} step="1000" min={minFundingAmt} max={maxFundingAmt} onchange={changeFundingAmt} label="Funding Amount"></lightning-slider>
 			<label></label>
 		</div>
 		<hr>
@@ -35,6 +35,7 @@
 	<template if:true={isShowModal}>
 	<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
 		<div class="slds-modal__container">
+
 			<!-- modal header start -->
 			<header class="slds-modal__header">
 				<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
@@ -55,15 +56,11 @@
 					accept={acceptedFormats}
 					name="fileUploader"
 					class="file-selector-large"
-					label="Attach receipt"
+					label="Attach files"
 					title="The tooltip for the file uploader"
 					onuploadfinished={handleUploadFinished}
 					multiple>
 				</lightning-file-upload>
-				<!-- <lightning-input label="File" name="file uploader"
-									onchange={handleUploadFinished} type="file"
-									accept=".jpg, .csv, .png, .doc, .pdf">
-				</lightning-input> -->
 			</div>
 
 			<!-- modal footer start-->
