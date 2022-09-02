@@ -5,7 +5,8 @@ export default class CuustomerOfferURLGenerator extends LightningElement
 {
 	opportunityID;
 	urlParam;
-
+	prefix = 'http://localhost:3333/preview/c/customerOfferMainPage?';	
+	//prefix = 'https://fundio--banjaxed.sandbox.my.site.com/offers/';
 	changeID(event)
 	{
 		this.opportunityID = event.target.value;
@@ -16,7 +17,7 @@ export default class CuustomerOfferURLGenerator extends LightningElement
 		console.log("Opportunity ID:", this.opportunityID);
 		generateURL({opportunityID: this.opportunityID
 		}).then(response => {
-			this.urlParam = "http://localhost:3333/preview/c/customerOfferMainPage?c__OpportunityIdentifier=" + response.replaceAll("+", "%2b");
+			this.urlParam = this.prefix + "?c__OpportunityIdentifier=" + response.replaceAll("+", "%2b");
 			console.log(this.urlParam);
 			}).catch(err => {
 				console.error(err)
