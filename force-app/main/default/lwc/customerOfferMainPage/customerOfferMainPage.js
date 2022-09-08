@@ -7,6 +7,7 @@ export default class CustomerOfferMainPage extends LightningElement
 {
 	encryptedID;
 	decryptedID;
+	pageIsExpired = false;
 	allOffers = [];
 	allOfferGroups = [];
 
@@ -25,11 +26,9 @@ export default class CustomerOfferMainPage extends LightningElement
 	@wire (getIDFromURL, { urlParam: '$encryptedID' })
 	setOpportunityID(result)
 	{
-		if (result.data)
-		{
-			this.decryptedID = result.data;
-			console.log(this.decryptedID);
-		}
+		this.decryptedID = result.data;
+		console.log(this.decryptedID);
+		this.pageIsExpired = (result.data === 'expired' ? true : false);
 		
 		if (result.error)
 			console.error(result.error);
