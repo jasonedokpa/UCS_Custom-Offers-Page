@@ -14,7 +14,10 @@ export default class CustomerOfferMainPage extends LightningElement
 	getStateParameters(currentPageReference)
 	{
 		if (currentPageReference.state.c__OpportunityIdentifier)
+		{
 			this.encryptedID = currentPageReference.state.c__OpportunityIdentifier;
+			console.log(this.encryptedID);
+		}
 		else
 			console.log('No url parameter found.')
 	}
@@ -23,7 +26,11 @@ export default class CustomerOfferMainPage extends LightningElement
 	setOpportunityID(result)
 	{
 		if (result.data)
+		{
 			this.decryptedID = result.data;
+			console.log(this.decryptedID);
+		}
+		
 		if (result.error)
 			console.error(result.error);
 	}

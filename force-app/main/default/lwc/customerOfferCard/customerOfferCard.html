@@ -4,7 +4,7 @@
 			Prospected {termInMonths} Month Terms
 		</h1>
 		<hr>
-		<div style="padding:20px;" class="row">
+		<div style="padding:20px;">
 			<lightning-slider value={fundingAmt} step="100" min={minFundingAmt} max={maxFundingAmt} onchange={changeFundingAmt} label="Funding Amount"></lightning-slider>
 			<label></label>
 		</div>
@@ -49,7 +49,7 @@
 				<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Offer Select Window</h2>
 			</header>
 		
-			<!-- modal body1 start -->
+			<!-- modal body start -->
 			<div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
 				<h2>Please upload these required documents:</h2>
 				<template for:each={closingDocumentsRequired} for:item="document" for:index="index">
@@ -58,6 +58,8 @@
 				<br><br>
 				<lightning-file-upload
 					record-id={opportunityID}
+					file-field-name="Documents__c"
+					file-field-value="true"
 					accept={acceptedFormats}
 					name="fileUploader"
 					class="file-selector-large"
@@ -66,10 +68,11 @@
 					onuploadfinished={handleUploadFinished}
 					multiple>
 				</lightning-file-upload>
-			</div>
-
-			<!-- modal body2 start -->
-			<div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-2">
+				<hr>
+				<div class="row">
+					<p class="column">Funding Amount</p>
+					<p class="column" style="color:green;">${fundingAmt}</p>
+				</div>
 				<hr>
 				<div class="row">
 					<p class="column">Payback Amount</p>

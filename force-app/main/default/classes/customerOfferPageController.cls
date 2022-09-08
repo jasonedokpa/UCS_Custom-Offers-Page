@@ -1,4 +1,4 @@
-public with sharing class customerOfferPageController
+public without sharing class customerOfferPageController
 {
 	public customerOfferPageController()
 	{
