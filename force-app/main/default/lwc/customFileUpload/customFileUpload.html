@@ -1,0 +1,18 @@
+<template>
+    <div class="slds-box slds-p-top_small" style="background-color: white; position: relative;">
+        <lightning-input type="file"
+                         label="Attachment"
+                         accept=".xlsx, .xls, .csv, .png, .doc, .docx, .pdf"
+                         onchange={handleFileUploaded}
+                         multiple>
+        </lightning-input>
+        <template if:true={filesData}>
+            <template for:each={filesData} for:item="imgName" for:index="index">
+                {imgName.fileName} &nbsp;
+                <lightning-icon key={imgName.fileName} data-id={index} onclick={removeReceiptImage} size="xx-small" icon-name="action:delete" alternative-text="Delete" title="Delete" ></lightning-icon>&nbsp;
+            </template>
+        </template>
+        <br/>
+        <lightning-button variant="brand" label="Confirm Upload" onclick={uploadFiles} class="slds-m-top_medium"> </lightning-button>
+    </div>
+</template>
