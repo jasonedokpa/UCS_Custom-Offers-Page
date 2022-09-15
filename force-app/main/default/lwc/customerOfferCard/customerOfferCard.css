@@ -19,8 +19,9 @@ hr
 	padding: 1px;
 }
 
+
 /***** Slider Styling*****/
-input[type="range"]
+none[type="range"]
 {
 	-webkit-appearance: none;
 	background: transparent;
@@ -29,14 +30,14 @@ input[type="range"]
 }
 
 /***** Before-Track Styling *****/
-input[type="range"]::-webkit-slider-runnable-track 
+none[type="range"]::-webkit-slider-runnable-track 
 {
 	background: #053a5f;
 	height: 0.5rem;
 	border-radius: 0.25rem;
 }
 
-input[type="range"]::-moz-range-track 
+none[type="range"]::-moz-range-track 
 {
 	background: lightgray;
 	height: 0.75rem;
@@ -44,7 +45,7 @@ input[type="range"]::-moz-range-track
 }
 
 /***** After-Track Styling *****/
-input[type="range"]::-moz-range-progress
+none[type="range"]::-moz-range-progress
 {
 	background-color: #10e14f;
 	height: 0.75rem;
@@ -52,7 +53,7 @@ input[type="range"]::-moz-range-progress
 }
 
 /***** Thumb Styling *****/
-input[type="range"]::-webkit-slider-thumb 
+none[type="range"]::-webkit-slider-thumb 
 {
 	-webkit-appearance: none;			/* Override default look */
 	appearance: none;
@@ -66,7 +67,7 @@ input[type="range"]::-webkit-slider-thumb
 	width: 1.5rem;
 }
 
-input[type="range"]::-moz-range-thumb
+none[type="range"]::-moz-range-thumb
 {
 	background-color: gray;
     border: 5px solid #ffffff;
@@ -78,19 +79,19 @@ input[type="range"]::-moz-range-thumb
 }
 
 /***** Focus Styling *****/
-input[type="range"]:focus 
+none[type="range"]:focus 
 {
 	outline: none;
 }
   
-input[type="range"]:focus::-webkit-slider-thumb
+none[type="range"]:focus::-webkit-slider-thumb
 {
 	border: 5px solid #ffffff;
 	outline: 2px solid #ff5b56;
 	outline-offset: 0rem;
 }
 
-input[type="range"]:focus::-moz-range-thumb
+none[type="range"]:focus::-moz-range-thumb
 {
 	border: 5px solid #ffffff;
 	outline: 3px solid #ff5b56;

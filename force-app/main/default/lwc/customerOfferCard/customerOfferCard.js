@@ -10,8 +10,11 @@ export default class CustomerOfferCard extends LightningElement
 
 	opportunityID;
 	minFundingAmt;
+	minFundingAmtLabel;
 	maxFundingAmt;
+	maxFundingAmtLabel;
 	fundingAmt;
+	fundingAmtLabel;
 	paybackAmt;
 	termInMonths;
 	pmtSchedule;
@@ -26,18 +29,24 @@ export default class CustomerOfferCard extends LightningElement
 			this.opportunityID = this.offerObject.McaApp__Opportunity__c;
 			this.minFundingAmt = this.offerObject.Min_Funding_Amount__c;
 			this.maxFundingAmt = this.offerObject.Max_Funding_Amount__c;
+			this.minFundingAmtLabel = this.offerObject.Min_Funding_Amount__c ? this.offerObject.Min_Funding_Amount__c.toLocaleString("en-US") : undefined;
+			this.maxFundingAmtLabel = this.offerObject.Max_Funding_Amount__c ? this.offerObject.Max_Funding_Amount__c.toLocaleString("en-US") : undefined;
 			this.fundingAmt = this.offerObject.McaApp__Amount__c;
-			this.paybackAmt = this.offerObject.McaApp__Payment_Amt__c;
+			this.fundingAmtLabel = this.fundingAmt ? this.fundingAmt.toLocaleString("en-US") : undefined;
+			this.paybackAmt = this.offerObject.McaApp__Payback_Amt__c ? parseFloat(this.offerObject.McaApp__Payback_Amt__c.toFixed(2)).toLocaleString("en-US") : undefined;
 			this.termInMonths = this.offerObject.McaApp__Term_Months__c;
 			this.pmtSchedule = this.offerObject.McaApp__PMT_Schedule__c;
-			this.paymentAmt = this.offerObject.McaApp__Payment_Amt__c;
+			this.paymentAmt = this.offerObject.McaApp__Payment_Amt__c ? this.offerObject.McaApp__Payment_Amt__c.toLocaleString("en-US") : undefined;
 			this.closingDocumentsRequired = this.picklistToArray(this.offerObject.Closing_Documents__c);
+			console.log(12345.60.toLocaleString("en-US"))
 		}
-	}
 
+	}
+	
 	changeFundingAmt(event)
 	{
 		this.fundingAmt = event.target.value;
+		this.fundingAmtLabel = parseInt(this.fundingAmt, 10).toLocaleString("en-US");
 	}
 
 	showModalBox()

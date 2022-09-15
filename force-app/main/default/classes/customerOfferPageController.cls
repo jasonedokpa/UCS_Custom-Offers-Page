@@ -13,7 +13,8 @@ public without sharing class customerOfferPageController
 										McaApp__Deal_Type__c, McaApp__Term_Months__c, 
 										McaApp__PMT_Schedule__c, McaApp__Amount__c, 
 										Min_Funding_Amount__c, Max_Funding_Amount__c, 
-										McaApp__Payment_Amt__c, McaApp__Commi__c, McaApp__Opportunity__c,
+										McaApp__Payment_Amt__c, McaApp__Commi__c, 
+										McaApp__Opportunity__c, McaApp__Payback_Amt__c,
 										McaApp__Commi_per__c, McaApp__Rate__c FROM McaApp__Offers__r)
 										FROM Opportunity WHERE Id = :OpportunityID])					//TODO: replace this Id with OpportunityID
 			allOffersOnOpportunity = opportunity.McaApp__Offers__r;
@@ -76,4 +77,37 @@ public without sharing class customerOfferPageController
 		Blob encrypted = EncodingUtil.base64Decode(dirtyID);
 		return Crypto.decryptWithManagedIV('AES128', key, encrypted).toString();
 	}
+	
+	//Generate a URL for Opportunity email
+	Public class InputWrapper{
+        @InvocableVariable public String OpportunityId;
+        
+        public InputWrapper(){
+            this.OpportunityId = OpportunityId;
+        }
+    }
+    
+    @InvocableMethod(label='Get Oppty URL')
+	public static List<OutputWrapper> generateFlowURL(List<InputWrapper> inputData)
+	{
+        Id OpportunityId;
+
+		InputWrapper iw = new InputWrapper();
+        iw = inputData[0];
+        OpportunityId = iw.OpportunityId;
+        string OpptyURL = encryptID(opportunityID + ';' + System.now().addDays(7));
+        List<OutputWrapper> owList = new List<OutputWrapper>();
+        OutputWrapper ow = new OutputWrapper();
+       	ow.OutputURL = OpptyURL.replace('+', '%2b');
+        owList.add(ow);
+        return owList;
+	}
+    
+    public class OutputWrapper{
+        @InvocableVariable public String OutputURL;
+        
+        public OutputWrapper(){
+            this.OutputURL = OutputURL;
+        }
+    }
 }

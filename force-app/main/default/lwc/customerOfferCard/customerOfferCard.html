@@ -5,8 +5,20 @@
 		</h1>
 		<hr>
 		<div style="padding:20px;">
-			<lightning-slider value={fundingAmt} step="100" min={minFundingAmt} max={maxFundingAmt} onchange={changeFundingAmt} label="Funding Amount"></lightning-slider>
-			<label></label>
+			<div class="slds-form-element">
+				<label class="slds-form-element__label" for="slider-id-01">
+					<span class="slds-slider-label">
+						<span class="slds-slider-label__label">Funding Amount</span>
+						<span class="slds-slider-label__range">${minFundingAmtLabel} - ${maxFundingAmtLabel}</span>
+					</span>
+				</label>
+				<div class="slds-form-element__control">
+					<div class="slds-slider">
+					<input type="range" id="slider-id-01" class="slds-slider__range" step=100 min={minFundingAmt} max={maxFundingAmt} value={fundingAmt} oninput={changeFundingAmt}>
+					<span class="slds-slider__value" aria-hidden="true">${fundingAmtLabel}</span>
+					</div>
+				</div>
+			</div>
 		</div>
 		<hr>
 		<div class="row">
@@ -26,7 +38,7 @@
 		<hr>
 		<div class="row">
 			<p class="column">Prepay Discounts/Options</p>
-			<p class="column">[placeholder]</p>
+			<p class="column"></p>
 		</div>
 		<hr>
 		<div class="row">
@@ -72,7 +84,7 @@
 				<hr>
 				<div class="row">
 					<p class="column">Funding Amount</p>
-					<p class="column" style="color:green;">${fundingAmt}</p>
+					<p class="column" style="color:green;">${fundingAmtLabel}</p>
 				</div>
 				<hr>
 				<div class="row">
@@ -92,7 +104,7 @@
 				<hr>
 				<div class="row">
 					<p class="column">Prepay Discounts/Options</p>
-					<p class="column">[placeholder]</p>
+					<p class="column"></p>
 				</div>
 				<hr>
 				<div class="row">
