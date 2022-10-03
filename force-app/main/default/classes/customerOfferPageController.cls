@@ -15,7 +15,7 @@ public without sharing class customerOfferPageController
 										Min_Funding_Amount__c, Max_Funding_Amount__c, 
 										McaApp__Payment_Amt__c, McaApp__Commi__c, 
 										McaApp__Opportunity__c, McaApp__Payback_Amt__c,
-										McaApp__Commi_per__c, McaApp__Rate__c FROM McaApp__Offers__r)
+										McaApp__Commi_per__c, McaApp__Rate__c, Offer_Selected__c FROM McaApp__Offers__r)
 										FROM Opportunity WHERE Id = :OpportunityID])					//TODO: replace this Id with OpportunityID
 			allOffersOnOpportunity = opportunity.McaApp__Offers__r;
 	
@@ -29,7 +29,13 @@ public without sharing class customerOfferPageController
 		Opportunity opportunityToUpdate = new Opportunity();
 		opportunityToUpdate.Id = [SELECT McaApp__Opportunity__c FROM McaApp__Offer__c WHERE Id = :OfferID][0].McaApp__Opportunity__c;
 		System.debug('OPPORTUNITY ID: ' + opportunityToUpdate.Id);
-		opportunityToUpdate.McaApp__Chosen_Offer__c = OfferID;
+		
+		string opptyExistingOffer = [SELECT Id, McaApp__Chosen_Offer__c,Chosen_Offer_2__c FROM Opportunity where Id =: opportunityToUpdate.Id][0].McaApp__Chosen_Offer__c;
+		if(opptyExistingOffer == '' || opptyExistingOffer == null)
+			opportunityToUpdate.McaApp__Chosen_Offer__c = OfferID;
+		else
+			opportunityToUpdate.Chosen_Offer_2__c = OfferID;
+
 		System.debug('CHOSEN OFFER: ' + opportunityToUpdate.McaApp__Chosen_Offer__c);
 		update opportunityToUpdate;
 
@@ -42,6 +48,35 @@ public without sharing class customerOfferPageController
 		update offerToUpdate;
 
 		return 'Offer selected!';
+	}
+
+	@AuraEnabled
+	public static String removeChosenOffer(Id OfferID)
+	{
+		//remove "Chosen Offer" on Opportunity 
+		Opportunity opportunityToUpdate = new Opportunity();
+		opportunityToUpdate.Id = [SELECT McaApp__Opportunity__c FROM McaApp__Offer__c WHERE Id = :OfferID][0].McaApp__Opportunity__c;
+		System.debug('OPPORTUNITY ID: ' + opportunityToUpdate.Id);
+		
+		Id newOfferId = null;
+		Opportunity opptyExistingOffer = new Opportunity();
+		opptyExistingOffer = [SELECT Id, McaApp__Chosen_Offer__c,Chosen_Offer_2__c FROM Opportunity where Id =: opportunityToUpdate.Id][0];
+		if(opptyExistingOffer.McaApp__Chosen_Offer__c == OfferID)
+			opportunityToUpdate.McaApp__Chosen_Offer__c = newOfferId;
+		else if(opptyExistingOffer.Chosen_Offer_2__c == OfferID)
+			opportunityToUpdate.Chosen_Offer_2__c = newOfferId;
+
+		System.debug('REMOVED OFFER: ' + opportunityToUpdate);
+		update opportunityToUpdate;
+
+		//update "Funding Amount" on Offer
+		// McaApp__Offer__c offerToUpdate = new McaApp__Offer__c();
+		// offerToUpdate.Id = OfferID;
+		// System.debug('OFFER ID: ' + offerToUpdate.Id);
+		// offerToUpdate.McaApp__Amount__c = 0;
+		// update offerToUpdate;
+
+		return 'Offer removed!';
 	}
 
 	//Generate a URL with an expiration date

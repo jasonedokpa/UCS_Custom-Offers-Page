@@ -45,7 +45,14 @@
 			<p class="column">Term</p>
 			<p class="column">{termInMonths} Months</p>
 		</div>
-		<lightning-button class="slds-align_absolute-center" variant="brand" style="margin:25px;" label="Select Offer" onclick={showModalBox}></lightning-button>
+
+		<template if:true={selectOffer}>
+			<lightning-button class="slds-align_absolute-center" variant="brand" style="margin:25px;" label="Select Offer" onclick={showModalBox}></lightning-button>
+		</template>
+		<template if:true={unselectOffer}>
+			<lightning-button class="slds-align_absolute-center" variant="brand-outline" style="margin:25px;" label="Deselect Offer" onclick={deSelectThisOffer}></lightning-button>
+		</template>
+
 	</div>
 
 	 <!-- modal start -->      

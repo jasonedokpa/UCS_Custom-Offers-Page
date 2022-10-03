@@ -43,9 +43,9 @@ export default class CustomerOfferMainPage extends LightningElement
 		if (result.data)
 			{
 				this.allOffers = result.data
-				console.log(result.data)
+				console.log('result.data ', result.data)
 				this.allOfferGroups = Object.entries(this.groupByOffer(result.data)).map(([key, value]) => ({ key, value }))
-				console.log(this.allOfferGroups)
+				console.log('this.allOfferGroups ', this.allOfferGroups)
 			}
 		if (result.error)
 			console.error(result.error);
