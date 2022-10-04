@@ -1,0 +1,67 @@
+{
+  "appPageId" : "0ee41af4-497c-401e-9f5e-748fa6c1ad72",
+  "componentName" : "siteforce:dynamicLayout",
+  "id" : "345d44d7-b330-4f15-ba1e-5d3cb7679813",
+  "label" : "Offers",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "5bb53445-ce7d-45cc-a155-0db500432364",
+          "columns" : [ {
+            "UUID" : "8b72fe76-906c-4316-bd1a-4485b1186cff",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "5bb53445-ce7d-45cc-a155-0db500432364",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "c:customerOfferMainPage",
+          "id" : "ac260887-2b0d-42d5-b371-e3990b30311f",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "8b72fe76-906c-4316-bd1a-4485b1186cff",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f3e958b2-02e3-4039-9cfe-1c7212e1de74",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Offers"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "adaed04f-46d5-4f27-8c97-2433b095e198",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "13a6600e-685a-4f63-931c-9636d443ba3f",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-offers"
+}

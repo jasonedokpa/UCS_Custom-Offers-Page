@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "345d44d7-b330-4f15-ba1e-5d3cb7679813",
+  "appPageId" : "0ee41af4-497c-401e-9f5e-748fa6c1ad72",
+  "configurationTags" : [ ],
+  "id" : "1b5b3422-8068-4a14-9609-5833f40204ef",
+  "label" : "Offers",
+  "pageAccess" : "Public",
+  "routeType" : "custom-offers",
+  "type" : "route",
+  "urlPrefix" : "offers"
+}
