@@ -47,15 +47,15 @@ export default class CustomerOfferCard extends LightningElement
 			this.paymentAmt = this.offerObject.McaApp__Payment_Amt__c ? this.offerObject.McaApp__Payment_Amt__c.toLocaleString("en-US") : undefined;
 			this.closingDocumentsRequired = this.picklistToArray(this.offerObject.Closing_Documents__c);
 
-			if(this.offerObject.Offer_Selected__c == 'uncheck'){
+			if(this.offerObject.Offer_Selected__c === 'uncheck'){
 				this.selectOffer = false;
 				this.unselectOffer = true;
 			}
-			else if(this.offerObject.Offer_Selected__c == 'hide'){
+			else if(this.offerObject.Offer_Selected__c === 'hide'){
 				this.selectOffer = false;
 				this.unselectOffer = false;
 			}
-			else if(this.offerObject.Offer_Selected__c == 'show'){
+			else if(this.offerObject.Offer_Selected__c === 'show'){
 				this.selectOffer = true;
 				this.unselectOffer = false;
 			}

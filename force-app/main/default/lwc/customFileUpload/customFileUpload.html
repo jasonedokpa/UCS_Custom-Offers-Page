@@ -1,5 +1,5 @@
 <template>
-    <div class="slds-box slds-p-top_small" style="background-color: white; position: relative;">
+    <div class="slds-p-top_small" style="background-color:#f7f8fc; position:relative; padding:30px">
         <lightning-input type="file"
                          label="Attachment"
                          accept=".xlsx, .xls, .csv, .png, .doc, .docx, .pdf"
@@ -13,6 +13,6 @@
             </template>
         </template>
         <br/>
-        <lightning-button variant="brand" label="Confirm Upload" onclick={uploadFiles} class="slds-m-top_medium"> </lightning-button>
+        <button onclick={uploadFiles} class="slds-button confirm-upload-button">CONFIRM UPLOAD</button>
     </div>
 </template>

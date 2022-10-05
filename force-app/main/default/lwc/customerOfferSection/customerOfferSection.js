@@ -11,6 +11,7 @@ export default class OfferTypeSection extends LightningElement
 	{
 		//choose icon based for deal type group
 		switch (this.groupName)
+
 		{
 			case 'Asset Based Line':
 				this.groupIcon = ICONS + '/icons/Revenue-Based-Business-Loan.png';
@@ -22,6 +23,7 @@ export default class OfferTypeSection extends LightningElement
 				
 			case 'Cash Advance':
 				this.groupIcon = ICONS + '/icons/Merchant-Cash-Advance.png';
+				this.groupName = 'Merchant Cash Advances'
 				break;
 
 			case 'Credit Repair':
@@ -38,6 +40,7 @@ export default class OfferTypeSection extends LightningElement
 			
 			case 'Line of Credit':
 				this.groupIcon = ICONS + '/icons/Business-Line-of-Credit.png';
+				this.groupName = 'Business Line of Credit'
 				break;
 
 			case 'SBA':
@@ -45,7 +48,7 @@ export default class OfferTypeSection extends LightningElement
 				break;
 
 			default:
-				this.groupIcon = ICONS;
+				this.groupIcon = ICONS + '/icons/SBA-Loan.png';
 		}
 	}
 }

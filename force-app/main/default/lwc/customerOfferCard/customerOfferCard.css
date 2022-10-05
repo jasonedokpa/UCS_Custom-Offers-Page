@@ -7,7 +7,7 @@
 	padding-top:10px
 
 }
-  
+
 .column
 {
 	flex: var(--lwc-squareIconXSmallContent, 0.5rem);
@@ -19,6 +19,51 @@ hr
 	padding: 1px;
 }
 
+.grid-container
+{
+	display: grid;
+	font-size: 10px;
+	grid-template-columns: 50% 50%;
+	row-gap: 20px;
+}
+
+.grid-item
+{
+	padding-left: 20px;
+}
+
+.select-offer-button
+{
+	background-color: #2ac58b;
+	color: #ffffff;
+	border-radius: 20px;
+	font-size: 11px;
+	padding: 0px 20px 0px 20px;
+}
+
+.big-select-offer-button
+{
+	background-color: #2ac58b;
+	color: #ffffff;
+	border-radius: 50px;
+	font-size: 15px; 
+	padding: 10px 50px 10px 50px;
+}
+
+.big-cancel-button
+{
+	background-color: #ffffff;
+	border: 1px solid #ccc;
+	color:#223655;
+	border-radius: 50px;
+	font-size: 15px; 
+	padding: 10px 75px 10px 75px;
+}
+
+c-custom-file-upload
+{
+	--slds-c-button-background: #3817e1;
+}
 
 /***** Slider Styling*****/
 none[type="range"]
