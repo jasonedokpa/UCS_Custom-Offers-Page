@@ -27,7 +27,7 @@ export default class CustomFileUpload extends LightningElement {
     }
  
     uploadFiles() {
-        if(this.filesData == [] || this.filesData.length == 0) {
+        if(this.filesData === [] || this.filesData.length === 0) {
             this.showToast('Error', 'error', 'Please select files first'); return;
         }
         this.showSpinner = true;
@@ -37,7 +37,7 @@ export default class CustomFileUpload extends LightningElement {
         })
         .then(result => {
             console.log(result);
-            if(result && result == 'success') {
+            if(result && result === 'success') {
                 this.filesData = [];
                 this.showToast('Success', 'success', 'Files Uploaded successfully.');
             } else {

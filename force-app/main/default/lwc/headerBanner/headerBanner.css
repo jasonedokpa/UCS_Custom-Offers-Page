@@ -1,0 +1,56 @@
+.dummy{
+	color : black;
+}
+
+.headerIcons{
+	    padding: 0% 5% 0% 20%;
+}
+
+.headerBG{
+	background-color:rgba(221,238,241,255);
+	border-bottom-left-radius: 140px;
+	padding: 7% 0% 7% 0%;
+}
+
+.headerBanner{
+	padding-left: 10%;
+}
+
+.headerText1{
+	padding-left: 13%;
+	font-size: 24px;
+    font-weight: 900;
+}
+
+.headerText2{
+	padding-left: 13%;
+	font-size: 15px;
+    font-weight: 700;
+	color:#4caf80;
+}
+
+.headerText3{
+	padding-left: 13%;
+	font-size: 12px;
+}
+
+.rightTileHeader{
+	background-color:#404454;
+	color:white;
+	height: 40px;
+}
+
+.rightBG{
+	background-color:rgba(221,238,241,255);
+}
+
+.rightTileTopText{
+	font-size: 9px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: #D7E5E8;
+}
+
+.rightTileBottomText{
+	margin-left: 10%;
+}

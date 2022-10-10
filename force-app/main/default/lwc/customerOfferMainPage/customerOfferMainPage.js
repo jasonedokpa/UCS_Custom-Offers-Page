@@ -11,6 +11,12 @@ export default class CustomerOfferMainPage extends LightningElement
 	allOffers = [];
 	allOfferGroups = [];
 
+	//remove last <hr> from the DOM
+	renderedCallback()
+	{
+		console.log(Document.querySelector("hr"));
+	}
+
 	@wire(CurrentPageReference)
 	getStateParameters(currentPageReference)
 	{
