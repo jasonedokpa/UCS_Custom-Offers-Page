@@ -1,6 +1,8 @@
 import {LightningElement,api,track} from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import uploadFiles from '@salesforce/apex/FileUploaderClass.uploadFiles'
+import { loadStyle } from 'lightning/platformResourceLoader';
+import fileSelectorStyle from '@salesforce/resourceUrl/fileSelectorStyle';
 const MAX_FILE_SIZE = 2097152;
 
 export default class CustomFileUpload extends LightningElement {
@@ -25,7 +27,11 @@ export default class CustomFileUpload extends LightningElement {
             }
         }
     }
- 
+    connectedCallback() {
+        Promise.all([
+            loadStyle(this, fileSelectorStyle)
+        ]);
+    }
     uploadFiles() {
         if(this.filesData === [] || this.filesData.length === 0) {
             this.showToast('Error', 'error', 'Please select files first'); return;

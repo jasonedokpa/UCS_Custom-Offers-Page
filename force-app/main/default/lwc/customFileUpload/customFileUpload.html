@@ -1,19 +1,12 @@
 <template>
-    <div class="slds-p-top_small" style="background-color:#f7f8fc; position:relative; padding-bottom:10px">
+    <div class="slds-p-top_small" style="background-color:#f7f8fc; position:relative; padding:30px">
         <lightning-input type="file"
                          label="Attachment"
+                         class="file-selector-large"
                          accept=".xlsx, .xls, .csv, .png, .doc, .docx, .pdf"
                          onchange={handleFileUploaded}
                          multiple>
         </lightning-input>
-        <!-- <div 
-        class="slds-card slds_card-boundary" 
-        id="drop_zone"
-        style="padding: 30px;"
-        ondrop={handleFileUploaded}>
-            <p>Upload files or
-                drop files</p>
-        </div> -->
         <template if:true={filesData}>
             <template for:each={filesData} for:item="imgName" for:index="index">
                 {imgName.fileName} &nbsp;

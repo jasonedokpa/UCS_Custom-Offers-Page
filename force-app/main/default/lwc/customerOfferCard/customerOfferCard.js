@@ -26,6 +26,7 @@ export default class CustomerOfferCard extends LightningElement
 
 	selectOffer;
 	unselectOffer;
+	hideSelectOffer;
 	Page=[];
 
 	connectedCallback()
@@ -59,6 +60,8 @@ export default class CustomerOfferCard extends LightningElement
 				this.selectOffer = true;
 				this.unselectOffer = false;
 			}
+
+			this.hideSelectOffer = (this.offerObject.Offer_Selected__c === 'hide');
 
 		}
 

@@ -72,6 +72,11 @@ hr
 	color: #23986d;
 }
 
+.disabled-offer-button
+{
+	border-radius: 20px;
+}
+
 .big-cancel-button
 {
 	background-color: #ffffff;

@@ -1,7 +1,8 @@
 <template>
-	<template for:each={allOfferGroups} for:item="offerGroup">	
+	<template for:each={allOfferGroups} for:item="offerGroup">
 		<c-customer-offer-section class="slds-align_absolute-center" key={offerGroup.key} style="margin: 20px;" group-name={offerGroup.key} offer-list={offerGroup.value}>
 		</c-customer-offer-section>
+		<hr key={offerGroup.key} style="padding:20px;">
 	</template>
 	<template if:true={pageIsExpired}>
 		<p class="slds-align_absolute-center">This page is expired. Please request a new link to view your offers.</p>

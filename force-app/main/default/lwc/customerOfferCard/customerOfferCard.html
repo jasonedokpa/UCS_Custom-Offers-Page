@@ -51,6 +51,9 @@
 				<template if:true={unselectOffer}>
 					<button class="slds-button deselect-offer-button" onclick={deSelectThisOffer}>DESELECT OFFER</button>
 				</template>
+				<template if:true={hideSelectOffer}>
+					<button class="slds-button slds-button_brand disabled-offer-button" disabled="">SELECT OFFER</button>
+				</template>
 			</div>
 		</div>
 	</div>

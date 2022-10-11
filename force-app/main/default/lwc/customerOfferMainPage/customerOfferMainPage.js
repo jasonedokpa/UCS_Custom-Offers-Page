@@ -11,10 +11,11 @@ export default class CustomerOfferMainPage extends LightningElement
 	allOffers = [];
 	allOfferGroups = [];
 
-	//remove last <hr> from the DOM
 	renderedCallback()
 	{
-		console.log(Document.querySelector("hr"));
+		//remove the last <hr> element
+		var hrNodes = this.template.querySelectorAll("hr");
+		hrNodes[hrNodes.length - 1].remove();
 	}
 
 	@wire(CurrentPageReference)
