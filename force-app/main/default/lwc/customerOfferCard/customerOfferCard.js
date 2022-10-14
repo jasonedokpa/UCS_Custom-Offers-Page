@@ -29,8 +29,12 @@ export default class CustomerOfferCard extends LightningElement
 	hideSelectOffer;
 	Page=[];
 
+	@api mobileRender;
+
 	connectedCallback()
 	{
+		console.log('Mobile render from customerOfferCard: ' + this.mobileRender);
+
 		if (this.offerObject)
 		{
 			console.log('this.offerObject ', this.offerObject);

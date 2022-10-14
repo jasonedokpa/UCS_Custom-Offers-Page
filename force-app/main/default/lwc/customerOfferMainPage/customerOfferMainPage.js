@@ -2,6 +2,8 @@ import { LightningElement, wire } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
 import offers from '@salesforce/apex/customerOfferPageController.getOffers';
 import getIDFromURL from '@salesforce/apex/customerOfferPageController.getIDFromURL';
+import FORM_FACTOR from '@salesforce/client/formFactor'
+
 
 export default class CustomerOfferMainPage extends LightningElement
 {
@@ -11,11 +13,17 @@ export default class CustomerOfferMainPage extends LightningElement
 	allOffers = [];
 	allOfferGroups = [];
 
+	mobileRender;
+
 	renderedCallback()
 	{
 		//remove the last <hr> element
 		var hrNodes = this.template.querySelectorAll("hr");
 		hrNodes[hrNodes.length - 1].remove();
+
+		//Determine if device is mobile
+		this.mobileRender = (FORM_FACTOR === 'Small' || FORM_FACTOR === 'Medium') ? true : false;
+		console.log('Mobile render from customOfferMainPage: ' + this.mobileRender);
 	}
 
 	@wire(CurrentPageReference)

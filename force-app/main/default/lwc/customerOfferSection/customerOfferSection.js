@@ -5,13 +5,15 @@ export default class OfferTypeSection extends LightningElement
 {
 	@api offerList = [{Id: "null", "McaApp__Term_Months__c": "[Term_In_Months]", "Closing_Documents__c": ""}];
 	@api groupName = "[DEAL TYPE]";
+	@api mobileRender;
 	groupIcon;
 
 	connectedCallback()
 	{
+		console.log('Mobile render from customOfferSection: ' + this.mobileRender);
+		
 		//choose icon based for deal type group
 		switch (this.groupName)
-
 		{
 			case 'Asset Based Line':
 				this.groupIcon = ICONS + '/icons/Revenue-Based-Business-Loan.png';

@@ -1,6 +1,11 @@
 <template>
 	<template for:each={allOfferGroups} for:item="offerGroup">
-		<c-customer-offer-section class="slds-align_absolute-center" key={offerGroup.key} style="margin: 20px;" group-name={offerGroup.key} offer-list={offerGroup.value}>
+		<c-customer-offer-section 
+		class="slds-align_absolute-center" 
+		key={offerGroup.key} style="margin: 20px;" 
+		group-name={offerGroup.key} 
+		offer-list={offerGroup.value}
+		mobile-render={mobileRender}>
 		</c-customer-offer-section>
 		<hr key={offerGroup.key} style="padding:20px;">
 	</template>
