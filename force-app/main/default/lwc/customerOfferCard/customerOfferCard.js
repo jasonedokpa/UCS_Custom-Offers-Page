@@ -2,6 +2,8 @@ import { LightningElement, api, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import setChosenOffer from '@salesforce/apex/customerOfferPageController.setChosenOffer';
 import unSetChosenOffer from '@salesforce/apex/customerOfferPageController.removeChosenOffer';
+import mobileTemplate from './mobileTemplate.html'
+import desktopTemplate from './customerOfferCard.html'
 
 
 export default class CustomerOfferCard extends LightningElement
@@ -31,10 +33,17 @@ export default class CustomerOfferCard extends LightningElement
 
 	@api mobileRender;
 
+	render()
+	{
+		console.log('Mobile render from customerOfferCard: ' + (this.mobileRender == true));
+
+		if (this.mobileRender == true)
+			return mobileTemplate
+		return desktopTemplate
+	}
+
 	connectedCallback()
 	{
-		console.log('Mobile render from customerOfferCard: ' + this.mobileRender);
-
 		if (this.offerObject)
 		{
 			console.log('this.offerObject ', this.offerObject);

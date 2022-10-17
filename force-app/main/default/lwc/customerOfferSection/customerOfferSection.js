@@ -1,5 +1,7 @@
 import { LightningElement, api } from 'lwc';
 import ICONS from '@salesforce/resourceUrl/UCS_static_images'
+import mobileTemplate from './mobileTemplate.html'
+import desktopTemplate from './customerOfferSection.html'
 
 export default class OfferTypeSection extends LightningElement 
 {
@@ -8,10 +10,17 @@ export default class OfferTypeSection extends LightningElement
 	@api mobileRender;
 	groupIcon;
 
-	connectedCallback()
+	render()
 	{
-		console.log('Mobile render from customOfferSection: ' + this.mobileRender);
-		
+		console.log('Mobile render from customerOfferSection: ' + (this.mobileRender == true));
+
+		if (this.mobileRender == true)
+			return mobileTemplate
+		return desktopTemplate
+	}
+
+	connectedCallback()
+	{	
 		//choose icon based for deal type group
 		switch (this.groupName)
 		{
