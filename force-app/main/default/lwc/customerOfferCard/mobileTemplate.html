@@ -1,64 +1,62 @@
 <template>
-	<div class="slds-card slds-card_boundary" style="width:450px;">
-		<h1 style="display: flex; align-items: center; justify-content: space-around; font-size:15px; background-color:#f7f8fc; color:#172c5a; padding-bottom:25px; padding-top:25px; padding-left: 10px">
-			<div>
-				<b>Prospected {termInMonths} Month Terms</b>
+	<div class="slds-card slds-card_boundary" style="width:325px;">
+		<h1 style="text-align:center; font-size:15px; background-color:#f7f8fc; color:#172c5a; padding-bottom:25px; padding-top:25px; padding-left: 10px">
+			<b style="display:flex; justify-content:center">Prospected {termInMonths} Month Terms</b>
+			<div style="display:flex; justify-content:center">
+				<label class="slds-form-element__label" for="slider-id-01">
+					<span class="slds-slider-label">
+						<span style="font-size: 10px; color:#949dad;" class="slds-slider-label__label">FUNDING AMOUNT</span>
+						<span style="font-size: 15px;" class="slds-slider-label__range">${minFundingAmtLabel}-${maxFundingAmtLabel}</span>
+					</span>
+				</label>
 			</div>
-			<label class="slds-form-element__label" for="slider-id-01">
-				<span class="slds-slider-label">
-					<span style="font-size: 10px; color:#949dad; display: flex; justify-content: flex-end;" class="slds-slider-label__label">FUNDING AMOUNT</span>
-					<span style="font-size: 15px;" class="slds-slider-label__range">${minFundingAmtLabel} - ${maxFundingAmtLabel}</span>
-				</span>
-			</label>
 		</h1>
 		<div style="padding:20px;">
 			<div class="slds-form-element">
 				<div class="slds-form-element__control">
-					<div class="slds-slider">
-					<input type="range" id="slider-id-01" class="slds-slider__range slds-size_small" style="margin-right: 20px;" step=100 min={minFundingAmt} max={maxFundingAmt} value={fundingAmt} oninput={changeFundingAmt}>
-					<span class="slds-slider__value" aria-hidden="true" style="font-size: 24px; color:#223655"><b>${fundingAmtLabel}</b></span>
+					<div class="slds-slider" style="display:block">
+						<span class="slds-slider__value" style="display:flex; justify-content:center; font-size: 24px; color:#223655" aria-hidden="true"><b>${fundingAmtLabel}</b></span>
+						<input type="range" id="slider-id-01" class="slds-slider__range slds-size_small" style="margin-right: 20px;" step=100 min={minFundingAmt} max={maxFundingAmt} value={fundingAmt} oninput={changeFundingAmt}>	
 					</div>
 				</div>
 			</div>
 		</div>
-		<div style="display:flex; flex: 75% 25%; padding-bottom: 25px;">
-			<div class="grid-container">
-				<div class="grid-item">
-					<p style="color: #949dad">PAYBACK AMOUNT (Mobile)</p>
-					<p style="font-size:15px; color:#2ac58b;">${paybackAmt}</p>
-				</div>
-				<div class="grid-item">
-					<p style="color: #949dad">PMT SCHEDULE</p>
-					<p style="color:#172c5a; font-size: 15px">{pmtSchedule}</p>
-				</div>
-				<div class="grid-item">
-					<p style="color: #949dad">PAYMENT AMOUNT</p>
-					<p style="color:#172c5a; font-size:15px">${paymentAmt}</p>
-				</div>
-				<div class="grid-item">
-					<p style="color: #949dad">TERM</p>
-					<p style="color:#172c5a; font-size:15px">{termInMonths} Months</p>
-				</div>
-				<div class="grid-item">
-					<p style="color: #949dad">PREPAY DISCOUNTS/OPTIONS</p>
-					<p style="color:#172c5a; font-size:15px">None</p>
-				</div>
+		<div class="grid-container">
+			<div class="grid-item">
+				<p style="color: #949dad">PAYBACK AMOUNT</p>
+				<p style="font-size:15px; color:#2ac58b;">${paybackAmt}</p>
 			</div>
-			<div style="position: absolute;bottom:25px;right:25px">
-				<template if:true={selectOffer}>
-					<button class="slds-button select-offer-button" onclick={showModalBox}>SELECT OFFER</button>
-				</template>
-				<template if:true={unselectOffer}>
-					<button class="slds-button deselect-offer-button" onclick={deSelectThisOffer}>DESELECT OFFER</button>
-				</template>
-				<template if:true={hideSelectOffer}>
-					<button class="slds-button slds-button_brand disabled-offer-button" disabled="">SELECT OFFER</button>
-				</template>
+			<div class="grid-item">
+				<p style="color: #949dad">PMT SCHEDULE</p>
+				<p style="color:#172c5a; font-size: 15px">{pmtSchedule}</p>
 			</div>
+			<div class="grid-item">
+				<p style="color: #949dad">PAYMENT AMOUNT</p>
+				<p style="color:#172c5a; font-size:15px">${paymentAmt}</p>
+			</div>
+			<div class="grid-item">
+				<p style="color: #949dad">TERM</p>
+				<p style="color:#172c5a; font-size:15px">{termInMonths} Months</p>
+			</div>
+			<div class="grid-item">
+				<p style="color: #949dad">PREPAY DISCOUNTS/OPTIONS</p>
+				<p style="color:#172c5a; font-size:15px">None</p>
+			</div>
+		</div>
+		<div style="display:flex; justify-content:center; margin-bottom:15px;">
+			<template if:true={selectOffer}>
+				<button class="slds-button select-offer-button" onclick={showModalBox}>SELECT OFFER</button>
+			</template>
+			<template if:true={unselectOffer}>
+				<button class="slds-button deselect-offer-button" onclick={deSelectThisOffer}>DESELECT OFFER</button>
+			</template>
+			<template if:true={hideSelectOffer}>
+				<button class="slds-button slds-button_brand disabled-offer-button" disabled="">SELECT OFFER</button>
+			</template>
 		</div>
 	</div>
 
-	 <!-- modal start -->      
+	<!-- modal start -->      
 	<template if:true={isShowModal}>
 	<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
 		<div class="slds-modal__container" style="--slds-c-modal-color-border: white;">
@@ -96,7 +94,7 @@
 				<div style="display:flex; flex: 75% 25%; padding:25px 0px;">
 					<div class="grid-container">
 						<div class="grid-item">
-							<p style="color: #949dad">PAYBACK AMOUNT (Mobile)</p>
+							<p style="color: #949dad">PAYBACK AMOUNT</p>
 							<p style="font-size:15px; color:#2ac58b;">${paybackAmt}</p>
 						</div>
 						<div class="grid-item">
