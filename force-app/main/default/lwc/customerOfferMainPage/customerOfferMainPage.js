@@ -35,7 +35,10 @@ export default class CustomerOfferMainPage extends LightningElement
 	{
 		//remove the last <hr> element
 		var hrNodes = this.template.querySelectorAll("hr");
-		hrNodes[hrNodes.length - 1].remove();
+		if (!this.mobileRender)
+			hrNodes[hrNodes.length - 1].remove();
+		
+		
 	}
 
 	@wire(CurrentPageReference)
