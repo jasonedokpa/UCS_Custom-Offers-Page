@@ -58,78 +58,75 @@
 
 	<!-- modal start -->      
 	<template if:true={isShowModal}>
-	<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-		<div class="slds-modal__container" style="--slds-c-modal-color-border: white;">
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container" style="--slds-c-modal-color-border: white;">
 
-			<!-- modal header -->
-			<header class="slds-modal__header" style="padding-top: 25px; background-color:#f7f8fc">
-				<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
-					<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small" ></lightning-icon> <span class="slds-assistive-text">Close</span>
-				</button>
-				<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">CHOOSE YOUR OFFER</h2>
-			</header>
-		
-			<!-- modal body -->
-			<div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
-				<h2>Please upload these required documents:</h2>
-				<br>
-				<template for:each={closingDocumentsRequired} for:item="document" for:index="index">
-					<h1 key={document}>• {document}</h1>
-				</template>
-				<br><br>
-				<c-custom-file-upload record-id={opportunityID}></c-custom-file-upload>
-				<!-- <lightning-file-upload
-					record-id={opportunityID}
-					file-field-name="Documents__c"
-					file-field-value="true"
-					accept={acceptedFormats}
-					name="fileUploader"
-					class="file-selector-large"
-					label="Attach files"
-					title="The tooltip for the file uploader"
-					onuploadfinished={handleUploadFinished}
-					multiple>
-				</lightning-file-upload> -->
+				<!-- modal header -->
+				<!-- <header class="slds-modal__header">
+				</header> -->
+			
+				<!-- modal body -->
+				<div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+					<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="padding: 15px 0px; margin-bottom:20px; background-color:#f7f8fc; text-align:center;">CHOOSE YOUR OFFER</h2>
+					<h2>Please upload these required documents:</h2>
+					<br>
+					<template for:each={closingDocumentsRequired} for:item="document" for:index="index">
+						<h1 key={document}>• {document}</h1>
+					</template>
+					<br><br>
+					<c-custom-file-upload record-id={opportunityID}></c-custom-file-upload>
+					<!-- <lightning-file-upload
+						record-id={opportunityID}
+						file-field-name="Documents__c"
+						file-field-value="true"
+						accept={acceptedFormats}
+						name="fileUploader"
+						class="file-selector-large"
+						label="Attach files"
+						title="The tooltip for the file uploader"
+						onuploadfinished={handleUploadFinished}
+						multiple>
+					</lightning-file-upload> -->
 
-				<div  style="display:block;">
-					<div class="slds-card slds-card_boundary" style="padding: 10px; margin:15px">
-						<p style="display:flex; justify-content:center">FUNDING AMOUNT</p>
-						<div class="slds-slider__value" aria-hidden="true" style="display:flex; justify-content:center; font-size:24px; color:#223655"><b>${fundingAmtLabel}</b></div>
+					<div  style="display:block;">
+						<div class="slds-card slds-card_boundary" style="padding: 10px; margin:15px">
+							<p style="display:flex; justify-content:center">FUNDING AMOUNT</p>
+							<div class="slds-slider__value" aria-hidden="true" style="display:flex; justify-content:center; font-size:24px; color:#223655"><b>${fundingAmtLabel}</b></div>
+						</div>
+					</div>	
+					<div class="grid-container">
+						<div class="grid-item">
+							<p style="color: #949dad">PAYBACK AMOUNT</p>
+							<p style="font-size:15px; color:#2ac58b;">${paybackAmt}</p>
+						</div>
+						<div class="grid-item">
+							<p style="color: #949dad">PMT SCHEDULE</p>
+							<p style="color:#172c5a; font-size: 15px">{pmtSchedule}</p>
+						</div>
+						<div class="grid-item">
+							<p style="color: #949dad">PAYMENT AMOUNT</p>
+							<p style="color:#172c5a; font-size:15px">${paymentAmt}</p>
+						</div>
+						<div class="grid-item">
+							<p style="color: #949dad">TERM</p>
+							<p style="color:#172c5a; font-size:15px">{termInMonths} Months</p>
+						</div>
+						<div class="grid-item">
+							<p style="color: #949dad">PREPAY DISCOUNTS/OPTIONS</p>
+							<p style="color:#172c5a; font-size:15px">None</p>
+						</div>
 					</div>
-				</div>	
-				<div class="grid-container">
-					<div class="grid-item">
-						<p style="color: #949dad">PAYBACK AMOUNT</p>
-						<p style="font-size:15px; color:#2ac58b;">${paybackAmt}</p>
-					</div>
-					<div class="grid-item">
-						<p style="color: #949dad">PMT SCHEDULE</p>
-						<p style="color:#172c5a; font-size: 15px">{pmtSchedule}</p>
-					</div>
-					<div class="grid-item">
-						<p style="color: #949dad">PAYMENT AMOUNT</p>
-						<p style="color:#172c5a; font-size:15px">${paymentAmt}</p>
-					</div>
-					<div class="grid-item">
-						<p style="color: #949dad">TERM</p>
-						<p style="color:#172c5a; font-size:15px">{termInMonths} Months</p>
-					</div>
-					<div class="grid-item">
-						<p style="color: #949dad">PREPAY DISCOUNTS/OPTIONS</p>
-						<p style="color:#172c5a; font-size:15px">None</p>
-					</div>
+					<button class="slds-button big-select-offer-button" onclick={selectThisOffer}>SELECT OFFER</button>
+					<button class="slds-button big-cancel-button" onclick={hideModalBox}>CANCEL</button>
 				</div>
+				
+				<!-- modal footer -->
+				<!-- <footer class="slds-modal__footer" >
+				</footer> -->
+			
 			</div>
-
-			<!-- modal footer -->
-			<footer class="slds-modal__footer" >
-				<button class="slds-button big-select-offer-button" onclick={selectThisOffer}>SELECT OFFER</button>
-				<button class="slds-button big-cancel-button" onclick={hideModalBox}>CANCEL</button>
-			</footer>
-		
-		</div>
-	</section>
-	<div class="slds-backdrop slds-backdrop_open"></div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
 	</template>
 	 <!-- modal end -->
 
