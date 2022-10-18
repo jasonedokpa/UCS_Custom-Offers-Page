@@ -1,16 +1,3 @@
-.row
-{
-	display: flex;
-	align-items:center;
-	padding-left:20px;
-	padding-bottom:10px; 
-	padding-top:10px
-}
-
-.column
-{
-	flex: var(--lwc-squareIconXSmallContent, 0.5rem);
-}
 
 hr
 {
@@ -31,6 +18,12 @@ hr
 	padding-left: 20px;
 }
 
+/* prevent strange lwc styling behavior */
+.slds-modal__footer .slds-button+.slds-button 
+{
+    margin-left: auto;
+}
+
 .select-offer-button
 {
 	background-color: #2ac58b;
@@ -42,12 +35,13 @@ hr
 
 .big-select-offer-button
 {
+	display:block;
+	margin: 15px auto;
 	background-color: #2ac58b;
 	color: #ffffff;
 	border-radius: 50px;
 	font-size: 15px;
-	margin-left: 16px;
-	padding: 10px 50px 10px 50px;
+	padding: 10px 60px;
 }
 
 .select-offer-button:hover, .big-select-offer-button:hover {
@@ -78,13 +72,14 @@ hr
 
 .big-cancel-button
 {
+	display:block;
+	margin: 15px auto;
 	background-color: #ffffff;
 	border: 1px solid #ccc;
 	color:#223655;
 	border-radius: 50px;
 	font-size: 15px;
-	margin-right: 16px;
-	padding: 10px 75px 10px 75px;
+	padding: 10px 75px;
 }
 
 .big-cancel-button:hover
@@ -97,82 +92,4 @@ hr
 c-custom-file-upload
 {
 	--slds-c-button-background: #3817e1;
-}
-
-/***** Slider Styling*****/
-none[type="range"]
-{
-	-webkit-appearance: none;
-	background: transparent;
-	cursor: pointer;
-	width: 12rem;
-}
-
-/***** Before-Track Styling *****/
-none[type="range"]::-webkit-slider-runnable-track 
-{
-	background: #053a5f;
-	height: 0.5rem;
-	border-radius: 0.25rem;
-}
-
-none[type="range"]::-moz-range-track 
-{
-	background: lightgray;
-	height: 0.75rem;
-	border-radius: 0.25rem;
-}
-
-/***** After-Track Styling *****/
-none[type="range"]::-moz-range-progress
-{
-	background-color: #10e14f;
-	height: 0.75rem;
-	border-radius: 0.25rem;
-}
-
-/***** Thumb Styling *****/
-none[type="range"]::-webkit-slider-thumb 
-{
-	-webkit-appearance: none;			/* Override default look */
-	appearance: none;
-	background-color: gray;
-	border: 5px solid #ffffff;
-	border-radius: 50%;
-	box-shadow: 0 0 5px black;
-	cursor: pointer;
-	margin-top: -8px;					/* Centers thumb on the track */
-	height: 1.5rem;
-	width: 1.5rem;
-}
-
-none[type="range"]::-moz-range-thumb
-{
-	background-color: gray;
-    border: 5px solid #ffffff;
-    border-radius: 50%;
-	box-shadow: 0 0 5px black;
-	cursor: pointer;
-    height: 1rem;
-    width: 1rem;
-}
-
-/***** Focus Styling *****/
-none[type="range"]:focus 
-{
-	outline: none;
-}
-  
-none[type="range"]:focus::-webkit-slider-thumb
-{
-	border: 5px solid #ffffff;
-	outline: 2px solid #ff5b56;
-	outline-offset: 0rem;
-}
-
-none[type="range"]:focus::-moz-range-thumb
-{
-	border: 5px solid #ffffff;
-	outline: 3px solid #ff5b56;
-	outline-offset: 0rem;     
 }
