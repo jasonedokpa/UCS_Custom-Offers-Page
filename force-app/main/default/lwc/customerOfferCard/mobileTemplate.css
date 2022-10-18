@@ -8,6 +8,7 @@ hr
 .grid-container
 {
 	display: grid;
+	padding: 0 16px;
 	font-size: 10px;
 	grid-template-columns: 50% 50%;
 	row-gap: 20px;

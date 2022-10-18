@@ -16,7 +16,7 @@
 				<div class="slds-form-element__control">
 					<div class="slds-slider" style="display:block">
 						<span class="slds-slider__value" style="display:flex; justify-content:center; font-size: 24px; color:#223655" aria-hidden="true"><b>${fundingAmtLabel}</b></span>
-						<input type="range" id="slider-id-01" class="slds-slider__range slds-size_small" style="margin-right: 20px;" step=100 min={minFundingAmt} max={maxFundingAmt} value={fundingAmt} oninput={changeFundingAmt}>	
+						<input type="range" id="slider-id-01" class="slds-slider__range slds-size_small" style="display:flex; justify-content:center; padding: 8px 0; margin:auto" step=100 min={minFundingAmt} max={maxFundingAmt} value={fundingAmt} oninput={changeFundingAmt}>	
 					</div>
 				</div>
 			</div>
@@ -96,7 +96,7 @@
 							<div style="display:flex; justify-content:center; font-size:24px; color:#223655"><b>${fundingAmtLabel}</b></div>
 						</div>
 					</div>	
-					<div class="grid-container" style="padding: 0 16px;">
+					<div class="grid-container">
 						<div class="grid-item">
 							<p style="color: #949dad">PAYBACK AMOUNT</p>
 							<p style="font-size:15px; color:#2ac58b;">${paybackAmt}</p>
