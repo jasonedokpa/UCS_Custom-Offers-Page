@@ -68,12 +68,14 @@
 				<!-- modal body -->
 				<div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
 					<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="padding: 15px 0px; margin-bottom:20px; background-color:#f7f8fc; text-align:center;">CHOOSE YOUR OFFER</h2>
-					<h2>Please upload these required documents:</h2>
-					<br>
-					<template for:each={closingDocumentsRequired} for:item="document" for:index="index">
-						<h1 key={document}>• {document}</h1>
-					</template>
-					<br><br>
+					<div class="required-documents-section" style="padding: 0 16px;">
+						<h2>Please upload these required documents:</h2>
+						<br>
+						<template for:each={closingDocumentsRequired} for:item="document" for:index="index">
+							<h1 key={document}>• {document}</h1>
+						</template>
+						<br><br>
+					</div>
 					<c-custom-file-upload record-id={opportunityID}></c-custom-file-upload>
 					<!-- <lightning-file-upload
 						record-id={opportunityID}
@@ -89,12 +91,12 @@
 					</lightning-file-upload> -->
 
 					<div  style="display:block;">
-						<div class="slds-card slds-card_boundary" style="padding: 10px; margin:15px">
+						<div class="slds-card slds-card_boundary" style="padding: 10px; margin:20px 30px;">
 							<p style="display:flex; justify-content:center">FUNDING AMOUNT</p>
-							<div class="slds-slider__value" aria-hidden="true" style="display:flex; justify-content:center; font-size:24px; color:#223655"><b>${fundingAmtLabel}</b></div>
+							<div style="display:flex; justify-content:center; font-size:24px; color:#223655"><b>${fundingAmtLabel}</b></div>
 						</div>
 					</div>	
-					<div class="grid-container">
+					<div class="grid-container" style="padding: 0 16px;">
 						<div class="grid-item">
 							<p style="color: #949dad">PAYBACK AMOUNT</p>
 							<p style="font-size:15px; color:#2ac58b;">${paybackAmt}</p>

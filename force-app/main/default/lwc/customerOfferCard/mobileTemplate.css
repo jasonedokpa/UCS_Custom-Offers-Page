@@ -18,11 +18,7 @@ hr
 	padding-left: 20px;
 }
 
-/* prevent strange lwc styling behavior */
-.slds-modal__footer .slds-button+.slds-button 
-{
-    margin-left: auto;
-}
+
 
 .select-offer-button
 {
@@ -86,6 +82,18 @@ hr
 {
 	background-color: #f7f8fc;
 	color: #223655;
+}
+
+/* prevent strange lwc styling behavior */
+.slds-modal__footer .slds-button+.slds-button 
+{
+    margin-left: auto;
+}
+
+/* remove padding from modal */
+.slds-var-p-around_medium
+{
+	padding: 0;
 }
 
 
