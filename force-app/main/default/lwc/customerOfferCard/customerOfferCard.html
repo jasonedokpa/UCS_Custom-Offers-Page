@@ -73,12 +73,14 @@
 		
 			<!-- modal body start -->
 			<div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
-				<h2>Please upload these required documents:</h2>
-				<br>
-				<template for:each={closingDocumentsRequired} for:item="document" for:index="index">
-					<h1 key={document}>• {document}</h1>
-				</template>
-				<br><br>
+				<div class="required-documents-section">
+					<h2>Please upload these required documents:</h2>
+					<br>
+					<template for:each={closingDocumentsRequired} for:item="document" for:index="index">
+						<h1 key={document}>• {document}</h1>
+					</template>
+					<br><br>
+				</div>
 				<c-custom-file-upload record-id={opportunityID}></c-custom-file-upload>
 				<!-- <lightning-file-upload
 					record-id={opportunityID}
