@@ -1,43 +1,103 @@
-.dummy{
-	color : black;
+.bgImageMobile{
+	background-image: URL(/offersOpp/resource/1665768999000/UCSMobileBG);
+	background-repeat: no-repeat !important; 
+	background-position: center center !important;
+	background-size: 100% 100% !important;
+	position: absolute !important;
+	width: 100%;
+	height: 90%;
+	overflow: hidden;
+	top: 25%;
+	display: none;
+}
+
+bgImage{
+	display: none;
+}
+
+/* .body, html { 
+height: 100%; 
+margin: 0; 
+} */
+
+.logoStyle{
+	display: none;
+}
+
+.logoMobile{
+	display: block;
 }
 
 .headerIcons{
-	    padding: 0% 5% 0% 20%;
+	padding: 0%;
+	position: relative;
 }
 
 .headerBG{
-	background-color:rgba(221,238,241,255);
+	//background-color:rgba(221,238,241,255);
 	border-bottom-left-radius: 140px;
 	padding: 7% 0% 7% 0%;
 }
 
 .headerBanner{
-	padding-left: 10%;
+	/* padding-left: 10%;
+	position: absolute; */
+	width: 90%;
 }
 
 .headerText1{
-	padding-left: 13%;
+	padding-left: 4%;
 	font-size: 24px;
     font-weight: 900;
 }
 
 .headerText2{
 	padding-left: 13%;
-	font-size: 15px;
+	font-size: 14px;
     font-weight: 700;
 	color:#4caf80;
+	display: none;
 }
 
 .headerText3{
 	padding-left: 13%;
 	font-size: 12px;
+	display: none;
+}
+
+.headerText2Mob{
+	padding-left: 4%;
+    margin: 5% 0%;
+	font-size: 15px;
+    font-weight: 700;
+	color:#4caf80;
+	display: block;
+}
+
+.headerText3Mob{
+	padding-left: 5%;
+	margin-left: 5%;
+	font-size: 12px;
+	border-left: 2px solid #4caf80;
+	display: block;
 }
 
 .rightTileHeader{
 	background-color:#404454;
 	color:white;
 	height: 40px;
+}
+
+.rightTile{
+    width: 75%;
+    height: 90%;
+    position: absolute;
+    top: 95%;
+    left: 3%;
+	z-index: 9;
+	margin: 20px;
+	background-color:white;
+	box-shadow: 0px 0px 1px 0px;
 }
 
 .rightBG{
@@ -53,4 +113,146 @@
 
 .rightTileBottomText{
 	margin-left: 10%;
+}
+
+.phoneIcon{
+	display:none;
+}
+
+.phoneIconMobile{
+	display:block;
+	padding-left: 23%;
+}
+
+.phoneIconlogo{
+	width: 35%;
+}
+
+@media only screen and (min-width: 768px) { 
+	.headerIcons{
+	    padding: 0% 5% 0% 20%;
+	}
+
+	.body, html { 
+		height: 100%; 
+		margin: 0; 
+	}
+
+	.bgImage{
+		background-image: URL(/offersOpp/resource/1665768999000/UCSDesktopBG);
+		/* background-repeat: no-repeat !important; 
+		background-position: center center !important;
+		background-size: 110% 100% !important;
+		position: absolute !important;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		display: block; */
+		height: 600px; 
+		background-position: center; 
+		background-repeat: no-repeat; 
+		background-size: cover;
+	}
+	
+	bgImageMobile{
+		display: none;
+	}
+	/* .headerBG{
+		//background-color:rgba(221,238,241,255);
+		border-bottom-left-radius: 140px;
+		padding: 7% 0% 7% 0%;
+	} */
+
+	.logoStyle{
+		display: block;
+	}
+
+	.logoMobile{
+		display: none;
+	}
+
+	.headerBanner{
+		padding: 12% 0% 0% 18%;
+	}
+
+	.headerText1{
+		padding-left: 0%;
+		font-size: 30px;
+		font-weight: 900;
+	}
+
+	.headerText2{
+		padding: 2% 0%;
+		font-size: 20px;
+		font-weight: 700;
+		color:#4caf80;
+		display: block;
+	}
+
+	.headerText3{
+		padding-left: 2%;
+		font-size: 17px;
+		border-left: 2px solid #4caf80;
+		display: block;
+	}
+
+	.headerText2Mob{
+		padding-left: 13%;
+		font-size: 15px;
+		font-weight: 700;
+		color:#4caf80;
+		display: none;
+	}
+
+	.headerText3Mob{
+		padding-left: 2%;
+		font-size: 12px;
+		border-left: 2px solid #4caf80;
+		display: none;
+	}
+
+	.rightTile{
+		width: 20%;
+        height: 61%;            
+        position: absolute;
+        top: 38%;
+        left: 56%;
+        z-index: 9;
+        margin: 20px;
+		background-color:white;
+		box-shadow: 0px 0px 1px 0px;
+	}
+
+	.rightTileHeader{
+		background-color:#404454;
+		color:white;
+		height: 40px;
+	}
+
+	.rightBG{
+		background-color:rgba(221,238,241,255);
+	}
+
+	.rightTileTopText{
+		font-size: 9px;
+		margin-left: 10%;
+		font-weight: bold;
+		color: #D7E5E8;
+	}
+
+	.rightTileBottomText{
+		margin-left: 10%;
+	}
+	.phoneIcon{
+		display:block;
+		margin: 0% 0% 3% 0%;
+	}
+
+	.phoneIconMobile{
+		display:none;
+	}
+
+	.phoneIconlogo{
+		display: none;
+	}
 }
