@@ -2,20 +2,27 @@
 	background-color: #f7f8fc;
 }
 
+.sectionStyle{
+	padding: 3%;
+}
+
 .footerText{
 	background-color: #f7f8fc;
 	font-size: 10px;
 }
 
 .iconStyle {
-	height: 40px;
-	margin: 3% 0%;
+	height: 50%;
+	//margin: 3% 0%;
+	float:right;
 }
 
 .iconText{
 	font-size: 12px;
-	font-weight: 600;
-	margin-left: 5%;
+	text-align: left;
+	float: left;
+    width: 44%;
+    margin: 2% 0% 0% 10%;
 }
 
 .bottomText{
@@ -37,14 +44,17 @@
 	}
 
 	.iconStyle {
-		height: 25px;
-		margin-top: 5%;
+		height: 50%;
+		margin-top: 4%;
+		float:right;
 	}
 
 	.iconText{
 		font-size: 12px;
-		font-weight: 600;
-		margin-left: 5%;
+		text-align: left;
+		margin-left: 10%;
+		float: left;
+		width: 57%;
 	}
 
 	.bottomText{
@@ -53,5 +63,10 @@
 
 	.bottomTextMob{
 		display:none;
+	}
+
+	.borderStyle{
+		border-left: 2px solid #D7E5E8;
+    	border-right: 2px solid #D7E5E8;
 	}
 }

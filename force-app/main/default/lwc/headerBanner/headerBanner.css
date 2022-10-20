@@ -1,5 +1,5 @@
 .bgImageMobile{
-	background-image: URL(/offersOpp/resource/1665768999000/UCSMobileBG);
+	/* background-image: URL(/offersOpp/resource/1665768999000/UCSMobileBG);
 	background-repeat: no-repeat !important; 
 	background-position: center center !important;
 	background-size: 100% 100% !important;
@@ -8,11 +8,15 @@
 	height: 90%;
 	overflow: hidden;
 	top: 25%;
-	display: none;
+	display: none; */
 }
 
-bgImage{
-	display: none;
+.bgImage{
+	background-image: URL(/offersOpp/resource/1665768999000/UCSMobileBG);
+	height: 700px; 
+	background-position: center; 
+	background-repeat: no-repeat; 
+	background-size: cover;
 }
 
 /* .body, html { 
@@ -46,7 +50,7 @@ margin: 0;
 }
 
 .headerText1{
-	padding-left: 4%;
+	padding: 15% 0% 0% 4%;
 	font-size: 24px;
     font-weight: 900;
 }
@@ -89,10 +93,10 @@ margin: 0;
 }
 
 .rightTile{
-    width: 75%;
-    height: 90%;
+    width: 85%;
+    height: 48%;
     position: absolute;
-    top: 95%;
+    top: 52%;
     left: 3%;
 	z-index: 9;
 	margin: 20px;
@@ -176,7 +180,7 @@ margin: 0;
 	}
 
 	.headerText1{
-		padding-left: 0%;
+		padding: 0% 0% 0% 0%;
 		font-size: 30px;
 		font-weight: 900;
 	}

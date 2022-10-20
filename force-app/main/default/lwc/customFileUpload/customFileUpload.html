@@ -1,5 +1,5 @@
 <template>
-    <div class="slds-p-top_small" style="background-color:#f7f8fc; position:relative; padding:30px">
+    <!-- <div class="slds-p-top_small" style="background-color:#f7f8fc; position:relative; padding:30px">
         <lightning-input type="file"
                          label="Attachment"
                          class="file-selector-large"
@@ -14,6 +14,30 @@
             </template>
         </template>
         <br/>
+        <button onclick={uploadFiles} class="slds-button confirm-upload-button">CONFIRM UPLOAD</button>
+    </div> -->
+    <lightning-layout multiple-rows class="slds-grid slds-var-p-bottom_large footerContainer">
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="5" class="slds-text-align_center">
+            <lightning-input type="file"
+                         label="Attachment"
+                         class="file-selector-large"
+                         accept=".xlsx, .xls, .csv, .png, .doc, .docx, .pdf"
+                         onchange={handleFileUploaded}
+                         multiple>
+            </lightning-input>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="5" class="slds-text-align_center">
+            <template if:true={filesData}>
+                <template for:each={filesData} for:item="imgName" for:index="index">
+                    {imgName.fileName} &nbsp;
+                    <lightning-icon key={imgName.fileName} data-id={index} onclick={removeReceiptImage} size="xx-small" icon-name="utility:close" alternative-text="Delete" title="Delete" ></lightning-icon>&nbsp;
+                </template>
+            </template>
+            <br/>
+        </lightning-layout-item>
+    </lightning-layout>
+    <div class="slds-m-left_xx-large uploadbutton">
         <button onclick={uploadFiles} class="slds-button confirm-upload-button">CONFIRM UPLOAD</button>
     </div>
 </template>

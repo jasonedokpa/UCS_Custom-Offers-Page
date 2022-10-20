@@ -145,4 +145,13 @@ public without sharing class customerOfferPageController
             this.OutputURL = OutputURL;
         }
     }
+
+	//Method to retrieve Customer Details for the header banner
+	@AuraEnabled(cacheable=true)
+	public static List<Opportunity> getAccountDetails(Id OpportunityID)
+	{
+		List<Opportunity> customerOpportunity = new List<Opportunity>();
+		customerOpportunity = [select id,Account.Name, McaApp__Owner_1__r.Name, Account.BillingAddress, Account.Phone, Account.McaApp__Email__c from Opportunity WHERE Id = :OpportunityID];
+		return customerOpportunity;
+	}
 }

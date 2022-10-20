@@ -5,3 +5,31 @@
 	font-size: 11px;
 	padding: 0px 15px 0px 15px;
 }
+
+.THIS .slds-file-selector{
+    display: flex;
+}
+
+.THIS .slds-file-selector__dropzone{
+    height: 110px;
+    width: -webkit-fill-available;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.THIS .slds-file-selector__dropzone .slds-file-selector__text{ /*the right label*/
+    font-size: 100%;
+}
+.uploadbutton{
+       align-items: center;
+       margin-left: 28%;
+    }
+@media only screen and (min-width: 768px) { 
+	.uploadbutton{
+       align-items: center;
+       margin-left: 8%;
+    }
+}
