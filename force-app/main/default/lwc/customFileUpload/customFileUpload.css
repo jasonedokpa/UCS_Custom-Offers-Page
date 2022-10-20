@@ -23,10 +23,7 @@
 .THIS .slds-file-selector__dropzone .slds-file-selector__text{ /*the right label*/
     font-size: 100%;
 }
-.uploadbutton{
-       align-items: center;
-       margin-left: 28%;
-    }
+
 @media only screen and (min-width: 768px) { 
 	.uploadbutton{
        align-items: center;
