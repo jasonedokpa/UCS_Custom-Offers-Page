@@ -5,13 +5,14 @@ import PhoneIcon from '@salesforce/resourceUrl/UCSPortalPhoneIcon';
 
 import { CurrentPageReference } from 'lightning/navigation';
 import getIDFromURL from '@salesforce/apex/customerOfferPageController.getIDFromURL';
-import { getRecord } from 'lightning/uiRecordApi';
+import accDetails from '@salesforce/apex/customerOfferPageController.getAccountDetails';
+import { getRecord,getFieldValue } from 'lightning/uiRecordApi';
 
-import NAME_FIELD from '@salesforce/schema/Opportunity.Account.Name';
-//import OWNER_FIELD from '@salesforce/schema/Opportunity.McaApp__Owner_1__r.Name';
-import ADDRESS_FIELD from '@salesforce/schema/Opportunity.Account.BillingAddress';
-import PHONE_FIELD from '@salesforce/schema/Opportunity.Account.Phone';
-//import EMAIL_FIELD from '@salesforce/schema/Opportunity.Account.McaApp__Email__c';
+// import NAME_FIELD from '@salesforce/schema/Opportunity.Account.Name';
+// import OWNER_FIELD from '@salesforce/schema/Opportunity.McaApp__Owner_1__r.Name';
+// import ADDRESS_FIELD from '@salesforce/schema/Opportunity.Account.BillingAddress';
+// import PHONE_FIELD from '@salesforce/schema/Opportunity.Account.Phone';
+// import EMAIL_FIELD from '@salesforce/schema/Opportunity.Account.McaApp__Email__c';
 
 export default class HeaderBanner extends LightningElement {
 
@@ -20,16 +21,15 @@ export default class HeaderBanner extends LightningElement {
     UCSPhoneIcon = PhoneIcon;
 
     encryptedID;
-	decryptedID;
+	@api decryptedID;
 	pageIsExpired = false;
 
-    // const FIELDS = [
-    //     'Opportunity.Account.Name',
-    //     'Opportunity.McaApp__Owner_1__r.Name',
-    //     'Opportunity.Account.BillingAddress',
-    //     'Opportunity.Account.Phone',
-    //     'Opportunity.Account.McaApp__Email__c',
-    // ];
+	BusinessName;
+	OwnerName;
+	BusinessAddress;
+	PhoneNumber;
+	Email;
+    //const FIELDS = [NAME_FIELD,OWNER_FIELD,ADDRESS_FIELD,PHONE_FIELD,EMAIL_FIELD];
 
 	@wire(CurrentPageReference)
 	getStateParameters(currentPageReference)
@@ -57,46 +57,54 @@ export default class HeaderBanner extends LightningElement {
 			console.error(result.error);
 	}
 
-    //@wire (accDetails, { OpportunityID: '$decryptedID', fields: FIELDS})
-    // accountDetails(result)
-	// {
-	// 	if (result.data)
-	// 		{
-	// 			this.allOffers = result.data
-	// 			console.log('result.data ', result.data)
-	// 			this.allOfferGroups = Object.entries(this.groupByOffer(result.data)).map(([key, value]) => ({ key, value }))
-	// 			console.log('this.allOfferGroups ', this.allOfferGroups)
-	// 		}
-	// 	if (result.error)
-	// 		console.error(result.error);
-	// }  
 
-	//NAME_FIELD,OWNER_FIELD,ADDRESS_FIELD,PHONE_FIELD,EMAIL_FIEL
-    @wire(getRecord, { recordId: '$decryptedID', fields: [NAME_FIELD] })
-    Opportunity;
+	// @wire(getRecord, { recordId: '$decryptedID', fields: [NAME_FIELD,OWNER_FIELD,ADDRESS_FIELD,PHONE_FIELD,EMAIL_FIELD] })
+    // opportunityRecord;
 
-    get name() {
-        // return this.opportunity.data.fields.Account.Name.value;
-		return getFieldValue(this.Opportunity.data, NAME_FIELD);
-    }
+    // get name() {
+    //     // return this.opportunity.data.fields.Account.Name.value;
+	// 	console.log('Name:'+getFieldValue(this.opportunityRecord.data, NAME_FIELD));
+	// 	return getFieldValue(this.opportunityRecord.data, NAME_FIELD);
+    // }
 
     // get owner() {
     //     //return this.opportunity.data.fields.McaApp__Owner_1__r.Name.value;
-	// 	return getFieldValue(this.Opportunity.data, OWNER_FIELD);
+	// 	return getFieldValue(this.opportunityRecord.data, OWNER_FIELD);
     // }
 
-    get address() {
-        //return this.opportunity.data.fields.Account.BillingAddress.value;
-		return getFieldValue(this.Opportunity.data, ADDRESS_FIELD);
-    }
+    // get address() {
+    //     //return this.opportunity.data.fields.Account.BillingAddress.value;
+	// 	return getFieldValue(this.opportunityRecord.data, ADDRESS_FIELD);
+    // }
 
-    get phone() {
-        //return this.opportunity.data.fields.Account.Phone.value;
-		return getFieldValue(this.Opportunity.data, PHONE_FIELD);
-    }
+    // get phone() {
+    //     //return this.opportunity.data.fields.Account.Phone.value;
+	// 	return getFieldValue(this.opportunityRecord.data, PHONE_FIELD);
+    // }
 
-    get email() {
-        //return this.opportunity.data.fields.Account.McaApp__Email__c.value;
-		return getFieldValue(this.Opportunity.data, EMAIL_FIELD);
-    }
+    // get email() {
+    //     //return this.opportunity.data.fields.Account.McaApp__Email__c.value;
+	// 	return getFieldValue(this.opportunityRecord.data, EMAIL_FIELD);
+    // }
+
+    @wire (accDetails, { OpportunityID: '$decryptedID'})
+    accountDetails(result)
+	{
+		if (result.data)
+			{
+				this.allOffers = result.data
+				console.log('result.data ', result.data)
+				console.log('AccountName ', this.allOffers[0].Account.Name);
+				this.BusinessName=this.allOffers[0].Account.Name;
+				this.OwnerName=this.allOffers[0].McaApp__Owner_1__r.Name;
+				this.BusinessAddress=this.allOffers[0].Account.BillingAddress.street + ','+this.allOffers[0].Account.BillingAddress.city+','+this.allOffers[0].Account.BillingAddress.state+' '+this.allOffers[0].Account.BillingAddress.postalCode;
+				this.PhoneNumber=this.allOffers[0].Account.Phone;
+				this.Email=this.allOffers[0].Account.McaApp__Email__c;
+			}
+		if (result.error)
+			console.error(result.error);
+	}  
+
+	//NAME_FIELD,OWNER_FIELD,ADDRESS_FIELD,PHONE_FIELD,EMAIL_FIEL
+
 }

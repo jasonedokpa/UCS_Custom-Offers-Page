@@ -3,13 +3,15 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import uploadFiles from '@salesforce/apex/FileUploaderClass.uploadFiles'
 import { loadStyle } from 'lightning/platformResourceLoader';
 import fileSelectorStyle from '@salesforce/resourceUrl/fileSelectorStyle';
+import FORM_FACTOR from '@salesforce/client/formFactor'
 const MAX_FILE_SIZE = 2097152;
 
 export default class CustomFileUpload extends LightningElement {
     @api recordId;
     @track filesData = [];
+    @api mobileRender;
     showSpinner = false;
- 
+    
     handleFileUploaded(event) {
         if (event.target.files.length > 0) {
             for(var i=0; i< event.target.files.length; i++){
@@ -31,6 +33,14 @@ export default class CustomFileUpload extends LightningElement {
         Promise.all([
             loadStyle(this, fileSelectorStyle)
         ]);
+        this.mobileRender = (FORM_FACTOR === 'Small' || FORM_FACTOR === 'Medium') ? true : false;
+        console.log('21');
+    }
+    renderedCallback(){
+        if(this.mobileRender==true){
+            console.log('12');
+            this.template.querySelector('div.uploadbutton').classList.add('slds-text-align_center');
+        }
     }
     uploadFiles() {
         if(this.filesData === [] || this.filesData.length === 0) {

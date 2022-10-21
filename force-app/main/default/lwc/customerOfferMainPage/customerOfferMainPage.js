@@ -9,6 +9,7 @@ import desktopTemplate from './customerOfferMainPage.html'
 
 export default class CustomerOfferMainPage extends LightningElement
 {
+	accordianOpenSection=['A'];
 	encryptedID;
 	decryptedID;
 	pageIsExpired = false;

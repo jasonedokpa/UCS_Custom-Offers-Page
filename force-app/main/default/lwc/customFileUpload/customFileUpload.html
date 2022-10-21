@@ -27,11 +27,12 @@
             </lightning-input>
         </lightning-layout-item>
 
-        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="5" class="slds-text-align_center">
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="7" class="slds-text-align_center">
             <template if:true={filesData}>
                 <template for:each={filesData} for:item="imgName" for:index="index">
                     {imgName.fileName} &nbsp;
                     <lightning-icon key={imgName.fileName} data-id={index} onclick={removeReceiptImage} size="xx-small" icon-name="utility:close" alternative-text="Delete" title="Delete" ></lightning-icon>&nbsp;
+                    <span key={imgName.fileName}><br/></span>
                 </template>
             </template>
             <br/>

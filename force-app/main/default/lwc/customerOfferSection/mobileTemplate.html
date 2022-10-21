@@ -2,12 +2,14 @@
 	<div style="width:330px;">
 		<img style="max-height: 60px" alt="deal type icon" src={groupIcon}>
 		<h1 class="slds-align_absolute-center"  style="color:#162d59; padding-bottom:30px; padding-top:10px; font-size:24px;"><b>{groupName}</b></h1>
-		<div class="slds-align_absolute-center">
-			<div class="grid-container" style="padding-bottom:60px;">
-				<template for:each={offerList} for:item="offer">
-					<c-customer-offer-card key={offer.Id} offer-object={offer} mobile-render=1></c-customer-offer-card>
-				</template>
+		<lightning-accordion-section name="A" >
+			<div class="slds-align_absolute-center">
+				<div class="grid-container" style="padding-bottom:60px;">
+					<template for:each={offerList} for:item="offer">
+						<c-customer-offer-card key={offer.Id} offer-object={offer} mobile-render=1></c-customer-offer-card>
+					</template>
+				</div>
 			</div>
-		</div>
+		</lightning-accordion-section>
 	</div>
 </template>
