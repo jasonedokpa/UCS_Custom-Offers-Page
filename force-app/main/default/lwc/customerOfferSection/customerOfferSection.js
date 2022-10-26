@@ -2,7 +2,8 @@ import { LightningElement, api } from 'lwc';
 import ICONS from '@salesforce/resourceUrl/UCS_static_images'
 import mobileTemplate from './mobileTemplate.html'
 import desktopTemplate from './customerOfferSection.html'
-
+// import AccordionIconStyle from '@salesforce/resourceUrl/AccordionIconStyle';
+// import { loadStyle } from 'lightning/platformResourceLoader';
 export default class OfferTypeSection extends LightningElement 
 {
 	@api offerList = [{Id: "null", "McaApp__Term_Months__c": "[Term_In_Months]", "Closing_Documents__c": ""}];
@@ -21,6 +22,12 @@ export default class OfferTypeSection extends LightningElement
 
 	connectedCallback()
 	{	
+		// if(this.mobileRender == true){
+		// 	Promise.all([
+		// 		loadStyle(this, AccordionIconStyle)
+		// 	]);
+		// }
+        
 		//choose icon based for deal type group
 		switch (this.groupName)
 		{
