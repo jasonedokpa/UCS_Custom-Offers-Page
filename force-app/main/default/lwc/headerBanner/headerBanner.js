@@ -6,7 +6,6 @@ import PhoneIcon from '@salesforce/resourceUrl/UCSPortalPhoneIcon';
 import { CurrentPageReference } from 'lightning/navigation';
 import getIDFromURL from '@salesforce/apex/customerOfferPageController.getIDFromURL';
 import accDetails from '@salesforce/apex/customerOfferPageController.getAccountDetails';
-import { getRecord,getFieldValue } from 'lightning/uiRecordApi';
 
 // import NAME_FIELD from '@salesforce/schema/Opportunity.Account.Name';
 // import OWNER_FIELD from '@salesforce/schema/Opportunity.McaApp__Owner_1__r.Name';

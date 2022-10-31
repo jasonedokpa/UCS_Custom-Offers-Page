@@ -2,14 +2,17 @@ import { LightningElement, api } from 'lwc';
 import ICONS from '@salesforce/resourceUrl/UCS_static_images'
 import mobileTemplate from './mobileTemplate.html'
 import desktopTemplate from './customerOfferSection.html'
-// import AccordionIconStyle from '@salesforce/resourceUrl/AccordionIconStyle';
-// import { loadStyle } from 'lightning/platformResourceLoader';
+import accordionIcon from '@salesforce/resourceUrl/UCSAccordionIcon';
+
 export default class OfferTypeSection extends LightningElement 
 {
 	@api offerList = [{Id: "null", "McaApp__Term_Months__c": "[Term_In_Months]", "Closing_Documents__c": ""}];
 	@api groupName = "[DEAL TYPE]";
 	@api mobileRender;
 	groupIcon;
+
+	accIcon = accordionIcon;
+	toggleDetails = false;
 
 	render()
 	{
@@ -67,6 +70,17 @@ export default class OfferTypeSection extends LightningElement
 
 			default:
 				this.groupIcon = ICONS + '/icons/SBA-Loan.png';
+		}
+	}
+
+	handleToggle(){
+		if(this.toggleDetails == false){
+			this.toggleDetails = true;
+			this.template.querySelector(".accordionIcon").style="transform: rotate(180deg)";
+		}
+		else{
+			this.toggleDetails = false;
+			this.template.querySelector(".accordionIcon").style="transform: rotate(0deg)";
 		}
 	}
 }

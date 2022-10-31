@@ -1,5 +1,5 @@
 <template>
-
+	<template if:false={pageIsExpired}>
 	<div class="bgImageMobile">	</div>
 		<div class="slds-grid slds-grid_align-center slds-wrap headerIcons">
 
@@ -111,4 +111,8 @@
 		<p class="rightTileBottomText">info@unitedcapitalsource.com</p> -->
 	</div>
 </div>
+</template>
+<template if:true={pageIsExpired}>
+	
+</template>
 </template>

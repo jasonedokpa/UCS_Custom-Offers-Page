@@ -5,7 +5,7 @@ export default class CuustomerOfferURLGenerator extends LightningElement
 {
 	opportunityID;
 	urlParam;
-	prefix = 'http://localhost:3333/preview/c/customerOfferMainPage';	//https://fundio--banjaxed.sandbox.my.site.com/offers/
+	prefix = 'https://fundio--banjaxed.sandbox.my.site.com/offersOpp/s/';	//https://fundio--banjaxed.sandbox.my.site.com/offers/
 
 	changeID(event)
 	{

@@ -1,4 +1,5 @@
 <template>
+    <template if:false={pageIsExpired}>
     <lightning-layout multiple-rows class="slds-grid slds-grid_align-center slds-p-top_xx-large slds-var-p-bottom_large footerContainer">
         <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="3" class="slds-text-align_center">
             <div class="slds-grid slds-wrap sectionStyle slds-p-vertical_x-small slds-grid slds-grid_vertical-align-center">
@@ -57,4 +58,8 @@
             <div class="bottomTextMob">©2022 United Capital Source Inc. <br> All Rights Reserved</div>
         </lightning-layout-item> 
     </lightning-layout>
+    </template>
+    <template if:true={pageIsExpired}>
+		
+	</template>
 </template>
