@@ -1,15 +1,23 @@
 <template>
 	<div style="width:330px;">
-		<img style="max-height: 60px" alt="deal type icon" src={groupIcon}>
-		<h1 class="slds-align_absolute-center"  style="color:#162d59; padding-bottom:30px; padding-top:10px; font-size:24px;"><b>{groupName}</b></h1>
-		<lightning-accordion-section name="A" >
+		<div class="slds-grid slds-grid_align-center slds-wrap">
+			<div class="slds-col slds-size_10-of-12">
+				<img style="max-height: 60px" alt="deal type icon" src={groupIcon}>
+				<h1 class="slds-align_absolute-center" style="color:#162d59; padding-bottom:30px; padding-top:10px; font-size:24px;"><b>{groupName}</b></h1>
+			</div>
+			<div class="slds-col slds-size_2-of-12">
+				<img  class="accordionIcon" alt="accordion icon" src={accIcon} onclick={handleToggle}>
+			</div>
+		</div>
+		<template if:true={toggleDetails}>
 			<div class="slds-align_absolute-center">
 				<div class="grid-container" style="padding-bottom:60px;">
 					<template for:each={offerList} for:item="offer">
 						<c-customer-offer-card key={offer.Id} offer-object={offer} mobile-render=1></c-customer-offer-card>
+						<br key={offer}><br key={offer}>
 					</template>
 				</div>
 			</div>
-		</lightning-accordion-section>
+		</template>
 	</div>
 </template>

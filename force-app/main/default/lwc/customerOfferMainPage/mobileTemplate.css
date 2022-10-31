@@ -1,0 +1,8 @@
+:host{
+	slds-c-accordion__summary-action-icon-transform:rotate(90deg);
+	/* flex-shrink: 0;
+	transform: rotate(90deg);
+	position: absolute;
+	left: 310px;
+	top: -111px; */
+}
