@@ -15,7 +15,7 @@ public without sharing class customerOfferPageController
 										Min_Funding_Amount__c, Max_Funding_Amount__c, 
 										McaApp__Payment_Amt__c, McaApp__Commi__c, 
 										McaApp__Opportunity__c, McaApp__Payback_Amt__c,
-										McaApp__Commi_per__c, McaApp__Rate__c, Offer_Selected__c FROM McaApp__Offers__r)
+										McaApp__Commi_per__c, McaApp__Rate__c, Offer_Selected__c,of_Payments__c FROM McaApp__Offers__r)
 										FROM Opportunity WHERE Id = :OpportunityID])					//TODO: replace this Id with OpportunityID
 			allOffersOnOpportunity = opportunity.McaApp__Offers__r;
 	
@@ -23,7 +23,7 @@ public without sharing class customerOfferPageController
 	}
 
 	@AuraEnabled
-	public static String setChosenOffer(Id OfferID, Decimal newFundingAmount)
+	public static String setChosenOffer(Id OfferID, Decimal newFundingAmount,Decimal newPaymentAmount)
 	{
 		//update "Chosen Offer" on Opportunity 
 		Opportunity opportunityToUpdate = new Opportunity();
@@ -45,6 +45,7 @@ public without sharing class customerOfferPageController
 		System.debug('OFFER ID: ' + offerToUpdate.Id);
 		offerToUpdate.McaApp__Amount__c = newFundingAmount;
 		System.debug('FUNDING AMOUNT: ' + newFundingAmount);
+		offerToUpdate.McaApp__Payment_Amt__c = newPaymentAmount;
 		update offerToUpdate;
 
 		return 'Offer selected!';

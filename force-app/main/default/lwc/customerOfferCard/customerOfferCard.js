@@ -20,11 +20,15 @@ export default class CustomerOfferCard extends LightningElement
 	fundingAmt;
 	fundingAmtLabel;
 	paybackAmt;
+	paybackAmtLabel;
 	termInMonths;
 	pmtSchedule;
 	paymentAmt;
+	paymentAmtLabel;
 	prepayOptions;
 	closingDocumentsRequired;
+	Rate;
+	NumofPayment;
 
 	selectOffer;
 	unselectOffer;
@@ -55,11 +59,15 @@ export default class CustomerOfferCard extends LightningElement
 			this.maxFundingAmtLabel = this.offerObject.Max_Funding_Amount__c ? this.offerObject.Max_Funding_Amount__c.toLocaleString("en-US") : undefined;
 			this.fundingAmt = this.offerObject.McaApp__Amount__c;
 			this.fundingAmtLabel = this.fundingAmt ? this.fundingAmt.toLocaleString("en-US") : undefined;
-			this.paybackAmt = this.offerObject.McaApp__Payback_Amt__c ? this.offerObject.McaApp__Payback_Amt__c.toLocaleString("en-US") : undefined;
+			this.paybackAmt = this.offerObject.McaApp__Payback_Amt__c ? this.offerObject.McaApp__Payback_Amt__c.toLocaleString("en-US") : 0;
+			this.paybackAmtLabel = this.paybackAmt ? this.paybackAmt.toLocaleString("en-US") : 0;
 			this.termInMonths = this.offerObject.McaApp__Term_Months__c;
 			this.pmtSchedule = this.offerObject.McaApp__PMT_Schedule__c;
 			this.paymentAmt = this.offerObject.McaApp__Payment_Amt__c ? this.offerObject.McaApp__Payment_Amt__c.toLocaleString("en-US") : undefined;
-			this.closingDocumentsRequired = this.picklistToArray(this.offerObject.Closing_Documents__c);
+			this.paymentAmtLabel = this.paymentAmt ? this.paymentAmt.toLocaleString("en-US") : 0;
+			this.closingDocumentsRequired = this.picklistToArray(this.offerObject.Closing_Documents__c?this.offerObject.Closing_Documents__c.toLocaleString("en-US") : ' ');
+			this.Rate = this.offerObject.McaApp__Rate__c ? this.offerObject.McaApp__Rate__c.toLocaleString("en-US") : 0;
+			this.NumofPayment = this.offerObject.of_Payments__c ? this.offerObject.of_Payments__c.toLocaleString("en-US") : 0;
 
 			if(this.offerObject.Offer_Selected__c === 'uncheck'){
 				this.selectOffer = false;
@@ -84,6 +92,11 @@ export default class CustomerOfferCard extends LightningElement
 	{
 		this.fundingAmt = event.target.value;
 		this.fundingAmtLabel = parseInt(this.fundingAmt, 10).toLocaleString("en-US");
+		this.paybackAmt = parseInt(this.fundingAmt, 10)* this.Rate;
+		this.paybackAmtLabel = (parseInt(this.fundingAmt, 10)* this.Rate).toLocaleString("en-US");
+		console.log(this.paybackAmtLabel);
+		this.paymentAmt = this.paybackAmt / this.NumofPayment ; 
+		this.paymentAmtLabel = (this.paybackAmt / this.NumofPayment).toLocaleString("en-US");
 	}
 
 	showModalBox()
@@ -124,7 +137,7 @@ export default class CustomerOfferCard extends LightningElement
 	{
 		console.log("CLICKED ON:", this.offerObject.Name + " offer");
 		console.log("Funding Amount:", this.fundingAmt);
-		setChosenOffer({OfferID: this.offerObject.Id, newFundingAmount: this.fundingAmt
+		setChosenOffer({OfferID: this.offerObject.Id, newFundingAmount: this.fundingAmt , newPaymentAmount: this.paymentAmt
 		}).then(response => {
 			this.hideModalBox();
 			console.log(response);
