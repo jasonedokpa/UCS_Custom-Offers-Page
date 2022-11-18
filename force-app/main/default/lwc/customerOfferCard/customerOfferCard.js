@@ -63,7 +63,8 @@ export default class CustomerOfferCard extends LightningElement
 			this.paybackAmtLabel = this.paybackAmt ? this.paybackAmt.toLocaleString("en-US") : 0;
 			this.termInMonths = this.offerObject.McaApp__Term_Months__c;
 			this.pmtSchedule = this.offerObject.McaApp__PMT_Schedule__c;
-			this.paymentAmt = this.offerObject.McaApp__Payment_Amt__c ? this.offerObject.McaApp__Payment_Amt__c.toLocaleString("en-US") : undefined;
+			this.paymentAmt = this.offerObject.McaApp__Payment_Amt__c ? parseInt(this.offerObject.McaApp__Payment_Amt__c).toLocaleString("en-US") : undefined;
+			//this.paymentAmt = parseInt(this.paymentAmt);
 			this.paymentAmtLabel = this.paymentAmt ? this.paymentAmt.toLocaleString("en-US") : 0;
 			this.closingDocumentsRequired = this.picklistToArray(this.offerObject.Closing_Documents__c?this.offerObject.Closing_Documents__c.toLocaleString("en-US") : ' ');
 			this.Rate = this.offerObject.McaApp__Rate__c ? this.offerObject.McaApp__Rate__c.toLocaleString("en-US") : 0;
@@ -95,8 +96,8 @@ export default class CustomerOfferCard extends LightningElement
 		this.paybackAmt = parseInt(this.fundingAmt, 10)* this.Rate;
 		this.paybackAmtLabel = (parseInt(this.fundingAmt, 10)* this.Rate).toLocaleString("en-US");
 		console.log(this.paybackAmtLabel);
-		this.paymentAmt = this.paybackAmt / this.NumofPayment ; 
-		this.paymentAmtLabel = (this.paybackAmt / this.NumofPayment).toLocaleString("en-US");
+		this.paymentAmt = parseInt(this.paybackAmt / this.NumofPayment) ; 
+		this.paymentAmtLabel = (this.paymentAmt).toLocaleString("en-US");
 	}
 
 	showModalBox()
