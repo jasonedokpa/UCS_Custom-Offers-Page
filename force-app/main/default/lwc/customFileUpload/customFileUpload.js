@@ -29,20 +29,23 @@ export default class CustomFileUpload extends LightningElement {
             }
         }
     }
-    connectedCallback() {
+    connectedCallback()
+    {
         Promise.all([
             loadStyle(this, fileSelectorStyle)
         ]);
-        this.mobileRender = (FORM_FACTOR === 'Small' || FORM_FACTOR === 'Medium') ? true : false;
+        this.mobileRender = (FORM_FACTOR === 'Small' || FORM_FACTOR === 'Medium');
         console.log('21');
     }
-    renderedCallback(){
+    renderedCallback()
+    {
         if(this.mobileRender==true){
             console.log('12');
             this.template.querySelector('div.uploadbutton').classList.add('slds-text-align_center');
         }
     }
-    uploadFiles() {
+    uploadFiles()
+    {
         if(this.filesData === [] || this.filesData.length === 0) {
             this.showToast('Error', 'error', 'Please select files first'); return;
         }

@@ -1,5 +1,8 @@
 <template>
 	<div class="slds-card slds-card_boundary" style="width:325px;">
+		<template if:true={currentlyUnselectingOffer}>
+			<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+		</template>
 		<h1 style="text-align:center; font-size:15px; background-color:#f7f8fc; color:#172c5a; padding-bottom:25px; padding-top:15px;">
 			<b style="display:flex; justify-content:center">Prospected {termInMonths} Month Terms</b>
 			<div style="display:flex; justify-content:center">
@@ -60,14 +63,11 @@
 	<template if:true={isShowModal}>
 		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
 			<div class="slds-modal__container" style="--slds-c-modal-color-border: white;">
-
-				<!-- modal header -->
-				<!-- <header class="slds-modal__header">
-				</header> -->
-			
-				<!-- modal body -->
-				<div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+				<div class="slds-modal__content slds-var-p-around_medium slds-is-relative" id="modal-content-id-1">
 					<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="padding: 15px 0px; margin-bottom:20px; background-color:#f7f8fc; text-align:center;">CHOOSE YOUR OFFER</h2>
+					<template if:true={currentlySelectingOffer}>
+						<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+					</template>
 					<div class="required-documents-section" style="padding: 0 16px;">
 						<h2>Please upload these required documents for your final approval:</h2>
 						<br>
@@ -77,19 +77,6 @@
 						<br><br>
 					</div>
 					<c-custom-file-upload record-id={opportunityID}></c-custom-file-upload>
-					<!-- <lightning-file-upload
-						record-id={opportunityID}
-						file-field-name="Documents__c"
-						file-field-value="true"
-						accept={acceptedFormats}
-						name="fileUploader"
-						class="file-selector-large"
-						label="Attach files"
-						title="The tooltip for the file uploader"
-						onuploadfinished={handleUploadFinished}
-						multiple>
-					</lightning-file-upload> -->
-
 					<div  style="display:block;">
 						<div class="slds-card slds-card_boundary" style="padding: 10px; margin:20px 30px;">
 							<p style="display:flex; justify-content:center">FUNDING AMOUNT</p>
@@ -121,15 +108,10 @@
 					<button class="slds-button big-select-offer-button" onclick={selectThisOffer}>SELECT OFFER</button>
 					<button class="slds-button big-cancel-button" onclick={hideModalBox}>CANCEL</button>
 				</div>
-				
-				<!-- modal footer -->
-				<!-- <footer class="slds-modal__footer" >
-				</footer> -->
-			
 			</div>
 		</section>
 		<div class="slds-backdrop slds-backdrop_open"></div>
 	</template>
-	 <!-- modal end -->
+	<!-- modal end -->
 
 </template>

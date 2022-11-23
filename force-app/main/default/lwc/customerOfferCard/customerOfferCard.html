@@ -1,5 +1,8 @@
 <template>
 	<div class="slds-card slds-card_boundary" style="width:450px;">
+		<template if:true={currentlyUnselectingOffer}>
+			<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+		</template>
 		<h1 style="display: flex; align-items: center; justify-content: space-around; font-size:15px; background-color:#f7f8fc; color:#172c5a; padding-bottom:25px; padding-top:25px; padding-left: 10px">
 			<div>
 				<b>Prospected {termInMonths} Month Terms</b>
@@ -33,7 +36,7 @@
 				</div>
 				<div class="grid-item">
 					<p style="color: #949dad">PAYMENT AMOUNT</p>
-					<p style="color:#172c5a; font-size:15px">${paymentAmtLabel}</p>
+					<p style="color:#172c5a; font-size:15px">{paymentAmtLabel}</p>
 				</div>
 				<div class="grid-item">
 					<p style="color: #949dad"># OF PAYMENTS</p>
@@ -60,83 +63,78 @@
 
 	 <!-- modal start -->      
 	<template if:true={isShowModal}>
-	<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-		<div class="slds-modal__container" style="--slds-c-modal-color-border: white;">
-
-			<!-- modal header start -->
-			<header class="slds-modal__header" style="padding-top: 25px; background-color:#f7f8fc">
-				<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
-					<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small" ></lightning-icon> <span class="slds-assistive-text">Close</span>
-				</button>
-				<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">CHOOSE YOUR OFFER</h2>
-			</header>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container" style="--slds-c-modal-color-border: white;">
 		
-			<!-- modal body start -->
-			<div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
-				<div class="required-documents-section">
-					<h2>Please upload these required documents for your final approval:</h2>
-					<br>
-					<template for:each={closingDocumentsRequired} for:item="document" for:index="index">
-						<h1 key={document}>• {document}</h1>
+				<!-- modal header start -->
+				<header class="slds-modal__header" style="padding-top: 25px; background-color:#f7f8fc">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+						<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small" ></lightning-icon> <span class="slds-assistive-text">Close</span>
+					</button>
+					<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">CHOOSE YOUR OFFER</h2>
+				</header>
+			
+				<!-- modal body start -->
+				<div class="slds-modal__content slds-var-p-around_medium slds-is-relative" id="modal-content-id-1">
+					<template if:true={currentlySelectingOffer}>
+						<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
 					</template>
-					<br><br>
-				</div>
-				<c-custom-file-upload record-id={opportunityID}></c-custom-file-upload>
-				<!-- <lightning-file-upload
-					record-id={opportunityID}
-					file-field-name="Documents__c"
-					file-field-value="true"
-					accept={acceptedFormats}
-					name="fileUploader"
-					class="file-selector-large"
-					label="Attach files"
-					title="The tooltip for the file uploader"
-					onuploadfinished={handleUploadFinished}
-					multiple>
-				</lightning-file-upload> -->
-				
-				<div style="display:flex; flex: 75% 25%; padding:25px 0px;">
-					<div class="grid-container">
-						<div class="grid-item">
-							<p style="color: #949dad">PAYBACK AMOUNT</p>
-							<p style="font-size:15px; color:#2ac58b;">${paybackAmtLabel}</p>
-						</div>
-						<div class="grid-item">
-							<p style="color: #949dad">PMT SCHEDULE</p>
-							<p style="color:#172c5a; font-size: 15px">{pmtSchedule}</p>
-						</div>
-						<div class="grid-item">
-							<p style="color: #949dad">PAYMENT AMOUNT</p>
-							<p style="color:#172c5a; font-size:15px">${paymentAmtLabel}</p>
-						</div>
-						<div class="grid-item">
-							<p style="color: #949dad"># OF PAYMENTS</p>
-							<p style="color:#172c5a; font-size:15px">{NumofPayment}</p>
-						</div>
-						<div class="grid-item">
-							<p style="color: #949dad">PREPAY DISCOUNTS/OPTIONS</p>
-							<p style="color:#172c5a; font-size:15px">None</p>
-						</div>
+					<div class="required-documents-section" style="padding:0px 20px;">
+						<template if:true={documentsExist}>
+							<h2>Please upload these required documents for your final approval:</h2>
+							<br>
+							<template for:each={closingDocuments} for:item="document" for:index="index">
+								<h1 key={document}>• {document}</h1>
+							</template>
+							<br><br>
+							<c-custom-file-upload record-id={opportunityID}></c-custom-file-upload>
+						</template>
+						<template if:false={documentsExist}>
+							<h2>No additional documents are required at this time.</h2>
+							<br><br>
+						</template>
 					</div>
-					<div  style="display:block;">
-						<div class="slds-card slds-card_boundary" style="position:relative; left:33%; top:15%; padding: 40px;">
-							<p>FUNDING AMOUNT</p>
-							<div class="slds-slider__value" aria-hidden="true" style="font-size: 24px; color:#223655"><b>${fundingAmtLabel}</b></div>
+					<div style="display:flex; flex: 75% 25%; padding:25px 0px;">
+						<div class="grid-container">
+							<div class="grid-item">
+								<p style="color: #949dad">PAYBACK AMOUNT</p>
+								<p style="font-size:15px; color:#2ac58b;">${paybackAmtLabel}</p>
+							</div>
+							<div class="grid-item">
+								<p style="color: #949dad">PMT SCHEDULE</p>
+								<p style="color:#172c5a; font-size: 15px">{pmtSchedule}</p>
+							</div>
+							<div class="grid-item">
+								<p style="color: #949dad">PAYMENT AMOUNT</p>
+								<p style="color:#172c5a; font-size:15px">{paymentAmtLabel}</p>
+							</div>
+							<div class="grid-item">
+								<p style="color: #949dad"># OF PAYMENTS</p>
+								<p style="color:#172c5a; font-size:15px">{NumofPayment}</p>
+							</div>
+							<div class="grid-item">
+								<p style="color: #949dad">PREPAY DISCOUNTS/OPTIONS</p>
+								<p style="color:#172c5a; font-size:15px">None</p>
+							</div>
 						</div>
-					</div>	
+						<div  style="display:block;">
+							<div class="slds-card slds-card_boundary" style="position:relative; left:33%; top:15%; padding: 40px;">
+								<p>FUNDING AMOUNT</p>
+								<div class="slds-slider__value" aria-hidden="true" style="font-size: 24px; color:#223655"><b>${fundingAmtLabel}</b></div>
+							</div>
+						</div>	
+					</div>
 				</div>
 
+				<!-- modal footer start-->
+				<footer class="slds-modal__footer" style="display:flex; align-items:center; justify-content:center; padding-bottom: 50px;">
+					<button class="slds-button big-cancel-button" onclick={hideModalBox}>CANCEL</button>
+					<button class="slds-button big-select-offer-button" onclick={selectThisOffer}>SELECT OFFER</button>
+				</footer>
+			
 			</div>
-
-			<!-- modal footer start-->
-			<footer class="slds-modal__footer" style="display:flex; align-items:center; justify-content:center; padding-bottom: 50px;">
-				<button class="slds-button big-cancel-button" onclick={hideModalBox}>CANCEL</button>
-				<button class="slds-button big-select-offer-button" onclick={selectThisOffer}>SELECT OFFER</button>
-			</footer>
-		
-		</div>
-	</section>
-	<div class="slds-backdrop slds-backdrop_open"></div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
 	</template>
 	 <!-- modal end -->
 

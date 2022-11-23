@@ -49,7 +49,7 @@ export default class HeaderBanner extends LightningElement {
 		{
 			this.decryptedID = result.data;
 			console.log(this.decryptedID);
-			this.pageIsExpired = (result.data === 'expired' ? true : false);
+			this.pageIsExpired = (result.data === 'expired');
 		}
 		
 		if (result.error)

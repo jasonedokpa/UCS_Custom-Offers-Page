@@ -9,7 +9,7 @@ import desktopTemplate from './customerOfferMainPage.html'
 
 export default class CustomerOfferMainPage extends LightningElement
 {
-	accordianOpenSection=['A'];
+	accordianOpenSection = ['A'];
 	encryptedID;
 	decryptedID;
 	pageIsExpired = false;
@@ -28,7 +28,7 @@ export default class CustomerOfferMainPage extends LightningElement
 	connectedCallback()
 	{
 		//Determine if device is mobile
-		this.mobileRender = (FORM_FACTOR === 'Small' || FORM_FACTOR === 'Medium') ? true : false;
+		this.mobileRender = (FORM_FACTOR === 'Small' || FORM_FACTOR === 'Medium');
 		console.log('Mobile render from customOfferMainPage: ' + this.mobileRender);
 	}
 
@@ -48,7 +48,7 @@ export default class CustomerOfferMainPage extends LightningElement
 		if (currentPageReference.state.c__OpportunityIdentifier)
 		{
 			this.encryptedID = currentPageReference.state.c__OpportunityIdentifier;
-			console.log(this.encryptedID);
+			console.log('Encrypted ID:', this.encryptedID);
 		}
 		else
 			console.log('No url parameter found.')
@@ -60,8 +60,8 @@ export default class CustomerOfferMainPage extends LightningElement
 		if(result.data)
 		{
 			this.decryptedID = result.data;
-			console.log(this.decryptedID);
-			this.pageIsExpired = (result.data === 'expired' ? true : false);
+			console.log('Decrypted ID:', this.decryptedID);
+			this.pageIsExpired = (result.data === 'expired');
 		}
 		
 		if (result.error)
@@ -74,9 +74,9 @@ export default class CustomerOfferMainPage extends LightningElement
 		if (result.data)
 			{
 				this.allOffers = result.data
-				console.log('result.data ', result.data)
+				console.log('All Offers:', result.data)
 				this.allOfferGroups = Object.entries(this.groupByOffer(result.data)).map(([key, value]) => ({ key, value }))
-				console.log('this.allOfferGroups ', this.allOfferGroups)
+				console.log('All Offers Grouped:', this.allOfferGroups)
 			}
 		if (result.error)
 			console.error(result.error);

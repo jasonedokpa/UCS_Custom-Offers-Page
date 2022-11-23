@@ -48,7 +48,7 @@ export default class OfferTypeSection extends LightningElement
 				break;
 
 			case 'Credit Repair':
-				this.groupIcon = ICONS + '/icons/Business-Term-Loan.pngg ';
+				this.groupIcon = ICONS + '/icons/Business-Term-Loan.png';
 				break;
 			
 			case 'Equipment Financing':
