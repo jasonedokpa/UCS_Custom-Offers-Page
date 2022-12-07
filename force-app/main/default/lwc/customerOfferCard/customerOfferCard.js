@@ -35,6 +35,7 @@ export default class CustomerOfferCard extends LightningElement
 	currentlyUnselectingOffer;
 	hideSelectOffer;
 	documentsExist;
+	isCashAdvance;
 
 	@api mobileRender;
 
@@ -68,6 +69,7 @@ export default class CustomerOfferCard extends LightningElement
 			this.documentsExist = !(this.closingDocuments === 'empty');
 			this.Rate = this.offerObject.McaApp__Rate__c ? this.offerObject.McaApp__Rate__c.toLocaleString("en-US") : undefined;
 			this.NumofPayment = this.offerObject.of_Payments__c ? this.offerObject.of_Payments__c.toLocaleString("en-US") : undefined;
+			this.isCashAdvance = this.offerObject.McaApp__Deal_Type__c === "Cash Advance";
 
 			if(this.offerObject.Offer_Selected__c === 'uncheck')
 			{

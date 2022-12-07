@@ -16,7 +16,7 @@ export default class OfferTypeSection extends LightningElement
 
 	render()
 	{
-		console.log('Mobile render from customerOfferSection: ' + (this.mobileRender == true));
+		//console.log('Mobile render from customerOfferSection: ' + (this.mobileRender == true));
 
 		if (this.mobileRender == true)
 			return mobileTemplate

@@ -29,7 +29,7 @@ export default class CustomerOfferMainPage extends LightningElement
 	{
 		//Determine if device is mobile
 		this.mobileRender = (FORM_FACTOR === 'Small' || FORM_FACTOR === 'Medium');
-		console.log('Mobile render from customOfferMainPage: ' + this.mobileRender);
+		//console.log('Mobile render from customOfferMainPage: ' + this.mobileRender);
 	}
 
 	renderedCallback()

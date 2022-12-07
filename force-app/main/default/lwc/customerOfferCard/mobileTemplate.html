@@ -4,7 +4,7 @@
 			<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
 		</template>
 		<h1 style="text-align:center; font-size:15px; background-color:#f7f8fc; color:#172c5a; padding-bottom:25px; padding-top:15px;">
-			<b style="display:flex; justify-content:center">Prospected {termInMonths} Month Terms</b>
+			<b style="display:flex; justify-content:center"><template if:true={isCashAdvance}>Estimated </template>{termInMonths} Month Terms</b>
 			<div style="display:flex; justify-content:center">
 				<label class="slds-form-element__label" for="slider-id-01">
 					<span class="slds-slider-label">

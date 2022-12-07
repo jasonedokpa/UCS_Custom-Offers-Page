@@ -5,7 +5,7 @@
 		</template>
 		<h1 style="display: flex; align-items: center; justify-content: space-around; font-size:15px; background-color:#f7f8fc; color:#172c5a; padding-bottom:25px; padding-top:25px; padding-left: 10px">
 			<div>
-				<b>Prospected {termInMonths} Month Terms</b>
+				<b><template if:true={isCashAdvance}>Estimated </template>{termInMonths} Month Terms</b>
 			</div>
 			<label class="slds-form-element__label" for="slider-id-01">
 				<span class="slds-slider-label">

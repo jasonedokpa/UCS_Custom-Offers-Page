@@ -25,7 +25,8 @@ export default class HeaderBanner extends LightningElement {
 
 	BusinessName;
 	OwnerName;
-	BusinessAddress;
+	BusinessAddress1;
+	BusinessAddress2
 	PhoneNumber;
 	Email;
     //const FIELDS = [NAME_FIELD,OWNER_FIELD,ADDRESS_FIELD,PHONE_FIELD,EMAIL_FIELD];
@@ -92,11 +93,12 @@ export default class HeaderBanner extends LightningElement {
 		if (result.data)
 			{
 				this.allOffers = result.data
-				console.log('result.data ', result.data)
-				console.log('AccountName ', this.allOffers[0].Account.Name);
+				console.log('Account Details', result.data)
+				console.log('Account Name ', this.allOffers[0].Account.Name);
 				this.BusinessName=this.allOffers[0].Account.Name;
 				this.OwnerName=this.allOffers[0].McaApp__Owner_1__r.Name;
-				this.BusinessAddress=this.allOffers[0].Account.BillingAddress.street + ','+this.allOffers[0].Account.BillingAddress.city+','+this.allOffers[0].Account.BillingAddress.state+' '+this.allOffers[0].Account.BillingAddress.postalCode;
+				this.BusinessAddress1=this.allOffers[0].Account.BillingAddress.street;
+				this.BusinessAddress2 = this.allOffers[0].Account.BillingAddress.city + ', ' + this.allOffers[0].Account.BillingAddress.state + ' ' + this.allOffers[0].Account.BillingAddress.postalCode;
 				this.PhoneNumber=this.allOffers[0].Account.Phone;
 				this.Email=this.allOffers[0].Account.McaApp__Email__c;
 			}

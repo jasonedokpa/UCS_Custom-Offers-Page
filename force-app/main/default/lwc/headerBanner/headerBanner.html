@@ -31,7 +31,7 @@
 				<a href="tel:+1-855-933-8638">
 					<div class="slds-grid slds-grid_align-center slds-wrap slds-grid_vertical-align-center">
 						<div class="slds-col slds-size_5-of-5 slds-text-align_right slds-m-right_x-small" >
-							<div style="margin: -1% 20%;font-size: 12px;text-align: left;">Call for a <b>FREE</b> Consultation</div>
+							<div style="margin: -1% 17%;font-size: 12px;text-align: left;">Call for a <b>FREE</b> Consultation</div>
 						</div>
 						<div class="slds-col slds-size_1-of-5 slds-p-right_small">
 							<img style="height:22px;" src={UCSPhoneIcon}/>
@@ -55,19 +55,19 @@
 	<div class="bgImage">
 		<div class="slds-grid slds-wrap headerBanner">
 			<div class="slds-col slds-size_1-of-1 slds-p-bottom_x-small">
-				<p class="headerText1">Congratulations! <br> You're Approved</p>
+				<p class="headerText1">Congratulations!</p>
 			</div>
 			<div class="slds-col slds-size_1-of-1 slds-p-bottom_x-small">
-				<p class="headerText2"><i>Below is a summary of our loan programs you <br> have been approved for.</i></p>
-				<p class="headerText2Mob"><i>Below is a summary of our loan programs <br> you have been approved for.</i></p>
+				<p class="headerText2"><i>Below is a summary of your options.</i></p>
+				<p class="headerText2Mob"><i>Below is a summary of your options.</i></p>
 			</div>
 			<div class="slds-col slds-size_1-of-1 slds-p-top_x-small">
 				<p class="headerText3">You can use the slider to adjust your desired dollar amount for <br> each offer. When you select an offer, you will see a popup </br>
 				window that lists the documents required for the program, </br> and you can drop those documents right there to upload </br> them to your Account Representative! <b> 
-				You can select up to 2 <br> programs to apply for. </b></p>
+				You can select up to 2 <br> options to apply for. </b></p>
 				<p class="headerText3Mob">You can use the slider to adjust your desired <br> dollar amount for each offer. When you <br> select an offer, you will see a popup
 				window that <br> lists the documents required for the program, and <br> you can drop those documents right there to <br> upload them to your Account Representative! <br>
-				<b>You can select up to 2 programs to apply for. </b></p>
+				<b>You can select up to 2 options to apply for. </b></p>
 			</div>
 		</div>
 	</div>
@@ -86,7 +86,8 @@
 		<p class="rightTileBottomText">{OwnerName}</p>
 		</br>
 		<p class="rightTileTopText">BUSINESS ADDRESS</p>
-		<p class="rightTileBottomText">{BusinessAddress}</p>
+		<p class="rightTileBottomText">{BusinessAddress1}</p>
+		<p class="rightTileBottomText">{BusinessAddress2}</p>
 		</br>
 		<p class="rightTileTopText">PHONE NUMBER</p>
 		<p class="rightTileBottomText">{PhoneNumber}</p>
@@ -113,6 +114,6 @@
 </div>
 </template>
 	<template if:true={pageIsExpired}>
-		
+
 	</template>
 </template>
