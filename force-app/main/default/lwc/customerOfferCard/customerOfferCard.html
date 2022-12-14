@@ -3,7 +3,7 @@
 		<template if:true={currentlyUnselectingOffer}>
 			<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
 		</template>
-		<h1 style="display: flex; align-items: center; justify-content: space-around; font-size:15px; background-color:#f7f8fc; color:#172c5a; padding-bottom:25px; padding-top:25px; padding-left: 10px">
+		<h1 style="display: flex; align-items: center; justify-content: space-around; font-size:15px; background-color:#f7f8fc; color:#172c5a; padding: 25px 0px 25px 10px;">
 			<div>
 				<b><template if:true={isCashAdvance}>Estimated </template>{termInMonths} Month Terms</b>
 			</div>
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 		</div>
-		<div style="display:flex; flex: 75% 25%; padding-bottom: 25px;">
+		<div style="display:flex; padding-bottom: 25px;">
 			<div class="grid-container">
 				<div class="grid-item">
 					<p style="color: #949dad">PAYBACK AMOUNT</p>
@@ -41,10 +41,6 @@
 				<div class="grid-item">
 					<p style="color: #949dad"># OF PAYMENTS</p>
 					<p style="color:#172c5a; font-size:15px">{NumofPayment}</p>
-				</div>
-				<div class="grid-item">
-					<p style="color: #949dad">PREPAY DISCOUNTS/OPTIONS</p>
-					<p style="color:#172c5a; font-size:15px">None</p>
 				</div>
 			</div>
 			<div style="position: absolute;bottom:25px;right:25px">
@@ -88,17 +84,18 @@
 							</template>
 							<br><br>
 							<c-custom-file-upload record-id={opportunityID}></c-custom-file-upload>
+							<br><br>
 						</template>
 						<template if:false={documentsExist}>
 							<h2>No additional documents are required at this time.</h2>
 							<br><br>
 						</template>
 					</div>
-					<div style="display:flex; flex: 75% 25%; padding:25px 0px;">
-						<div class="grid-container">
+					<div style="display:flex; padding:25px 0px;">
+						<div class="grid-container" style="flex:0.75">
 							<div class="grid-item">
 								<p style="color: #949dad">PAYBACK AMOUNT</p>
-								<p style="font-size:15px; color:#2ac58b;">${paybackAmtLabel}</p>
+								<p style="color:#2ac58b; font-size:15px;">${paybackAmtLabel}</p>
 							</div>
 							<div class="grid-item">
 								<p style="color: #949dad">PMT SCHEDULE</p>
@@ -112,9 +109,9 @@
 								<p style="color: #949dad"># OF PAYMENTS</p>
 								<p style="color:#172c5a; font-size:15px">{NumofPayment}</p>
 							</div>
-							<div class="grid-item">
+							<div class="grid-item" style="grid-column:1/3;">
 								<p style="color: #949dad">PREPAY DISCOUNTS/OPTIONS</p>
-								<p style="color:#172c5a; font-size:15px">None</p>
+								<p style="color:#172c5a; font-size:15px; white-space:break-spaces;">{prepayOptions}</p>
 							</div>
 						</div>
 						<div  style="display:block;">

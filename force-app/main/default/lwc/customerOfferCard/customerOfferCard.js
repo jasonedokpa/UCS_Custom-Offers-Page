@@ -50,6 +50,9 @@ export default class CustomerOfferCard extends LightningElement
 
 	connectedCallback()
 	{
+		//ALERT!
+		//PLEASE DO NOT add .toLocalString() where not appropriate.
+		//Read up on JavaScript documentation if confused about what a method does.
 		if (this.offerObject)
 		{
 			this.opportunityID = this.offerObject.McaApp__Opportunity__c;
@@ -64,11 +67,12 @@ export default class CustomerOfferCard extends LightningElement
 			this.termInMonths = this.offerObject.McaApp__Term_Months__c;
 			this.pmtSchedule = this.offerObject.McaApp__PMT_Schedule__c;
 			this.paymentAmt = parseFloat(Number(this.offerObject.McaApp__Payment_Amt__c).toFixed(2));
+			this.prepayOptions = this.offerObject.Prepay_Discounts__c ? this.offerObject.Prepay_Discounts__c : 'None';
 			this.paymentAmtLabel = this.paymentAmt ? this.paymentAmt.toLocaleString("en-US", { style: "currency", currency: "USD" }) : undefined;
 			this.closingDocuments = this.offerObject.Closing_Documents__c ? this.picklistToArray( this.offerObject.Closing_Documents__c) : 'empty';
 			this.documentsExist = !(this.closingDocuments === 'empty');
-			this.Rate = this.offerObject.McaApp__Rate__c ? this.offerObject.McaApp__Rate__c.toLocaleString("en-US") : undefined;
-			this.NumofPayment = this.offerObject.of_Payments__c ? this.offerObject.of_Payments__c.toLocaleString("en-US") : undefined;
+			this.Rate = this.offerObject.McaApp__Rate__c ? this.offerObject.McaApp__Rate__c: undefined;
+			this.NumofPayment = this.offerObject.of_Payments__c ? this.offerObject.of_Payments__c : undefined;
 			this.isCashAdvance = this.offerObject.McaApp__Deal_Type__c === "Cash Advance";
 
 			if(this.offerObject.Offer_Selected__c === 'uncheck')

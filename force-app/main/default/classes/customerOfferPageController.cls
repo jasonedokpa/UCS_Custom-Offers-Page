@@ -15,8 +15,9 @@ public without sharing class customerOfferPageController
 										Min_Funding_Amount__c, Max_Funding_Amount__c, 
 										McaApp__Payment_Amt__c, McaApp__Commi__c, 
 										McaApp__Opportunity__c, McaApp__Payback_Amt__c,
-										McaApp__Commi_per__c, McaApp__Rate__c, Offer_Selected__c,of_Payments__c FROM McaApp__Offers__r)
-										FROM Opportunity WHERE Id = :OpportunityID])					//TODO: replace this Id with OpportunityID
+										McaApp__Commi_per__c, McaApp__Rate__c, 
+										Offer_Selected__c,of_Payments__c, Prepay_Discounts__c FROM McaApp__Offers__r)
+										FROM Opportunity WHERE Id =: OpportunityID])
 			allOffersOnOpportunity = opportunity.McaApp__Offers__r;
 	
 		return allOffersOnOpportunity;
@@ -139,10 +140,12 @@ public without sharing class customerOfferPageController
         return owList;
 	}
     
-    public class OutputWrapper{
+    public class OutputWrapper
+	{
         @InvocableVariable public String OutputURL;
         
-        public OutputWrapper(){
+        public OutputWrapper()
+		{
             this.OutputURL = OutputURL;
         }
     }
