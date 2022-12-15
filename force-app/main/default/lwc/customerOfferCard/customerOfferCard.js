@@ -32,10 +32,11 @@ export default class CustomerOfferCard extends LightningElement
 	selectOffer;
 	currentlySelectingOffer;
 	unselectOffer;
-	currentlyUnselectingOffer;
+	currentlyDeselectingOffer;
 	hideSelectOffer;
 	documentsExist;
 	isCashAdvance;
+	isEquipmentFincancing;
 
 	@api mobileRender;
 
@@ -69,11 +70,12 @@ export default class CustomerOfferCard extends LightningElement
 			this.paymentAmt = parseFloat(Number(this.offerObject.McaApp__Payment_Amt__c).toFixed(2));
 			this.prepayOptions = this.offerObject.Prepay_Discounts__c ? this.offerObject.Prepay_Discounts__c : 'None';
 			this.paymentAmtLabel = this.paymentAmt ? this.paymentAmt.toLocaleString("en-US", { style: "currency", currency: "USD" }) : undefined;
-			this.closingDocuments = this.offerObject.Closing_Documents__c ? this.picklistToArray( this.offerObject.Closing_Documents__c) : 'empty';
-			this.documentsExist = !(this.closingDocuments === 'empty');
+			this.closingDocuments = this.offerObject.Closing_Documents__c ? this.picklistToArray( this.offerObject.Closing_Documents__c) : '';
+			this.documentsExist = !!this.closingDocuments;
 			this.Rate = this.offerObject.McaApp__Rate__c ? this.offerObject.McaApp__Rate__c: undefined;
 			this.NumofPayment = this.offerObject.of_Payments__c ? this.offerObject.of_Payments__c : undefined;
 			this.isCashAdvance = this.offerObject.McaApp__Deal_Type__c === "Cash Advance";
+			this.isEquipmentFincancing = this.offerObject.McaApp__Deal_Type__c === "Equipment Financing";
 
 			if(this.offerObject.Offer_Selected__c === 'uncheck')
 			{
@@ -162,10 +164,10 @@ export default class CustomerOfferCard extends LightningElement
 	{
 		console.log("CLICKED ON:", this.offerObject.Name + " offer");
 		console.log("Funding Amount:", this.fundingAmt);
-		this.currentlyUnselectingOffer = true;
+		this.currentlyDeselectingOffer = true;
 		unSetChosenOffer({OfferID: this.offerObject.Id
 		}).then(response => {
-			this.currentlyUnselectingOffer = false;
+			this.currentlyDeselectingOffer = false;
 			console.log(response);
 			window.location.reload();
 			}).catch(err => {

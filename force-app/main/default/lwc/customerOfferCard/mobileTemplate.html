@@ -8,8 +8,8 @@
 			<div style="display:flex; justify-content:center">
 				<label class="slds-form-element__label" for="slider-id-01">
 					<span class="slds-slider-label">
-						<span style="font-size: 10px; color:#949dad;" class="slds-slider-label__label">FUNDING AMOUNT</span>
-						<span style="font-size: 15px;" class="slds-slider-label__range">${minFundingAmtLabel}-${maxFundingAmtLabel}</span>
+						<span style="font-size:10px; color:#949dad;" class="slds-slider-label__label">FUNDING AMOUNT</span>
+						<span style="font-size:15px;" class="slds-slider-label__range">${minFundingAmtLabel}-${maxFundingAmtLabel}</span>
 					</span>
 				</label>
 			</div>
@@ -18,27 +18,29 @@
 			<div class="slds-form-element">
 				<div class="slds-form-element__control">
 					<div class="slds-slider" style="display:block">
-						<span class="slds-slider__value" style="display:flex; justify-content:center; font-size: 24px; color:#223655" aria-hidden="true"><b>${fundingAmtLabel}</b></span>
-						<input type="range" id="slider-id-01" class="slds-slider__range slds-size_small" style="display:flex; justify-content:center; padding: 8px 0; margin:auto" step=100 min={minFundingAmt} max={maxFundingAmt} value={fundingAmt} oninput={changeFundingAmt}>	
+						<span class="slds-slider__value" style="display:flex; justify-content:center; font-size:24px; color:#223655" aria-hidden="true"><b>${fundingAmtLabel}</b></span>
+						<template if:false={isEquipmentFincancing}>
+							<input type="range" id="slider-id-01" class="slds-slider__range slds-size_small" style="display:flex; justify-content:center; padding: 8px 0; margin:auto" step=100 min={minFundingAmt} max={maxFundingAmt} value={fundingAmt} oninput={changeFundingAmt}>
+						</template>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="grid-container" style="padding-bottom:10px;">
 			<div class="grid-item">
-				<p style="color: #949dad">PAYBACK AMOUNT</p>
+				<p style="color:#949dad">PAYBACK AMOUNT</p>
 				<p style="font-size:15px; color:#2ac58b;">${paybackAmtLabel}</p>
 			</div>
 			<div class="grid-item">
-				<p style="color: #949dad">PMT SCHEDULE</p>
-				<p style="color:#172c5a; font-size: 15px">{pmtSchedule}</p>
+				<p style="color:#949dad">PMT SCHEDULE</p>
+				<p style="color:#172c5a; font-size:15px">{pmtSchedule}</p>
 			</div>
 			<div class="grid-item">
-				<p style="color: #949dad">PAYMENT AMOUNT</p>
+				<p style="color:#949dad">PAYMENT AMOUNT</p>
 				<p style="color:#172c5a; font-size:15px">{paymentAmtLabel}</p>
 			</div>
 			<div class="grid-item">
-				<p style="color: #949dad"># OF PAYMENTS</p>
+				<p style="color:#949dad"># OF PAYMENTS</p>
 				<p style="color:#172c5a; font-size:15px">{NumofPayment}</p>
 			</div>
 		</div>
@@ -58,47 +60,54 @@
 	<!-- modal start -->      
 	<template if:true={isShowModal}>
 		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-			<div class="slds-modal__container" style="--slds-c-modal-color-border: white;">
+			<div class="slds-modal__container" style="--slds-c-modal-color-border:white;">
 				<div class="slds-modal__content slds-var-p-around_medium slds-is-relative" id="modal-content-id-1">
-					<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="padding: 15px 0px; margin-bottom:20px; background-color:#f7f8fc; text-align:center;">CHOOSE YOUR OFFER</h2>
+					<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="padding:15px 0px; margin-bottom:20px; background-color:#f7f8fc; text-align:center;">CHOOSE YOUR OFFER</h2>
 					<template if:true={currentlySelectingOffer}>
 						<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
 					</template>
 					<div class="required-documents-section" style="padding: 0 16px;">
-						<h2>Please upload these required documents for your final approval:</h2>
-						<br>
-						<template for:each={closingDocuments} for:item="document" for:index="index">
-							<h1 key={document}>• {document}</h1>
+						<template if:true={documentsExist}>
+							<h2>Please upload these required documents for your final approval:</h2>
+							<br>
+							<template for:each={closingDocuments} for:item="document" for:index="index">
+								<h1 key={document}>• {document}</h1>
+							</template>
+							<br><br>
+							<c-custom-file-upload record-id={opportunityID}></c-custom-file-upload>
+							<br><br>
+						</template>
+						<template if:false={documentsExist}>
+							<h2>No additional documents are required at this time.</h2>
+							<br><br>
 						</template>
 					</div>
-					<br><br>
-					<c-custom-file-upload record-id={opportunityID}></c-custom-file-upload>
-					<br><br>
+					
 					<div  style="display:block;">
-						<div class="slds-card slds-card_boundary" style="padding: 10px; margin:20px 30px;">
+						<div class="slds-card slds-card_boundary" style="padding:10px; margin:20px 30px;">
 							<p style="display:flex; justify-content:center">FUNDING AMOUNT</p>
 							<div style="display:flex; justify-content:center; font-size:24px; color:#223655"><b>${fundingAmtLabel}</b></div>
 						</div>
 					</div>	
 					<div class="grid-container" style="padding-bottom:10px;">
 						<div class="grid-item">
-							<p style="color: #949dad">PAYBACK AMOUNT</p>
+							<p style="color:#949dad">PAYBACK AMOUNT</p>
 							<p style="color:#2ac58b; font-size:15px;">${paybackAmtLabel}</p>
 						</div>
 						<div class="grid-item">
-							<p style="color: #949dad">PMT SCHEDULE</p>
-							<p style="color:#172c5a; font-size: 15px;">{pmtSchedule}</p>
+							<p style="color:#949dad">PMT SCHEDULE</p>
+							<p style="color:#172c5a; font-size:15px;">{pmtSchedule}</p>
 						</div>
 						<div class="grid-item">
-							<p style="color: #949dad">PAYMENT AMOUNT</p>
+							<p style="color:#949dad">PAYMENT AMOUNT</p>
 							<p style="color:#172c5a; font-size:15px;">{paymentAmtLabel}</p>
 						</div>
 						<div class="grid-item">
-							<p style="color: #949dad"># OF PAYMENTS</p>
+							<p style="color:#949dad"># OF PAYMENTS</p>
 							<p style="color:#172c5a; font-size:15px;">{NumofPayment}</p>
 						</div>
 						<div class="grid-item" style="grid-column:1/3;">
-							<p style="color: #949dad">PREPAY DISCOUNTS/OPTIONS</p>
+							<p style="color:#949dad">PREPAY DISCOUNTS/OPTIONS</p>
 							<p style="color:#172c5a; font-size:15px; white-space:break-spaces;">{prepayOptions}</p>
 						</div>
 					</div>
