@@ -1,7 +1,6 @@
 import { LightningElement, wire, api } from 'lwc';
 import LOGOImg from '@salesforce/resourceUrl/UCSPortalLogo';
 import RatingImg from '@salesforce/resourceUrl/UCSPortalRating';
-import PhoneIcon from '@salesforce/resourceUrl/UCSPortalPhoneIcon';
 
 import { CurrentPageReference } from 'lightning/navigation';
 import getIDFromURL from '@salesforce/apex/customerOfferPageController.getIDFromURL';
@@ -17,7 +16,6 @@ export default class HeaderBanner extends LightningElement {
 
     UCSLogoImg = LOGOImg;
     UCSRating = RatingImg;
-    UCSPhoneIcon = PhoneIcon;
 
     encryptedID;
 	@api decryptedID;

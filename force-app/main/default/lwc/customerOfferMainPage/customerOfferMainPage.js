@@ -38,8 +38,6 @@ export default class CustomerOfferMainPage extends LightningElement
 		var hrNodes = this.template.querySelectorAll("hr");
 		//if (!this.mobileRender)
 		hrNodes[hrNodes.length - 1].remove();
-		
-		
 	}
 
 	@wire(CurrentPageReference)

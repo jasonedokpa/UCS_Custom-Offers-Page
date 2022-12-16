@@ -3,7 +3,7 @@
 		<template if:true={currentlyUnselectingOffer}>
 			<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
 		</template>
-		<h1 style="text-align:center; font-size:15px; background-color:#f7f8fc; color:#172c5a; padding-bottom:25px; padding-top:15px;">
+		<h1 style="text-align:center; font-size:15px; background-color:#f7f8fc; color:#172b44; padding-bottom:25px; padding-top:15px;">
 			<b style="display:flex; justify-content:center"><template if:true={isCashAdvance}>Estimated </template>{termInMonths} Month Terms</b>
 			<div style="display:flex; justify-content:center">
 				<label class="slds-form-element__label" for="slider-id-01">
@@ -33,15 +33,15 @@
 			</div>
 			<div class="grid-item">
 				<p style="color:#949dad">PMT SCHEDULE</p>
-				<p style="color:#172c5a; font-size:15px">{pmtSchedule}</p>
+				<p style="color:#172b44; font-size:15px">{pmtSchedule}</p>
 			</div>
 			<div class="grid-item">
 				<p style="color:#949dad">PAYMENT AMOUNT</p>
-				<p style="color:#172c5a; font-size:15px">{paymentAmtLabel}</p>
+				<p style="color:#172b44; font-size:15px">{paymentAmtLabel}</p>
 			</div>
 			<div class="grid-item">
 				<p style="color:#949dad"># OF PAYMENTS</p>
-				<p style="color:#172c5a; font-size:15px">{NumofPayment}</p>
+				<p style="color:#172b44; font-size:15px">{NumofPayment}</p>
 			</div>
 		</div>
 		<div style="display:flex; justify-content:center; margin-bottom:15px;">
@@ -96,19 +96,19 @@
 						</div>
 						<div class="grid-item">
 							<p style="color:#949dad">PMT SCHEDULE</p>
-							<p style="color:#172c5a; font-size:15px;">{pmtSchedule}</p>
+							<p style="color:#172b44; font-size:15px;">{pmtSchedule}</p>
 						</div>
 						<div class="grid-item">
 							<p style="color:#949dad">PAYMENT AMOUNT</p>
-							<p style="color:#172c5a; font-size:15px;">{paymentAmtLabel}</p>
+							<p style="color:#172b44; font-size:15px;">{paymentAmtLabel}</p>
 						</div>
 						<div class="grid-item">
 							<p style="color:#949dad"># OF PAYMENTS</p>
-							<p style="color:#172c5a; font-size:15px;">{NumofPayment}</p>
+							<p style="color:#172b44; font-size:15px;">{NumofPayment}</p>
 						</div>
 						<div class="grid-item" style="grid-column:1/3;">
 							<p style="color:#949dad">PREPAY DISCOUNTS/OPTIONS</p>
-							<p style="color:#172c5a; font-size:15px; white-space:break-spaces;">{prepayOptions}</p>
+							<p style="color:#172b44; font-size:15px; white-space:break-spaces;">{prepayOptions}</p>
 						</div>
 					</div>
 					<button class="slds-button big-select-offer-button" onclick={selectThisOffer}>SELECT OFFER</button>

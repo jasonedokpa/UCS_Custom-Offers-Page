@@ -148,7 +148,7 @@ export default class CustomerOfferCard extends LightningElement
 		console.log("CLICKED ON:", this.offerObject.Name + " offer");
 		console.log("Funding Amount:", this.fundingAmt);
 		this.currentlySelectingOffer = true;
-		setChosenOffer({OfferID: this.offerObject.Id, newFundingAmount: this.fundingAmt , newPaymentAmount: this.paymentAmt
+		setChosenOffer({OfferID: this.offerObject.Id, newFundingAmount: this.fundingAmt, newPaymentAmount: this.paymentAmt
 		}).then(response => {
 			this.currentlySelectingOffer = false;
 			this.hideModalBox();

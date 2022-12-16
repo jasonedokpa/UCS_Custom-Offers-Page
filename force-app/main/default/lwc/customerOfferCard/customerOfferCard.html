@@ -3,7 +3,7 @@
 		<template if:true={currentlyDeselectingOffer}>
 			<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
 		</template>
-		<h1 style="display:flex; align-items:center; justify-content:space-around; font-size:15px; background-color:#f7f8fc; color:#172c5a; padding: 25px 0px 25px 10px;">
+		<h1 style="display:flex; align-items:center; justify-content:space-around; font-size:15px; background-color:#f7f8fc; color:#172b44; padding: 25px 0px 25px 10px;">
 			<div>
 				<b><template if:true={isCashAdvance}>Estimated </template>{termInMonths} Month Terms</b>
 			</div>
@@ -39,15 +39,15 @@
 				</div>
 				<div class="grid-item">
 					<p style="color:#949dad">PMT SCHEDULE</p>
-					<p style="color:#172c5a; font-size:15px">{pmtSchedule}</p>
+					<p style="color:#172b44; font-size:15px">{pmtSchedule}</p>
 				</div>
 				<div class="grid-item">
 					<p style="color:#949dad">PAYMENT AMOUNT</p>
-					<p style="color:#172c5a; font-size:15px">{paymentAmtLabel}</p>
+					<p style="color:#172b44; font-size:15px">{paymentAmtLabel}</p>
 				</div>
 				<div class="grid-item">
 					<p style="color:#949dad"># OF PAYMENTS</p>
-					<p style="color:#172c5a; font-size:15px">{NumofPayment}</p>
+					<p style="color:#172b44; font-size:15px">{NumofPayment}</p>
 				</div>
 			</div>
 			<div style="position:absolute;bottom:25px;right:25px">
@@ -106,19 +106,19 @@
 							</div>
 							<div class="grid-item">
 								<p style="color:#949dad">PMT SCHEDULE</p>
-								<p style="color:#172c5a; font-size:15px">{pmtSchedule}</p>
+								<p style="color:#172b44; font-size:15px">{pmtSchedule}</p>
 							</div>
 							<div class="grid-item">
 								<p style="color:#949dad">PAYMENT AMOUNT</p>
-								<p style="color:#172c5a; font-size:15px">{paymentAmtLabel}</p>
+								<p style="color:#172b44; font-size:15px">{paymentAmtLabel}</p>
 							</div>
 							<div class="grid-item">
 								<p style="color:#949dad"># OF PAYMENTS</p>
-								<p style="color:#172c5a; font-size:15px">{NumofPayment}</p>
+								<p style="color:#172b44; font-size:15px">{NumofPayment}</p>
 							</div>
 							<div class="grid-item" style="grid-column:1/3;">
 								<p style="color:#949dad">PREPAY DISCOUNTS/OPTIONS</p>
-								<p style="color:#172c5a; font-size:15px; white-space:break-spaces;">{prepayOptions}</p>
+								<p style="color:#172b44; font-size:15px; white-space:break-spaces;">{prepayOptions}</p>
 							</div>
 						</div>
 						<div  style="display:block;">
