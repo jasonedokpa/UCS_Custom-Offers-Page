@@ -3,23 +3,28 @@
 		<template if:true={currentlyUnselectingOffer}>
 			<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
 		</template>
-		<h1 style="text-align:center; font-size:15px; background-color:#f7f8fc; color:#172b44; padding-bottom:25px; padding-top:15px;">
+		<h1 style="text-align:center; font-size:15px; background-color:#f7f8fc; color:#172b44; padding:15px 0px;">
 			<b style="display:flex; justify-content:center"><template if:true={isCashAdvance}>Estimated </template>{termInMonths} Month Terms</b>
 			<div style="display:flex; justify-content:center">
 				<label class="slds-form-element__label" for="slider-id-01">
 					<span class="slds-slider-label">
 						<span style="font-size:10px; color:#949dad;" class="slds-slider-label__label">FUNDING AMOUNT</span>
-						<span style="font-size:15px;" class="slds-slider-label__range">${minFundingAmtLabel}-${maxFundingAmtLabel}</span>
+						<template if:false={isEquipmentFincancing}>
+							<span style="font-size:15px;" class="slds-slider-label__range">${minFundingAmtLabel}-${maxFundingAmtLabel}</span>
+						</template>
+						<template if:true={isEquipmentFincancing}>
+							<span style="font-size:15px;" class="slds-slider-label__range">${fundingAmtLabel}</span>
+						</template>
 					</span>
 				</label>
 			</div>
 		</h1>
-		<div style="padding:20px;">
+		<div style="padding:15px;">
 			<div class="slds-form-element">
 				<div class="slds-form-element__control">
 					<div class="slds-slider" style="display:block">
-						<span class="slds-slider__value" style="display:flex; justify-content:center; font-size:24px; color:#223655" aria-hidden="true"><b>${fundingAmtLabel}</b></span>
 						<template if:false={isEquipmentFincancing}>
+							<span class="slds-slider__value" style="display:flex; justify-content:center; font-size:24px; color:#223655" aria-hidden="true"><b>${fundingAmtLabel}</b></span>
 							<input type="range" id="slider-id-01" class="slds-slider__range slds-size_small" style="display:flex; justify-content:center; padding: 8px 0; margin:auto" step=100 min={minFundingAmt} max={maxFundingAmt} value={fundingAmt} oninput={changeFundingAmt}>
 						</template>
 					</div>

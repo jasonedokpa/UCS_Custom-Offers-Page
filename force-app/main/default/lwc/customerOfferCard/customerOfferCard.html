@@ -10,7 +10,12 @@
 			<label class="slds-form-element__label" for="slider-id-01">
 				<span class="slds-slider-label">
 					<span style="font-size:10px; color:#949dad; display:flex; justify-content:flex-end;" class="slds-slider-label__label">FUNDING AMOUNT</span>
-					<span style="font-size:15px;" class="slds-slider-label__range">${minFundingAmtLabel} - ${maxFundingAmtLabel}</span>
+					<template if:false={isEquipmentFincancing}>
+						<span style="font-size:15px;" class="slds-slider-label__range">${minFundingAmtLabel} - ${maxFundingAmtLabel}</span>
+					</template>
+					<template if:true={isEquipmentFincancing}>
+						<span style="font-size:15px;display:flex; justify-content:center;" class="slds-slider-label__range">${fundingAmtLabel}</span>
+					</template>
 				</span>
 			</label>
 		</h1>
@@ -27,9 +32,7 @@
 			</div>
 		</template>
 		<template if:true={isEquipmentFincancing}>
-			<div style="padding:10px;">
-				<span class="slds-slider__value" aria-hidden="true" style="font-size:24px; color:#223655; position:absolute; right:25px;"><b>${fundingAmtLabel}</b></span>
-			</div>
+			<div style="padding:10px;"></div>
 		</template>
 		<div style="display:flex; padding-bottom:25px;">
 			<div class="grid-container">
