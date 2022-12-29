@@ -2,7 +2,6 @@ import { LightningElement, wire } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
 import offers from '@salesforce/apex/customerOfferPageController.getOffers';
 import getIDFromURL from '@salesforce/apex/customerOfferPageController.getIDFromURL';
-import FORM_FACTOR from '@salesforce/client/formFactor'
 import mobileTemple from './mobileTemplate.html'
 import desktopTemplate from './customerOfferMainPage.html'
 
@@ -28,16 +27,20 @@ export default class CustomerOfferMainPage extends LightningElement
 	connectedCallback()
 	{
 		//Determine if device is mobile
-		this.mobileRender = (FORM_FACTOR === 'Small' || FORM_FACTOR === 'Medium');
-		//console.log('Mobile render from customOfferMainPage: ' + this.mobileRender);
+		this.mobileRender = window.innerWidth < 768;
+		window.addEventListener("resize", (event) => {
+			if (!this.mobileRender && window.innerWidth < 768)
+				this.mobileRender = true;
+			if (this.mobileRender && window.innerWidth >= 768)
+				this.mobileRender = false;	
+		});
 	}
 
 	renderedCallback()
 	{
 		//remove the last <hr> element
-		var hrNodes = this.template.querySelectorAll("hr");
-		//if (!this.mobileRender)
-		hrNodes[hrNodes.length - 1].remove();
+		let hrNodes = this.template.querySelectorAll("hr");
+		hrNodes[hrNodes.length - 1].style.display = "none";
 	}
 
 	@wire(CurrentPageReference)

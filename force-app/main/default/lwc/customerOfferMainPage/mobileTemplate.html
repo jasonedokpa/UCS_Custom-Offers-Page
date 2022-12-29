@@ -1,14 +1,14 @@
 <template>
 	<lightning-accordion active-section-name={accordianOpenSection} allow-multiple-sections-open>
 		<template for:each={allOfferGroups} for:item="offerGroup">
-    	        	<c-customer-offer-section 
-							class="slds-align_absolute-center" 
-							key={offerGroup.key} style="margin: 20px;" 
-							group-name={offerGroup.key} 
-							offer-list={offerGroup.value}
-							mobile-render=1>
-					</c-customer-offer-section>
-					<hr key={offerGroup.key} style="padding:20px;">
+			<c-customer-offer-section 
+				class="slds-align_absolute-center" 
+				key={offerGroup.key} style="margin: 20px;" 
+				group-name={offerGroup.key} 
+				offer-list={offerGroup.value}
+				mobile-render=1>
+			</c-customer-offer-section>
+			<hr key={offerGroup.key} style="padding:20px;">
 		</template>
 	</lightning-accordion>
 	<template if:true={pageIsExpired}>
