@@ -11,7 +11,7 @@ export default class FooterBanner extends LightningElement {
 
 	encryptedID;
     @api decryptedID;
-    pageIsExpired = false;
+    pageIsExpired = true;
 
     @wire(CurrentPageReference)
 	getStateParameters(currentPageReference)

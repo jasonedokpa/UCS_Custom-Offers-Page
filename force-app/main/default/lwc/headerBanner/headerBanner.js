@@ -19,7 +19,7 @@ export default class HeaderBanner extends LightningElement {
 
     encryptedID;
 	@api decryptedID;
-	pageIsExpired = false;
+	pageIsExpired = true;
 
 	BusinessName;
 	OwnerName;
