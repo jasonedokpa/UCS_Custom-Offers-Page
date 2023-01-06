@@ -29,6 +29,8 @@ export default class CustomerOfferCard extends LightningElement
 	closingDocuments;
 	Rate;
 	NumofPayment;
+	interestRate;
+	drawFee;
 	selectOffer;
 	currentlySelectingOffer;
 	unselectOffer;
@@ -36,7 +38,9 @@ export default class CustomerOfferCard extends LightningElement
 	hideSelectOffer;
 	documentsExist;
 	isCashAdvance;
-	isEquipmentFincancing;
+	isEquipmentFinancing;
+	isLineOfCredit;
+	noSlider;
 
 	@api mobileRender;
 
@@ -65,17 +69,21 @@ export default class CustomerOfferCard extends LightningElement
 			this.fundingAmtLabel = this.fundingAmt ? this.fundingAmt.toLocaleString("en-US") : undefined;
 			this.paybackAmt = this.offerObject.McaApp__Payback_Amt__c;
 			this.paybackAmtLabel = this.paybackAmt ? parseInt(this.paybackAmt).toLocaleString("en-US") : undefined;
+			this.paymentAmt = (this.offerObject.McaApp__Deal_Type__c === "Line of Credit") ? this.offerObject.McaApp__Payment_Amt__c : parseFloat(Number(this.offerObject.McaApp__Payment_Amt__c).toFixed(2));
+			this.paymentAmtLabel = this.paymentAmt ? this.paymentAmt.toLocaleString("en-US", { style: "currency", currency: "USD" }) : undefined;
 			this.termInMonths = this.offerObject.McaApp__Term_Months__c;
 			this.pmtSchedule = this.offerObject.McaApp__PMT_Schedule__c;
-			this.paymentAmt = parseFloat(Number(this.offerObject.McaApp__Payment_Amt__c).toFixed(2));
 			this.prepayOptions = this.offerObject.Prepay_Discounts__c ? this.offerObject.Prepay_Discounts__c : 'None';
-			this.paymentAmtLabel = this.paymentAmt ? this.paymentAmt.toLocaleString("en-US", { style: "currency", currency: "USD" }) : undefined;
 			this.closingDocuments = this.offerObject.Closing_Documents__c ? this.picklistToArray( this.offerObject.Closing_Documents__c) : '';
 			this.documentsExist = !!this.closingDocuments;
-			this.Rate = this.offerObject.McaApp__Rate__c ? this.offerObject.McaApp__Rate__c: undefined;
-			this.NumofPayment = this.offerObject.of_Payments__c ? this.offerObject.of_Payments__c : undefined;
+			this.Rate = this.offerObject.McaApp__Rate__c;
+			this.NumofPayment = this.offerObject.of_Payments__c;
+			this.interestRate = this.offerObject.LOC_Interest_Rate__c;
+			this.drawFee = this.offerObject.Draw_Fee__c;
 			this.isCashAdvance = this.offerObject.McaApp__Deal_Type__c === "Cash Advance";
-			this.isEquipmentFincancing = this.offerObject.McaApp__Deal_Type__c === "Equipment Financing";
+			this.isEquipmentFinancing = this.offerObject.McaApp__Deal_Type__c === "Equipment Financing";
+			this.isLineOfCredit = this.offerObject.McaApp__Deal_Type__c === "Line of Credit";
+			this.noSlider = this.isEquipmentFinancing || this.isLineOfCredit;
 
 			if(this.offerObject.Offer_Selected__c === 'uncheck')
 			{
@@ -105,14 +113,13 @@ export default class CustomerOfferCard extends LightningElement
 		this.fundingAmtLabel = parseInt(this.fundingAmt).toLocaleString("en-US");
 		this.paybackAmt = Number((this.fundingAmt * this.Rate).toFixed(2));
 		this.paybackAmtLabel = parseInt(this.paybackAmt).toLocaleString("en-US");
-		this.paymentAmt = parseFloat((this.paybackAmt / this.NumofPayment).toFixed(2));
+		this.paymentAmt = (this.offerObject.McaApp__Deal_Type__c === "Line of Credit") ? this.paymentAmt : parseFloat((this.paybackAmt / this.NumofPayment).toFixed(2));
 		this.paymentAmtLabel = this.paymentAmt.toLocaleString("en-US", { style: "currency", currency: "USD" });
 	}
 
 	showModalBox()
 	{
 		this.isShowModal = true;
-		console.log(this.opportunityID);
 	}
 
 	hideModalBox()

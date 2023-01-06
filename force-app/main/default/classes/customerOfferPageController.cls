@@ -16,7 +16,8 @@ public without sharing class customerOfferPageController
 										McaApp__Payment_Amt__c, McaApp__Commi__c, 
 										McaApp__Opportunity__c, McaApp__Payback_Amt__c,
 										McaApp__Commi_per__c, McaApp__Rate__c, 
-										Offer_Selected__c,of_Payments__c, Prepay_Discounts__c FROM McaApp__Offers__r)
+										Offer_Selected__c,of_Payments__c, Draw_Fee__c,
+										Prepay_Discounts__c, LOC_Interest_Rate__c FROM McaApp__Offers__r)
 										FROM Opportunity WHERE Id =: OpportunityID])
 			allOffersOnOpportunity = opportunity.McaApp__Offers__r;
 	

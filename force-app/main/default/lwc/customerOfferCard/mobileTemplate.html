@@ -9,10 +9,10 @@
 				<label class="slds-form-element__label" for="slider-id-01">
 					<span class="slds-slider-label">
 						<span style="font-size:10px; color:#949dad;" class="slds-slider-label__label">FUNDING AMOUNT</span>
-						<template if:false={isEquipmentFincancing}>
+						<template if:false={noSlider}>
 							<span style="font-size:15px;" class="slds-slider-label__range">${minFundingAmtLabel}-${maxFundingAmtLabel}</span>
 						</template>
-						<template if:true={isEquipmentFincancing}>
+						<template if:true={noSlider}>
 							<span style="font-size:15px;" class="slds-slider-label__range">${fundingAmtLabel}</span>
 						</template>
 					</span>
@@ -23,7 +23,7 @@
 			<div class="slds-form-element">
 				<div class="slds-form-element__control">
 					<div class="slds-slider" style="display:block">
-						<template if:false={isEquipmentFincancing}>
+						<template if:false={noSlider}>
 							<span class="slds-slider__value" style="display:flex; justify-content:center; font-size:24px; color:#223655" aria-hidden="true"><b>${fundingAmtLabel}</b></span>
 							<input type="range" id="slider-id-01" class="slds-slider__range slds-size_small" style="display:flex; justify-content:center; padding: 8px 0; margin:auto" step=100 min={minFundingAmt} max={maxFundingAmt} value={fundingAmt} oninput={changeFundingAmt}>
 						</template>
@@ -48,6 +48,16 @@
 				<p style="color:#949dad"># OF PAYMENTS</p>
 				<p style="color:#172b44; font-size:15px">{NumofPayment}</p>
 			</div>
+			<template if:true={isLineOfCredit}>
+				<div class="grid-item">
+					<p style="color:#949dad">MONTHLY INTERST RATE</p>
+					<p style="color:#172b44; font-size:15px">{interestRate}%</p>
+				</div>
+				<div class="grid-item">
+					<p style="color:#949dad">DRAW FEE</p>
+					<p style="color:#172b44; font-size:15px">{drawFee}%</p>
+				</div>
+			</template>
 		</div>
 		<div style="display:flex; justify-content:center; margin-bottom:15px;">
 			<template if:true={selectOffer}>
@@ -111,6 +121,16 @@
 							<p style="color:#949dad"># OF PAYMENTS</p>
 							<p style="color:#172b44; font-size:15px;">{NumofPayment}</p>
 						</div>
+						<template if:true={isLineOfCredit}>
+							<div class="grid-item">
+								<p style="color:#949dad">MONTHLY INTERST RATE</p>
+								<p style="color:#172b44; font-size:15px">{interestRate}%</p>
+							</div>
+							<div class="grid-item">
+								<p style="color:#949dad">DRAW FEE</p>
+								<p style="color:#172b44; font-size:15px">{drawFee}%</p>
+							</div>
+						</template>
 						<div class="grid-item" style="grid-column:1/3;">
 							<p style="color:#949dad">PREPAY DISCOUNTS/OPTIONS</p>
 							<p style="color:#172b44; font-size:15px; white-space:break-spaces;">{prepayOptions}</p>
