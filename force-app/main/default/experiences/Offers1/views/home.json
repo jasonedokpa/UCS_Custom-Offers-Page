@@ -1,13 +1,14 @@
 {
   "appPageId" : "0ee41af4-497c-401e-9f5e-748fa6c1ad72",
   "componentName" : "siteforce:sldsTwoCol84SidebarFeaturedLayout",
+  "dataProviders" : [ ],
   "id" : "e27661d1-e61d-42a3-8e5d-e061a6956755",
   "label" : "Home",
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : { },
-      "componentName" : "c:customerOfferMainPage",
-      "id" : "d53722a5-a362-45c1-9b9d-88b0608520f8",
+      "componentName" : "c:headerBanner",
+      "id" : "de5743fa-a67c-4a54-92f0-a363f94304e6",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -28,25 +29,6 @@
     "regionName" : "sidebar",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "richTextValue" : "<p><img class=\"sfdcCbImage\" alt=\"\" src=\"{!contentAsset.united12.1}\" style=\"width: 1415.3px; height: 205.188px;\"></p>"
-      },
-      "componentName" : "forceCommunity:richTextInline",
-      "id" : "5f08c45d-3feb-435f-927c-33b73479514e",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "richTextValue" : "<div style=\" background-color:rgba(215,220,239,255); text-align: center;\"> \n</br></br><p style=\"text-align: center;\"><strong style=\"font-size: 10px; color: rgb(0, 0, 0);\">1(855) 933-8638</strong><span style=\"font-size: 10px; color: rgb(0, 0, 0);\">&nbsp;| 111 Great Neck Rd Suite 416, Great Neck, NY 11021</span></p><p style=\"text-align: center;\"><span style=\"font-size: 10px; color: rgb(0, 0, 0);\">©2022 United Capital Source Inc. All Rights Reserved</span></p>\n</div>"
-      },
-      "componentName" : "forceCommunity:htmlBlock",
-      "id" : "faa2e0d4-b611-4e77-89c1-44867de19548",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "ac49bdc5-d721-4bb6-b186-b1785d4fb96b",
     "regionName" : "footer",
     "type" : "region"

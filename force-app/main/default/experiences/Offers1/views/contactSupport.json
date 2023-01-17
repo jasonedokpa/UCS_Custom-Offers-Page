@@ -1,6 +1,7 @@
 {
   "appPageId" : "0ee41af4-497c-401e-9f5e-748fa6c1ad72",
   "componentName" : "siteforce:sldsTwoCol66Layout",
+  "dataProviders" : [ ],
   "id" : "550c2237-dbae-4545-8e6e-3070040598d6",
   "label" : "Contact Support",
   "regions" : [ {

@@ -37,7 +37,7 @@
       "isHeaderPinned" : false,
       "isHeroUnderHeader" : false,
       "isPageWidthFixed" : true,
-      "showHeader" : true,
+      "showHeader" : false,
       "showHero" : false
     },
     "componentName" : "siteforce:themeLayoutStarter",
@@ -245,8 +245,8 @@
       "isHeaderPinned" : false,
       "isHeroUnderHeader" : false,
       "isPageWidthFixed" : true,
-      "showHeader" : true,
-      "showHero" : true
+      "showHeader" : false,
+      "showHero" : false
     },
     "componentName" : "siteforce:themeLayoutStarter",
     "id" : "ef7649fd-ab53-4e24-b319-d54789e8fa33",
@@ -360,7 +360,7 @@
     }, {
       "components" : [ {
         "componentAttributes" : {
-          "bgImage" : "background: #FFFFFF url(/sfsites/c/file-asset/United_Capital_Source2?v=1) top center /contain no-repeat",
+          "bgImage" : "background: #FFFFFF",
           "bgOverlayColor" : "rgba(255, 255, 255, 0.20)",
           "captionText" : "Our Mission",
           "captionTextColor" : "rgba(0, 0, 0, 0.8)",
@@ -387,7 +387,7 @@
           "ctaShowBtnOne" : false,
           "ctaShowBtnTwo" : false,
           "fixedHeroWidth" : false,
-          "heroHeight" : 300,
+          "heroHeight" : 0,
           "heroWidth" : 808,
           "showCaption" : false,
           "showSubtitle" : false,
@@ -441,6 +441,13 @@
       "regionName" : "themeHero",
       "type" : "region"
     }, {
+      "components" : [ {
+        "componentAttributes" : { },
+        "componentName" : "c:footerBanner",
+        "id" : "541ef8d5-6929-42c9-b93b-b64d36944974",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
       "id" : "08189f87-964e-4732-b460-169d72c7592f",
       "regionName" : "themeFooter",
       "type" : "region"

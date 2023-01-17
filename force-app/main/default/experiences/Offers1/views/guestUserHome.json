@@ -2,8 +2,8 @@
   "appPageId" : "0ee41af4-497c-401e-9f5e-748fa6c1ad72",
   "componentName" : "siteforce:dynamicLayout",
   "dataProviders" : [ ],
-  "id" : "345d44d7-b330-4f15-ba1e-5d3cb7679813",
-  "label" : "Offers",
+  "id" : "0ecf5290-4934-4146-8392-fd3a4c677557",
+  "label" : "Guest User Home",
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : {
@@ -11,29 +11,29 @@
         "backgroundOverlay" : "rgba(0,0,0,0.5)",
         "contentAreaWidth" : 100,
         "sectionConfig" : {
-          "UUID" : "5bb53445-ce7d-45cc-a155-0db500432364",
+          "UUID" : "0d011ed1-ae74-43bb-be8e-4a45a8f62775",
           "columns" : [ {
-            "UUID" : "8b72fe76-906c-4316-bd1a-4485b1186cff",
+            "UUID" : "d25a06ba-fe62-4cc0-a329-a9a225ecc801",
             "columnKey" : "1",
             "columnName" : "Column 1",
             "columnWidth" : "12",
             "seedComponents" : [ ]
           } ]
         },
-        "sectionHeight" : 300
+        "sectionHeight" : 400
       },
       "componentName" : "forceCommunity:section",
-      "id" : "5bb53445-ce7d-45cc-a155-0db500432364",
+      "id" : "0d011ed1-ae74-43bb-be8e-4a45a8f62775",
       "regions" : [ {
         "components" : [ {
           "componentAttributes" : { },
-          "componentName" : "c:customerOfferMainPage",
-          "id" : "ac260887-2b0d-42d5-b371-e3990b30311f",
+          "componentName" : "c:headerBanner",
+          "id" : "c2b3c71a-26ce-4acd-9360-3fe24bff6b09",
           "renderPriority" : "NEUTRAL",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "8b72fe76-906c-4316-bd1a-4485b1186cff",
+        "id" : "d25a06ba-fe62-4cc0-a329-a9a225ecc801",
         "regionLabel" : "Column 1",
         "regionName" : "1",
         "renditionMap" : { },
@@ -43,7 +43,7 @@
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "f3e958b2-02e3-4039-9cfe-1c7212e1de74",
+    "id" : "842393ca-8d26-4043-a3f9-6da49ec786f0",
     "regionName" : "content",
     "type" : "region"
   }, {
@@ -51,18 +51,18 @@
       "componentAttributes" : {
         "customHeadTags" : "",
         "description" : "",
-        "title" : "Offers"
+        "title" : "Home"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "adaed04f-46d5-4f27-8c97-2433b095e198",
+      "id" : "71977614-f645-4b38-8b55-074b7740b012",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "13a6600e-685a-4f63-931c-9636d443ba3f",
+    "id" : "0ab7e6e2-0b46-4044-b739-57e49d83d73f",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
-  "themeLayoutType" : "Inner",
+  "themeLayoutType" : "Home",
   "type" : "view",
-  "viewType" : "custom-offers"
+  "viewType" : "home"
 }
