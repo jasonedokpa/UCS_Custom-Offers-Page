@@ -16,7 +16,7 @@
         <br/>
         <button onclick={uploadFiles} class="slds-button confirm-upload-button">CONFIRM UPLOAD</button>
     </div> -->
-    <lightning-layout multiple-rows class="slds-grid slds-var-p-bottom_large footerContainer">
+    <!-- <lightning-layout multiple-rows class="slds-grid slds-var-p-bottom_large footerContainer">
         <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="5" class="slds-text-align_center">
             <lightning-input type="file"
                          label="Attachment"
@@ -35,10 +35,34 @@
                     <span key={imgName.fileName}><br/></span>
                 </template>
             </template>
-            <br/>
         </lightning-layout-item>
     </lightning-layout>
     <div class=" uploadbutton" id="uploadbutton">
         <button onclick={uploadFiles} class="slds-button confirm-upload-button">CONFIRM UPLOAD</button>
     </div>
+
+    <br/><br/><br/>
+    <h1>Use below upload option for File Size > 3MB. </h1> -->
+    <lightning-layout multiple-rows class="slds-grid slds-var-p-bottom_large footerContainer">
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="5" class="slds-text-align_center">
+            <lightning-file-upload
+                label="Attachment"
+                name="fileUploader"
+                accept={acceptedFormats}
+                record-id={recordId}
+                onuploadfinished={handleUploadFinished}
+                multiple>
+            </lightning-file-upload>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="7" class="slds-p-top--large slds-p-left--large">
+            <template if:true={showFileNames}>
+                <template for:each={filesData1} for:item="imgName" for:index="index">
+                    <lightning-icon key={imgName.documentId} data-id={index} data-item={imgName.documentId} onclick={removeReceiptImage} size="xx-small" icon-name="utility:close" alternative-text="Delete" title="Delete" ></lightning-icon>&nbsp;
+                    <span key={imgName.Name}>{imgName.Name} </br></span>
+                </template>
+            </template>
+            <br/>
+        </lightning-layout-item>
+    </lightning-layout>
 </template>

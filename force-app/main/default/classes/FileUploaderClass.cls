@@ -36,7 +36,11 @@ public without sharing class FileUploaderClass {
           throw new AuraHandledException(ex.getMessage());
       }
   }
-
+  @AuraEnabled  
+    public static String deleteFiles(string sdocumentId){ 
+        delete [SELECT Id,Title,FileType from ContentDocument WHERE id=:sdocumentId];
+        return 'success';      
+    }
   public class FileDataWP {
       public String fileName;
       public String fileContent;
