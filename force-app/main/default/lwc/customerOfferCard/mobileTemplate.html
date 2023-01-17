@@ -1,6 +1,6 @@
 <template>
 	<div class="slds-card slds-card_boundary" style="width:325px;">
-		<template if:true={currentlyUnselectingOffer}>
+		<template if:true={currentlyDeselectingOffer}>
 			<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
 		</template>
 		<h1 style="text-align:center; font-size:15px; background-color:#f7f8fc; color:#172b44; padding:15px 0px;">
@@ -50,7 +50,7 @@
 			</div>
 			<template if:true={isLineOfCredit}>
 				<div class="grid-item">
-					<p style="color:#949dad">MONTHLY INTERST RATE</p>
+					<p style="color:#949dad">MONTHLY INTEREST RATE</p>
 					<p style="color:#172b44; font-size:15px">{interestRate}%</p>
 				</div>
 				<div class="grid-item">
@@ -123,7 +123,7 @@
 						</div>
 						<template if:true={isLineOfCredit}>
 							<div class="grid-item">
-								<p style="color:#949dad">MONTHLY INTERST RATE</p>
+								<p style="color:#949dad">MONTHLY INTEREST RATE</p>
 								<p style="color:#172b44; font-size:15px">{interestRate}%</p>
 							</div>
 							<div class="grid-item">
