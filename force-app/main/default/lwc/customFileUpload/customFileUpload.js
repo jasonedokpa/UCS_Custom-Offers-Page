@@ -44,7 +44,7 @@ export default class CustomFileUpload extends LightningElement {
     {
         if(this.mobileRender==true){
             console.log('12');
-            this.template.querySelector('div.uploadbutton').classList.add('slds-text-align_center');
+            // this.template.querySelector('div.uploadbutton').classList.add('slds-text-align_center');
         }
     }
     uploadFiles()
