@@ -58,6 +58,12 @@
 					<p style="color:#172b44; font-size:15px">{drawFee}%</p>
 				</div>
 			</template>
+			<template if:true={isEquipmentFinancing}>
+				<div class="grid-item">
+					<p style="color:#949dad">DOWN/ADVANCE PAYMENT</p>
+					<p style="color:#172b44; font-size:15px">${downPayment}</p>
+				</div>
+			</template>
 		</div>
 		<div style="display:flex; justify-content:center; margin-bottom:15px;">
 			<template if:true={selectOffer}>
@@ -129,6 +135,12 @@
 							<div class="grid-item">
 								<p style="color:#949dad">DRAW FEE</p>
 								<p style="color:#172b44; font-size:15px">{drawFee}%</p>
+							</div>
+						</template>
+						<template if:true={isEquipmentFinancing}>
+							<div class="grid-item">
+								<p style="color:#949dad">DOWN/ADVANCE PAYMENT</p>
+								<p style="color:#172b44; font-size:15px">${downPayment}</p>
 							</div>
 						</template>
 						<div class="grid-item" style="grid-column:1/3;">

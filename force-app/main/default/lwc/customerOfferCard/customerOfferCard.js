@@ -31,6 +31,7 @@ export default class CustomerOfferCard extends LightningElement
 	NumofPayment;
 	interestRate;
 	drawFee;
+	downPayment;
 	selectOffer;
 	currentlySelectingOffer;
 	unselectOffer;
@@ -80,6 +81,7 @@ export default class CustomerOfferCard extends LightningElement
 			this.NumofPayment = this.offerObject.of_Payments__c;
 			this.interestRate = this.offerObject.LOC_Interest_Rate__c;
 			this.drawFee = this.offerObject.Draw_Fee__c;
+			this.downPayment = this.offerObject.Down_Advance_Payment__c ? this.offerObject.Down_Advance_Payment__c.toLocaleString("en-US") : undefined;
 			this.isCashAdvance = this.offerObject.McaApp__Deal_Type__c === "Cash Advance";
 			this.isEquipmentFinancing = this.offerObject.McaApp__Deal_Type__c === "Equipment Financing";
 			this.isLineOfCredit = this.offerObject.McaApp__Deal_Type__c === "Line of Credit";

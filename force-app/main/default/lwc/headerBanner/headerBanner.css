@@ -47,6 +47,8 @@ margin: 0;
 	padding: 10% 0% 0% 4%;
 	font-size: 24px;
     font-weight: 900;
+	bottom: 20px;
+    position: relative;
 }
 
 .headerText2{
@@ -71,7 +73,7 @@ margin: 0;
 	color:#4caf80;
 	display: block;
 	position: absolute;
-    top: 161px;
+    top: 105px;
 }
 
 .headerText3Mob{
@@ -82,7 +84,7 @@ margin: 0;
 	display: block;
 	line-height: 16pt;
 	position: absolute;
-    top: 248px;
+    top: 158px;
 
 }
 
