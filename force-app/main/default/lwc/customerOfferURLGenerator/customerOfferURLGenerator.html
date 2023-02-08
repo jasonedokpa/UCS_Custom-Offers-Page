@@ -1,0 +1,10 @@
+<template>
+	<div class="slds-var-p-around_medium slds-card slds-card_boundary" style="word-wrap:break-word;">
+		<br><br>
+		<p style="text-align:center">Click the button below to generate a new URL for the current Opportunity. Please note that the provided link will expire in 1 day.</p>
+		<br><br>
+		<button class="slds-button slds-button_brand slds-align_absolute-center" onclick={handleClick}>Generate New URL</button>
+		<br><br>
+		<a href={urlParam} target="_blank">{urlParam}</a>
+	</div>
+</template>

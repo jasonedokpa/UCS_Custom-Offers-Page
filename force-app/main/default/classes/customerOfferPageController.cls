@@ -87,7 +87,7 @@ public without sharing class customerOfferPageController
 	@AuraEnabled
 	public static String generateURL(String opportunityID)
 	{
-		return encryptID(opportunityID + ';' + System.now().addDays(7));
+		return encryptID(opportunityID + ';' + System.now().addDays(1));
 	}
 
 	//return OpportunityID to Main Page if link is not expired
@@ -134,7 +134,7 @@ public without sharing class customerOfferPageController
 		InputWrapper iw = new InputWrapper();
         iw = inputData[0];
         OpportunityId = iw.OpportunityId;
-        string OpptyURL = encryptID(opportunityID + ';' + System.now().addDays(7));
+        string OpptyURL = encryptID(opportunityID + ';' + System.now().addDays(1));
         List<OutputWrapper> owList = new List<OutputWrapper>();
         OutputWrapper ow = new OutputWrapper();
        	ow.OutputURL = OpptyURL.replace('+', '%2b');
