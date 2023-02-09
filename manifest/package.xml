@@ -1,13 +1,30 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-	<types>
-		<members>FileUploaderClass</members>
-		<name>ApexClass</name>
-	</types>
-	<types>
-		<members>customFileUpload</members>
-		<members>customerOfferCard</members>
-		<name>LightningComponentBundle</name>
-	</types>
-	<version>55.0</version>
+    <types>
+        <members>FileUploaderClass</members>
+        <members>customerOfferPageController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Offers1</members>
+        <name>ExperienceBundle</name>
+    </types>
+    <types>
+        <members>customFileUpload</members>
+        <members>customerOfferCard</members>
+        <members>customerOfferMainPage</members>
+        <members>customerOfferSection</members>
+        <members>footerBanner</members>
+        <members>hTMLEditor</members>
+        <members>headerBanner</members>
+        <members>markdownEditor</members>
+        <members>markdownPreview</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>UCSLogo</members>
+        <members>UCS_static_images</members>
+        <name>StaticResource</name>
+    </types>
+    <version>57.0</version>
 </Package>
